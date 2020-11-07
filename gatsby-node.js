@@ -52,6 +52,10 @@ async function turnTagsIntoPages({ graphql, actions }) {
               title
               id
             }
+            node__speaking {
+              title
+              id
+            }
           }
         }
       }
