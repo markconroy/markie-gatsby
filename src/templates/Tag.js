@@ -15,7 +15,8 @@ const TagStyles = styled.article`
 `
 
 export default function SingleArticlePage({ data: { tag } }) {
-  const articlesTaggedWithThisTag = tag.relationships.node__article
+  const articlesTaggedWithThisTag =
+    tag.relationships.node__article || tag.relationships.node__speaking
   return (
     <>
       <Layout>
@@ -49,6 +50,13 @@ export const query = graphql`
       id
       relationships {
         node__article {
+          id
+          title
+          path {
+            alias
+          }
+        }
+        node__speaking {
           id
           title
           path {

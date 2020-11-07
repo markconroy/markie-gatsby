@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -10,7 +10,7 @@ export default function BlogListingPage({ data }) {
   return (
     <Layout>
       <SEO title="Blog" />
-      <h1>Blog</h1>
+      <h1>Blog - Scroll horizontally!</h1>
       <p>we have{data.articles.nodes.length} articles</p>
       <CardList cards={cards} />
     </Layout>

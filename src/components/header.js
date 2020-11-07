@@ -4,6 +4,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const HeaderStyles = styled.header`
+  padding: 2rem 0;
   background-color: var(--color-secondary);
   a {
     color: var(--color-white);
