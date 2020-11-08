@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "mark.ie",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A Gatsby implementation of mark.ie",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Mark Conroy <mark@mark.ie>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.11.1",
     "dotenv": "^8.2.0",
