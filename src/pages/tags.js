@@ -3,14 +3,15 @@ import { graphql, Link } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import Container from '../components/container'
 
 export default function TagsListingPage({ data }) {
   const tags = data.tags.nodes
   return (
     <Layout>
       <SEO title="Tags" />
-      {tags ? (
-        <>
+      <>
+        <Container>
           <h1>Tags</h1>
           <p>we have {tags.length} tags. They are:</p>
           <ul>
@@ -22,10 +23,8 @@ export default function TagsListingPage({ data }) {
               </li>
             ))}
           </ul>
-        </>
-      ) : (
-        ''
-      )}
+        </Container>
+      </>
     </Layout>
   )
 }

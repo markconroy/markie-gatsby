@@ -2,6 +2,8 @@ import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+import Container from './container'
+import Menu from './menu'
 
 const HeaderStyles = styled.header`
   padding: 2rem 0;
@@ -11,25 +13,22 @@ const HeaderStyles = styled.header`
   }
 `
 
+const HeaderInner = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
 const Header = ({ siteTitle }) => (
   <HeaderStyles>
-    <p style={{ margin: 0 }}>
-      <Link to="/">{siteTitle}</Link>
-    </p>
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/blog">Blog</Link>
-      </li>
-      <li>
-        <Link to="/speaking">Speaking</Link>
-      </li>
-      <li>
-        <Link to="/tags">Tags</Link>
-      </li>
-    </ul>
+    <Container>
+      <HeaderInner>
+        <p style={{ margin: 0 }}>
+          <Link to="/">{siteTitle}</Link>
+        </p>
+        <Menu />
+      </HeaderInner>
+    </Container>
   </HeaderStyles>
 )
 

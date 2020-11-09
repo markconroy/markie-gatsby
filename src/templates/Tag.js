@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import SEO from '../components/seo'
 import Layout from '../components/layout'
+import Container from '../components/container'
 
 const TagStyles = styled.article`
   h1 {
@@ -21,23 +22,25 @@ export default function SingleArticlePage({ data: { tag } }) {
     <>
       <Layout>
         <SEO title={tag.name} />
-        <TagStyles>
-          <h1>{tag.name}</h1>
-          {/* <div dangerouslySetInnerHTML={{ __html: tag.body.value }} /> */}
-          <h2>
-            The following {articlesTaggedWithThisTag.length} pages are tagged
-            with "{tag.name}":
-          </h2>
-          <ol>
-            {articlesTaggedWithThisTag.map(tagItem => (
-              <li>
-                <Link to={tagItem.path.alias} key={tagItem.id}>
-                  {tagItem.title}
-                </Link>
-              </li>
-            ))}
-          </ol>
-        </TagStyles>
+        <Container>
+          <TagStyles>
+            <h1>{tag.name}</h1>
+            {/* <div dangerouslySetInnerHTML={{ __html: tag.body.value }} /> */}
+            <h2>
+              The following {articlesTaggedWithThisTag.length} pages are tagged
+              with "{tag.name}":
+            </h2>
+            <ol>
+              {articlesTaggedWithThisTag.map(tagItem => (
+                <li>
+                  <Link to={tagItem.path.alias} key={tagItem.id}>
+                    {tagItem.title}
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </TagStyles>
+        </Container>
       </Layout>
     </>
   )

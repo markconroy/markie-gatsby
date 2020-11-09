@@ -1,6 +1,7 @@
 import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
+import Container from './container'
 
 const FooterStyles = styled.footer`
   padding: 2rem 0;
@@ -12,9 +13,11 @@ const FooterStyles = styled.footer`
 
 const Footer = () => (
   <FooterStyles>
-    <p style={{ margin: 0 }}>
-      <Link to="/">This is a footer. Cool, eh?</Link>
-    </p>
+    <Container>
+      <p style={{ margin: 0 }}>
+        <Link to="/">This is a footer. Cool, eh?</Link>
+      </p>
+    </Container>
   </FooterStyles>
 )
 

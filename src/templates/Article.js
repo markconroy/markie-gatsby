@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import SEO from '../components/seo'
 import Layout from '../components/layout'
+import Container from '../components/container'
 
 const ArticleStyles = styled.article`
   h1 {
@@ -19,21 +20,23 @@ export default function SingleArticlePage({ data: { article } }) {
     <>
       <Layout>
         <SEO title={article.title} />
-        <ArticleStyles>
-          <p>{article.created}</p>
-          <h1>{article.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: article.body.value }} />
-          <h2>Filed Under:</h2>
-          <ul>
-            {article.relationships.field_tags.map(tag => (
-              <li>
-                <Link to={tag.path.alias} key={tag.id}>
-                  {tag.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </ArticleStyles>
+        <Container>
+          <ArticleStyles>
+            <p>{article.created}</p>
+            <h1>{article.title}</h1>
+            <div dangerouslySetInnerHTML={{ __html: article.body.value }} />
+            <h2>Filed Under:</h2>
+            <ul>
+              {article.relationships.field_tags.map(tag => (
+                <li>
+                  <Link to={tag.path.alias} key={tag.id}>
+                    {tag.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </ArticleStyles>
+        </Container>
       </Layout>
     </>
   )
