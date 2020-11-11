@@ -27,6 +27,15 @@ const GlobalStyles = createGlobalStyle`
     max-width: 100%;
   }
 
+  pre {
+    overflow: scroll;
+    padding: 1rem;
+    margin: 5rem calc(10% + 1rem) 5rem 10%;
+    border: 1px solid var(--color-secondary);
+    border-radius: var(--border-radius);
+    box-shadow: 2px 2px 0px 0px var(--color-secondary), 4px 4px 0px 0px var(--color-white), 1rem 1rem 0rem 0rem var(--color-secondary);
+  }
+
 `
 
 export default GlobalStyles
