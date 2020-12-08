@@ -13,8 +13,8 @@ const CardStyles = styled.article`
     color: var(--color-grey--dark);
     text-decoration: none;
   }
-  a > p {
-    margin-bottom: 2rem;
+  a > *:last-child {
+    margin: auto 0 2rem;
   }
 `
 

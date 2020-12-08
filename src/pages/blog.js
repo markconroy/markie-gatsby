@@ -49,24 +49,6 @@ export const BlogListingPageQuery = graphql`
           path {
             alias
           }
-          relationships {
-            field_main_image {
-              field_m_image_image {
-                alt
-              }
-              relationships {
-                field_m_image_image {
-                  localFile {
-                    childImageSharp {
-                      fluid(maxWidth: 300, maxHeight: 300) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
         }
       }
     }

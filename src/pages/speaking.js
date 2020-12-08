@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import Container from '../styles/container'
+import Container from '../styles/Container'
 import {
   CardListContainer,
   CardListItem,
@@ -30,13 +30,6 @@ export default function SpeakingListingPage({ data }) {
                   cardTitle={card.node.title}
                   cardPath={card.node.path.alias}
                   cardCreated={card.node.created}
-                  cardImage={
-                    card.node.relationships?.field_main_image?.relationships
-                      ?.field_m_image_image?.localFile
-                      ? card.node.relationships.field_main_image.relationships
-                          .field_m_image_image.localFile.childImageSharp.fluid
-                      : null
-                  }
                 />
               </CardListItem>
             </>
