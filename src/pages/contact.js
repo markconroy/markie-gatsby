@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import Container from '../styles/container'
+import Container from '../styles/Container'
 
 export default function ContactPage() {
   return (

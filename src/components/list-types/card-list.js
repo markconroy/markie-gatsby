@@ -29,7 +29,7 @@ function CardListContainer({ children }) {
   return <CardListContainerStyles>{children}</CardListContainerStyles>
 }
 
-function CardListItem({ children, cardListItemKey }) {
+function CardListItem({ children, cardListItemKey, cardListItemId }) {
   return (
     <CardListItemStyles key={cardListItemKey}>{children}</CardListItemStyles>
   )

@@ -4,7 +4,7 @@ import { graphql, Link } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import Container from '../styles/container'
+import Container from '../styles/Container'
 
 const TagsListStyles = styled.ul`
   display: flex;

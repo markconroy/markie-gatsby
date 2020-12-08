@@ -6,7 +6,7 @@ import Container from '../styles/Container'
 const FooterStyles = styled.footer`
   margin-top: auto;
   padding: 2rem 0;
-  background-color: var(--color-grey--dark);
+  background-color: var(--color-primary);
   a {
     color: var(--color-white);
   }

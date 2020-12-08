@@ -7,7 +7,7 @@ import Menu from './menu'
 
 const HeaderStyles = styled.header`
   margin-bottom: 4rem;
-  background-color: var(--color-grey--dark);
+  background-color: var(--color-primary);
 `
 
 const Logo = styled.p`
