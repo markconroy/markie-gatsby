@@ -1,28 +1,13 @@
 import React, { useEffect } from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
-import styled from 'styled-components'
 
 import SEO from '../../components/seo'
 import Layout from '../../components/layout'
-import Container from '../../components/container'
+import Container from '../../styles/Container'
+import TagList from '../../styles/TagList'
 import highlightCode from '../../utils/highlightCode'
-
-const ArticleStyles = styled.article`
-  h1 {
-    color: var(--color-primary);
-  }
-  a {
-    color: var(--color-secondary);
-  }
-  .article__tags {
-    padding: 0;
-    list-style: none;
-  }
-  .article__tag {
-    margin-bottom: 1rem;
-  }
-`
+import ArticleMeta from '../../styles/ArticleMeta'
 
 export default function SingleArticlePageTemplate({
   articleCreated,
@@ -38,24 +23,26 @@ export default function SingleArticlePageTemplate({
   return (
     <>
       <Layout>
-        {/* <SEO title={data.article.title} /> */}
+        <SEO title={articleTitle} />
         <Container>
-          <ArticleStyles>
-            <p>{articleCreated}</p>
+          <article>
+            <ArticleMeta>
+              <p>Published: {articleCreated}</p>
+            </ArticleMeta>
             <h1>{articleTitle}</h1>
             {articleImage && <Img fluid={articleImage} alt={articleImageAlt} />}
             <div dangerouslySetInnerHTML={{ __html: articleBody }} />
             <h2>Filed Under:</h2>
-            <ul className="article__tags">
+            <TagList>
               {tags.map(tag => (
-                <li className="article__tag" key={`list-item${tag.id}`}>
+                <li key={`list-item${tag.id}`}>
                   <Link to={tag.path.alias} key={`link-to${tag.id}`}>
                     {tag.name}
                   </Link>
                 </li>
               ))}
-            </ul>
-          </ArticleStyles>
+            </TagList>
+          </article>
         </Container>
       </Layout>
     </>

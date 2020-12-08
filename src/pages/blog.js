@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import Container from '../components/container'
+import Container from '../styles/Container'
 import {
   CardListContainer,
   CardListItem,
@@ -16,8 +16,10 @@ export default function BlogListingPage({ data }) {
     <Layout>
       <SEO title="Blog" />
       <Container>
-        <h1>Blog - Scroll horizontally!</h1>
-        <p>we have {cards.length} articles</p>
+        <h1>Blog</h1>
+        <p style={{ marginBottom: '4rem' }}>
+          Read {cards.length} articles ... and counting!
+        </p>
         <CardListContainer>
           {cards.map(card => (
             <>
@@ -26,20 +28,6 @@ export default function BlogListingPage({ data }) {
                   cardTitle={card.node.title}
                   cardPath={card.node.path.alias}
                   cardCreated={card.node.created}
-                  cardImage={
-                    card.node.relationships?.field_main_image?.relationships
-                      ?.field_m_image_image?.localFile
-                      ? card.node.relationships.field_main_image.relationships
-                          .field_m_image_image.localFile.childImageSharp.fluid
-                      : null
-                  }
-                  cardImageAlt={
-                    card.node.relationships?.field_main_image
-                      ?.field_m_image_image?.alt
-                      ? card.node.relationships.field_main_image
-                          .field_m_image_image.alt
-                      : null
-                  }
                 />
               </CardListItem>
             </>

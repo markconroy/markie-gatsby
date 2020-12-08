@@ -4,7 +4,8 @@ import styled from 'styled-components'
 
 import SEO from '../components/seo'
 import Layout from '../components/layout'
-import Container from '../components/container'
+import Container from '../styles/Container'
+import TagList from '../styles/TagList'
 
 const TagStyles = styled.article`
   h1 {
@@ -16,7 +17,7 @@ const TagStyles = styled.article`
 `
 
 export default function SingleArticlePage({ data: { tag } }) {
-  const articlesTaggedWithThisTag =
+  const tags =
     tag.relationships.node__article || tag.relationships.node__speaking
   return (
     <>
@@ -25,20 +26,18 @@ export default function SingleArticlePage({ data: { tag } }) {
         <Container>
           <TagStyles>
             <h1>{tag.name}</h1>
-            {/* <div dangerouslySetInnerHTML={{ __html: tag.body.value }} /> */}
             <h2>
-              The following {articlesTaggedWithThisTag.length} pages are tagged
-              with "{tag.name}":
+              The following {tags.length} pages are tagged with "{tag.name}":
             </h2>
-            <ol>
-              {articlesTaggedWithThisTag.map(tagItem => (
+            <TagList>
+              {tags.map(tagItem => (
                 <li>
                   <Link to={tagItem.path.alias} key={tagItem.id}>
                     {tagItem.title}
                   </Link>
                 </li>
               ))}
-            </ol>
+            </TagList>
           </TagStyles>
         </Container>
       </Layout>

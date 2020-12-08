@@ -11,8 +11,9 @@ const GlobalStyles = createGlobalStyle`
     --color-white: hsl(0,0%,100%);
     --color-grey: hsl(0,0%,50%);
     --color-grey--light: hsl(0,0%,75%);
-    --color-grey--dark: hsl(0,0%,25%);
+    --color-grey--dark: hsl(75,15%,15%);
     --color-black: hsl(0,0%,0%);
+    --color-border: var(--color-secondary);
     --border-radius: 5px;
   }
   html {
@@ -23,17 +24,40 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
   }
 
+  h1 {
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  a {
+    color: var(--color-secondary);
+    &:focus,
+    &:hover {
+      text-decoration: none;
+      color: var(--color-primary);
+    }
+    &:focus {
+      outline: 2px dashed var(--color-secondary);
+      outline-offset: 2px;
+    }
+  }
+
   img {
     max-width: 100%;
   }
 
   pre {
     overflow: scroll;
-    padding: 1rem;
-    margin: 5rem calc(10% + 1rem) 5rem 0;
-    border: 1px solid var(--color-secondary);
+    margin: 3rem 0;
     border-radius: var(--border-radius);
-    box-shadow: 2px 2px 0px 0px var(--color-secondary), 4px 4px 0px 0px var(--color-white), 1rem 1rem 0rem 0rem var(--color-secondary);
   }
 
   pre > code {

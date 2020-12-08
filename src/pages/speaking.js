@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import Container from '../components/container'
+import Container from '../styles/container'
 import {
   CardListContainer,
   CardListItem,
@@ -16,8 +16,12 @@ export default function SpeakingListingPage({ data }) {
     <Layout>
       <SEO title="Blog" />
       <Container>
-        <h1>Speaking - Scroll horizontally!</h1>
-        <p>we have {cards.length} articles</p>
+        <h1>Speaking</h1>
+
+        <p style={{ marginBottom: '4rem' }}>
+          I speak about Frontend Development and Approaches to Frontend
+          Development at lots of conferences around Europe.
+        </p>
         <CardListContainer>
           {cards.map(card => (
             <>

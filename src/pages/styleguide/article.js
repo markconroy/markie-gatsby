@@ -27,7 +27,7 @@ export default function StyleguideArticlePage() {
   ]
   return (
     <SingleArticlePageTemplate
-      articleTitle="This is the Title of the Article"
+      articleTitle="This is the Title of the Article Mike King"
       articleBody={`
         <p>This is the body of the article.</p>
         <p>Nulla vitae elit libero, a pharetra augue. Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor. Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>

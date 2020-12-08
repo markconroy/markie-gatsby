@@ -1,12 +1,12 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import SingleArticlePageTemplate from './ArticleTemplate'
-import SEO from '../../components/seo'
 
 export default function SingleArticlePageDrupal({ data: { article } }) {
   return (
     <>
       <SingleArticlePageTemplate
+        articleCreated={article.created}
         articleTitle={article.title}
         articleBody={article.body.value}
         articleImage={

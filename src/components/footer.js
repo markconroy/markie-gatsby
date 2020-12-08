@@ -1,11 +1,12 @@
 import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
-import Container from './container'
+import Container from '../styles/Container'
 
 const FooterStyles = styled.footer`
+  margin-top: auto;
   padding: 2rem 0;
-  background-color: var(--color-primary);
+  background-color: var(--color-grey--dark);
   a {
     color: var(--color-white);
   }

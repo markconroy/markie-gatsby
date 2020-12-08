@@ -3,19 +3,25 @@ import styled from 'styled-components'
 
 const CardListContainerStyles = styled.ul`
   display: flex;
-  overflow-x: scroll;
-  list-style: none;
   margin: 0;
   padding: 0;
+  list-style: none;
+  overflow-x: scroll;
 `
 
 const CardListItemStyles = styled.li`
+  --card-item-width: 80%;
+  width: var(--card-item-width);
   display: flex;
-  width: 300px;
   flex-shrink: 0;
-  margin-bottom: 2rem;
   + li {
     margin-left: 1rem;
+  }
+  @media screen and (min-width: 550px) {
+    --card-item-width: 45%;
+  }
+  @media screen and (min-width: 960px) {
+    --card-item-width: 30%;
   }
 `
 

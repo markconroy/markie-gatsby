@@ -4,7 +4,8 @@ import styled from 'styled-components'
 
 import SEO from '../components/seo'
 import Layout from '../components/layout'
-import Container from '../components/container'
+import Container from '../styles/Container'
+import ArticleMeta from '../styles/ArticleMeta'
 
 const ArticleStyles = styled.article`
   h1 {
@@ -22,9 +23,18 @@ export default function SingleArticlePage({ data: { speaking } }) {
         <SEO title={speaking.title} />
         <Container>
           <ArticleStyles>
-            <p>{speaking.field_speaking_date}</p>
-            <p>{speaking.field_speaking_where}</p>
-            <p>{speaking.relationships.field_speaking_conference.name}</p>
+            <ArticleMeta>
+              <p>
+                <strong>Date:</strong> {speaking.field_speaking_date}
+              </p>
+              <p>
+                <strong>Location:</strong> {speaking.field_speaking_where}
+              </p>
+              <p>
+                <strong>Event:</strong>{' '}
+                {speaking.relationships.field_speaking_conference.name}
+              </p>
+            </ArticleMeta>
             <h1>{speaking.title}</h1>
             <div
               dangerouslySetInnerHTML={{ __html: speaking.field_intro.value }}

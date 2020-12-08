@@ -1,31 +1,30 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
 import styled from 'styled-components'
 
 const CardStyles = styled.article`
   border: 2px solid var(--color-secondary);
-  padding: 1rem;
+
   a {
-    color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0 2rem;
+    color: var(--color-grey--dark);
     text-decoration: none;
+  }
+  a > p {
+    margin-bottom: 2rem;
   }
 `
 
-export default function Card({
-  cardTitle,
-  cardPath,
-  cardImage,
-  cardImageAlt,
-  cardCreated,
-}) {
+export default function Card({ cardTitle, cardPath, cardCreated }) {
   return (
     <CardStyles>
       <Link to={cardPath}>
-        {cardImage && <Img fluid={cardImage} alt={cardImageAlt} />}
-        <h2>{cardTitle}</h2>
+        {cardTitle && <h2>{cardTitle}</h2>}
+        {cardCreated && <p>{cardCreated}</p>}
       </Link>
-      <p>{cardCreated}</p>
     </CardStyles>
   )
 }

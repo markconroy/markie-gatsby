@@ -8,15 +8,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
-
-import hljs from 'highlight.js/lib/core'
-import javascript from 'highlight.js/lib/languages/javascript'
-import css from 'highlight.js/lib/languages/css'
-import twig from 'highlight.js/lib/languages/twig'
+import styled from 'styled-components'
 import Header from './header'
 import GlobalStyles from '../styles/GlobalStyles'
 import Footer from './footer'
 
+const LayoutContainerStyles = styled.div`
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  > *:nth-last-child(2) {
+    margin-bottom: 4rem;
+  }
+`
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -31,9 +35,11 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyles />
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <main>{children}</main>
-      <Footer />
+      <LayoutContainerStyles>
+        <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+        <main>{children}</main>
+        <Footer />
+      </LayoutContainerStyles>
     </>
   )
 }

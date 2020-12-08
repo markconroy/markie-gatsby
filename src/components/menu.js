@@ -1,13 +1,11 @@
 import { Link } from 'gatsby'
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const MenuStyles = styled.nav`
   overflow: scroll;
-  margin: 0;
-  margin-left: 1rem;
+  margin: 4rem 1rem 0 0;
   padding: 0.5rem;
-  border-radius: var(--border-radius);
   background-color: var(--color-white);
   -ms-overflow-style: none; /* IE 11 */
   scrollbar-width: none; /* Firefox 64 */
@@ -24,18 +22,25 @@ const MenuStyles = styled.nav`
     margin-left: 1rem;
   }
   .menu-link {
-    color: var(--color-secondary);
+    color: var(--color-grey--dark);
     padding: 0.5rem 1rem;
+    text-decoration: none;
     border-radius: var(--border-radius);
   }
   .menu-link:focus,
   .menu-link:hover {
     color: var(--color-primary);
-    text-decoration: none;
+    text-decoration: underline;
   }
   .menu-link--active {
     background-color: var(--color-primary);
     color: var(--color-white);
+    ${props =>
+      props.isPartiallyCurrent &&
+      css`
+        background-color: var(--color-primary);
+        color: var(--color-white);
+      `}
   }
   .menu-link--active:focus,
   .menu-link--active:hover {
@@ -53,16 +58,8 @@ export default function Menu() {
             <Link
               className="menu-link"
               activeClassName="menu-link--active"
-              to="/"
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="menu-link"
-              activeClassName="menu-link--active"
               to="/blog"
+              partiallyActive
             >
               Blog
             </Link>
@@ -72,6 +69,7 @@ export default function Menu() {
               className="menu-link"
               activeClassName="menu-link--active"
               to="/speaking"
+              partiallyActive
             >
               Speaking
             </Link>
@@ -81,6 +79,7 @@ export default function Menu() {
               className="menu-link"
               activeClassName="menu-link--active"
               to="/tags"
+              partiallyActive
             >
               Tags
             </Link>
@@ -90,6 +89,7 @@ export default function Menu() {
               className="menu-link"
               activeClassName="menu-link--active"
               to="/about"
+              partiallyActive
             >
               About
             </Link>
@@ -99,6 +99,7 @@ export default function Menu() {
               className="menu-link"
               activeClassName="menu-link--active"
               to="/contact"
+              partiallyActive
             >
               Contact
             </Link>
