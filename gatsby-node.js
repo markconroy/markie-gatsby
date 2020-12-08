@@ -8,7 +8,9 @@ import path from 'path'
 
 async function turnArticlesIntoPages({ graphql, actions }) {
   // 1. Get a template for this page
-  const articleTemplate = path.resolve('./src/templates/Article.js')
+  const articleTemplate = path.resolve(
+    './src/templates/article/ArticleDrupal.js'
+  )
   // 2. Query all articles
   const { data } = await graphql(`
     query {
