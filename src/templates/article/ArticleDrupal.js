@@ -9,6 +9,18 @@ export default function SingleArticlePageDrupal({ data: { article } }) {
       <SingleArticlePageTemplate
         articleTitle={article.title}
         articleBody={article.body.value}
+        articleImage={
+          article.relationships?.field_main_image?.relationships
+            ?.field_m_image_image?.localFile
+            ? article.relationships.field_main_image.relationships
+                .field_m_image_image.localFile.childImageSharp.fluid
+            : null
+        }
+        articleImageAlt={
+          article.relationships?.field_main_image?.field_m_image_image?.alt
+            ? article.relationships.field_main_image.field_m_image_image.alt
+            : null
+        }
         tags={
           article?.relationships?.field_tags
             ? article.relationships.field_tags
