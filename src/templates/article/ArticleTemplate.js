@@ -1,11 +1,12 @@
-import React from 'react'
-import { graphql, Link } from 'gatsby'
+import React, { useEffect } from 'react'
+import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 
 import SEO from '../../components/seo'
 import Layout from '../../components/layout'
 import Container from '../../components/container'
+import highlightCode from '../../utils/highlightCode'
 
 const ArticleStyles = styled.article`
   h1 {
@@ -31,6 +32,9 @@ export default function SingleArticlePageTemplate({
   articleImageAlt,
   tags,
 }) {
+  useEffect(() => {
+    highlightCode()
+  })
   return (
     <>
       <Layout>

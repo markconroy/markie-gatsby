@@ -36,6 +36,10 @@ const GlobalStyles = createGlobalStyle`
     box-shadow: 2px 2px 0px 0px var(--color-secondary), 4px 4px 0px 0px var(--color-white), 1rem 1rem 0rem 0rem var(--color-secondary);
   }
 
+  pre > code {
+    line-height: 1.5;
+  }
+
 `
 
 export default GlobalStyles
