@@ -63,40 +63,40 @@ export default function SingleArticlePage({ data: { article } }) {
   )
 }
 
-export const query = graphql`
-  query($slug: String!) {
-    article: nodeArticle(path: { alias: { eq: $slug } }) {
-      title
-      created(fromNow: true)
-      id
-      body {
-        value
-      }
-      relationships {
-        field_main_image {
-          field_m_image_image {
-            alt
-          }
-          relationships {
-            field_m_image_image {
-              localFile {
-                childImageSharp {
-                  fluid(maxWidth: 600) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
-          }
-        }
-        field_tags {
-          id
-          name
-          path {
-            alias
-          }
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query($slug: String!) {
+//     article: nodeArticle(path: { alias: { eq: $slug } }) {
+//       title
+//       created(fromNow: true)
+//       id
+//       body {
+//         value
+//       }
+//       relationships {
+//         field_main_image {
+//           field_m_image_image {
+//             alt
+//           }
+//           relationships {
+//             field_m_image_image {
+//               localFile {
+//                 childImageSharp {
+//                   fluid(maxWidth: 600) {
+//                     ...GatsbyImageSharpFluid
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//         field_tags {
+//           id
+//           name
+//           path {
+//             alias
+//           }
+//         }
+//       }
+//     }
+//   }
+// `

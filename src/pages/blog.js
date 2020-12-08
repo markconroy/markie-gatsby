@@ -12,7 +12,6 @@ import Card from '../components/display-types/card'
 
 export default function BlogListingPage({ data }) {
   const cards = data.articles.edges
-  console.log(cards)
   return (
     <Layout>
       <SEO title="Blog" />
