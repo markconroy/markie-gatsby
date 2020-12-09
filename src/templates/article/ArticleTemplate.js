@@ -19,18 +19,6 @@ export default function SingleArticlePageTemplate({
 }) {
   useEffect(() => {
     highlightCode()
-    const inlineMedia = document.querySelectorAll('drupal-media')
-    console.log(inlineMedia)
-    if (inlineMedia) {
-      inlineMedia.forEach(inlineMediaItem => (
-        <>
-          <Img src={articleImage} alt={articleImageAlt} />
-          {
-            (inlineMediaItem.innerHTML = `Media Ids: ${inlineMediaItem.dataset.entityUuid}`)
-          }
-        </>
-      ))
-    }
   })
   return (
     <>

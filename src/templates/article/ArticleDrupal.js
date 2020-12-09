@@ -1,8 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { renderToString } from 'react-dom/server'
 import { graphql } from 'gatsby'
 import SingleArticlePageTemplate from './ArticleTemplate'
+import InlineMedia from '../../components/InlineMedia'
 
 export default function SingleArticlePageDrupal({ data: { article } }) {
+  useEffect(() => {
+    const inlineMedia = document.querySelectorAll('drupal-media')
+    console.log(inlineMedia)
+    if (inlineMedia) {
+      inlineMedia.forEach(inlineMediaItem => {
+        const inlineMediaItemHTML = renderToString(
+          <InlineMedia
+            mediaType="image"
+            inlineImageSource="Put Source Here"
+            inlineImageAlt="put alt tag here"
+          />
+        )
+        return `${(inlineMediaItem.innerHTML = inlineMediaItemHTML)}`
+      })
+    }
+  })
   return (
     <>
       <SingleArticlePageTemplate
