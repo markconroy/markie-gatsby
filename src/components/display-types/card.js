@@ -3,15 +3,21 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 const CardStyles = styled.article`
-  border: 2px solid var(--color-secondary);
-
   a {
     display: flex;
     flex-direction: column;
     height: 100%;
     padding: 0 2rem;
-    color: var(--color-grey--dark);
+    color: var(--color-white);
+    background-color: var(--color-secondary);
     text-decoration: none;
+    &:hover,
+    &:focus {
+      background-color: var(--color-primary);
+      h2 {
+        text-decoration: underline;
+      }
+    }
   }
   a > *:last-child {
     margin: auto 0 2rem;
