@@ -66,5 +66,25 @@ export const query = graphql`
         }
       }
     }
+    inlineImages: allMediaImage {
+      edges {
+        node {
+          id
+          name
+          relationships {
+            field_m_image_image {
+              localFile {
+                name
+                childImageSharp {
+                  fluid(maxWidth: 600) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 `
