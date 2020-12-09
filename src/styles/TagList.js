@@ -9,6 +9,12 @@ const TagList = styled.ol`
   li:last-of-type {
     margin-bottom: var(--base-line-height);
   }
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `
 
 export default TagList

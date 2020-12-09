@@ -6,6 +6,7 @@ import SEO from '../components/seo'
 import Layout from '../components/layout'
 import Container from '../styles/Container'
 import ArticleMeta from '../styles/ArticleMeta'
+import TagList from '../styles/TagList'
 
 const ArticleStyles = styled.article`
   h1 {
@@ -46,7 +47,7 @@ export default function SingleArticlePage({ data: { speaking } }) {
               }
             </p>
             <h2>Filed Under:</h2>
-            <ul>
+            <TagList>
               {speaking.relationships.field_tags.map(tag => (
                 <li>
                   <Link to={tag.path.alias} key={tag.id}>
@@ -54,7 +55,7 @@ export default function SingleArticlePage({ data: { speaking } }) {
                   </Link>
                 </li>
               ))}
-            </ul>
+            </TagList>
           </ArticleStyles>
         </Container>
       </Layout>
