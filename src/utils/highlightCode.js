@@ -16,8 +16,8 @@ hljs.configure({
 })
 
 export default function highlightCode() {
-  const codesBlocks = document.querySelectorAll('pre > code')
-  codesBlocks.forEach(codeBlock => {
+  const codeBlocks = document.querySelectorAll('pre > code')
+  codeBlocks.forEach(codeBlock => {
     if (typeof codeBlock === 'object') {
       hljs.highlightBlock(codeBlock)
     }
