@@ -11,6 +11,7 @@ const CardStyles = styled.article`
     color: var(--color-white);
     background-color: var(--color-secondary);
     text-decoration: none;
+    transition: 0.3s;
     &:hover,
     &:focus {
       background-color: var(--color-primary);
