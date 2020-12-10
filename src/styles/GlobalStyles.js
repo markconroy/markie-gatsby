@@ -39,6 +39,7 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     color: var(--color-secondary);
+    transition: 0.3s;
     &:focus,
     &:hover {
       text-decoration: none;
