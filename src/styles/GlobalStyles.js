@@ -39,7 +39,6 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     color: var(--color-secondary);
-    transition: 0.3s;
     &:focus,
     &:hover {
       text-decoration: none;
@@ -48,6 +47,9 @@ const GlobalStyles = createGlobalStyle`
     &:focus {
       outline: 2px dashed var(--color-secondary);
       outline-offset: 2px;
+    }
+    &:hover {
+      transition: 0.3s;
     }
   }
 
