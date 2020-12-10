@@ -16,6 +16,7 @@ const CardStyles = styled.article`
       background-color: var(--color-primary);
       h2 {
         text-decoration: underline;
+        color: var(--color-white);
       }
     }
   }
