@@ -9,9 +9,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
-import Header from './header'
+import Header from './regions/header'
 import GlobalStyles from '../styles/GlobalStyles'
-import Footer from './footer'
+import Footer from './regions/footer'
 
 const LayoutContainerStyles = styled.div`
   display: flex;

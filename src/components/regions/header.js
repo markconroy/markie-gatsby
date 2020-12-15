@@ -1,9 +1,7 @@
 import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-import Container from '../styles/Container'
-import Menu from './menu'
+import Menu from '../menu'
 
 const HeaderStyles = styled.header`
   margin-bottom: 4rem;
@@ -35,30 +33,22 @@ const Logo = styled.p`
   }
 `
 
-const HeaderInner = styled.div`
+const HeaderInnerStyles = styled.div`
   display: flex;
   justify-content: space-between;
 `
 
 const Header = ({ siteTitle }) => (
   <HeaderStyles>
-    <Container>
-      <HeaderInner>
+    <div className="layout-contained padding-horizontal">
+      <HeaderInnerStyles>
         <Logo>
           <Link to="/">{siteTitle}</Link>
         </Logo>
         <Menu />
-      </HeaderInner>
-    </Container>
+      </HeaderInnerStyles>
+    </div>
   </HeaderStyles>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header

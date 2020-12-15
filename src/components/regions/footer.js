@@ -1,7 +1,7 @@
 import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
-import Container from '../styles/Container'
+import Container from '../../styles/Container'
 
 const FooterStyles = styled.footer`
   margin-top: auto;

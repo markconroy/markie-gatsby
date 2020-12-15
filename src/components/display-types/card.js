@@ -14,9 +14,12 @@ const CardStyles = styled.article`
     &:hover,
     &:focus {
       background-color: var(--color-primary);
+      h2,
+      p {
+        color: var(--color-white);
+      }
       h2 {
         text-decoration: underline;
-        color: var(--color-white);
       }
     }
   }

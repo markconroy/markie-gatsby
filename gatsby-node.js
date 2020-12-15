@@ -16,8 +16,6 @@ async function turnArticlesIntoPages({ graphql, actions }) {
     query {
       articles: allNodeArticle {
         nodes {
-          title
-          id
           path {
             alias
           }
@@ -45,8 +43,6 @@ async function turnSpeakingIntoPages({ graphql, actions }) {
     query {
       speakingPosts: allNodeSpeaking {
         nodes {
-          title
-          id
           path {
             alias
           }
@@ -74,19 +70,8 @@ async function turnTagsIntoPages({ graphql, actions }) {
     query {
       tags: allTaxonomyTermTags {
         nodes {
-          name
           path {
             alias
-          }
-          relationships {
-            node__article {
-              title
-              id
-            }
-            node__speaking {
-              title
-              id
-            }
           }
         }
       }
