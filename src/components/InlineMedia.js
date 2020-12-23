@@ -3,11 +3,17 @@ import Img from 'gatsby-image'
 
 export default function InlineMedia({
   mediaType,
+  mediaId,
   inlineImageSource,
   inlineImageAlt,
 }) {
   if (mediaType === 'image') {
-    return <Img fluid={inlineImageSource} alt={inlineImageAlt} />
+    return (
+      <>
+        <Img fluid={inlineImageSource} alt={inlineImageAlt} key={mediaId} />
+        <p>Image</p>
+      </>
+    )
   }
   if (mediaType === 'video') {
     return (

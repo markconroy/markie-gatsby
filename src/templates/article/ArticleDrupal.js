@@ -4,20 +4,42 @@ import { graphql } from 'gatsby'
 import SingleArticlePageTemplate from './ArticleTemplate'
 import InlineMedia from '../../components/InlineMedia'
 
-export default function SingleArticlePageDrupal({ data: { article } }) {
+export default function SingleArticlePageDrupal({
+  data: { article, inlineMediaResults },
+}) {
   useEffect(() => {
     const inlineMedia = document.querySelectorAll('drupal-media')
-    console.log(inlineMedia)
+    // console.log(inlineMedia)
     if (inlineMedia) {
       inlineMedia.forEach(inlineMediaItem => {
+        const inlineMediaItemId = inlineMediaItem.dataset.entityUuid
+        console.log(inlineMediaItemId)
+        inlineMediaResults.edges.map(inlineMediaResult => {
+          const inlineMediaResultId = `Media Id: ${inlineMediaResult.node.id}`
+          const inlineMediaResultDrupalId = inlineMediaResult.node.relationships
+            .media__image
+            ? `Drupal Id: ${inlineMediaResult.node.relationships.media__image[0].drupal_id}`
+            : 'marky'
+
+          console.log(inlineMediaResultId, inlineMediaResultDrupalId)
+          return (
+            <>
+              <p>Media: {inlineMediaResultId}</p>
+              <p>Drupal: {inlineMediaResultDrupalId}</p>
+            </>
+          )
+        })
         const inlineMediaItemHTML = renderToString(
           <InlineMedia
             mediaType="image"
             inlineImageSource="Put Source Here"
             inlineImageAlt="put alt tag here"
+            mediaId={`key-${inlineMediaItem.index}`}
           />
         )
-        return `${(inlineMediaItem.innerHTML = inlineMediaItemHTML)}`
+        return `${(inlineMediaItem.innerHTML = inlineMediaItemHTML)} + ${
+          inlineMediaItem.index
+        }`
       })
     }
   })
@@ -84,21 +106,30 @@ export const query = graphql`
         }
       }
     }
-    inlineImages: allMediaImage {
+    inlineMediaResults: allMediaTypeMediaType {
       edges {
         node {
           id
-          name
           relationships {
-            field_m_image_image {
-              localFile {
-                name
-                childImageSharp {
-                  fluid(maxWidth: 600) {
-                    ...GatsbyImageSharpFluid
+            media__image {
+              id
+              drupal_id
+              field_m_image_image {
+                alt
+              }
+              relationships {
+                field_m_image_image {
+                  localFile {
+                    name
                   }
                 }
               }
+            }
+            media__video {
+              drupal_id
+              id
+              name
+              field_media_video_embed_field
             }
           }
         }
