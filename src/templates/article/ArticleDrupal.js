@@ -9,37 +9,45 @@ export default function SingleArticlePageDrupal({
 }) {
   useEffect(() => {
     const inlineMedia = document.querySelectorAll('drupal-media')
-    // console.log(inlineMedia)
+    const inlineMediaImages =
+      inlineMediaResults.edges[1].node.relationships.media__image
+    const inlineMediaVideos =
+      inlineMediaResults.edges[2].node.relationships.media__video
+
     if (inlineMedia) {
       inlineMedia.forEach(inlineMediaItem => {
         const inlineMediaItemId = inlineMediaItem.dataset.entityUuid
-        console.log(inlineMediaItemId)
-        inlineMediaResults.edges.map(inlineMediaResult => {
-          const inlineMediaResultId = `Media Id: ${inlineMediaResult.node.id}`
-          const inlineMediaResultDrupalId = inlineMediaResult.node.relationships
-            .media__image
-            ? `Drupal Id: ${inlineMediaResult.node.relationships.media__image[0].drupal_id}`
-            : 'marky'
-
-          console.log(inlineMediaResultId, inlineMediaResultDrupalId)
-          return (
-            <>
-              <p>Media: {inlineMediaResultId}</p>
-              <p>Drupal: {inlineMediaResultDrupalId}</p>
-            </>
-          )
-        })
-        const inlineMediaItemHTML = renderToString(
-          <InlineMedia
-            mediaType="image"
-            inlineImageSource="Put Source Here"
-            inlineImageAlt="put alt tag here"
-            mediaId={`key-${inlineMediaItem.index}`}
-          />
+        const inlineMediaImage = inlineMediaImages.filter(
+          item => item.drupal_id === inlineMediaItemId
         )
-        return `${(inlineMediaItem.innerHTML = inlineMediaItemHTML)} + ${
-          inlineMediaItem.index
-        }`
+        const inlineMediaVideo = inlineMediaVideos.filter(
+          item => item.drupal_id === inlineMediaItemId
+        )
+
+        if (inlineMediaImage.length) {
+          const inlineMediaItemHTML = renderToString(
+            <InlineMedia
+              mediaType="image"
+              inlineImageSource={
+                inlineMediaImage[0].relationships.field_m_image_image.localFile
+                  .childImageSharp.fluid
+              }
+              inlineImageAlt={inlineMediaImage[0].field_m_image_image.alt}
+              mediaId={inlineMediaItemId}
+            />
+          )
+          return `${(inlineMediaItem.innerHTML = inlineMediaItemHTML)}`
+        }
+        if (inlineMediaVideo.length) {
+          const inlineMediaItemHTML = renderToString(
+            <InlineMedia
+              mediaType="video"
+              videoUrl={inlineMediaVideo[0].field_media_video_embed_field}
+              mediaId={inlineMediaItemId}
+            />
+          )
+          return `${(inlineMediaItem.innerHTML = inlineMediaItemHTML)}`
+        }
       })
     }
   })
@@ -120,7 +128,11 @@ export const query = graphql`
               relationships {
                 field_m_image_image {
                   localFile {
-                    name
+                    childImageSharp {
+                      fluid(maxWidth: 600) {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
                   }
                 }
               }

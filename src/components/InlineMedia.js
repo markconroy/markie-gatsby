@@ -6,19 +6,21 @@ export default function InlineMedia({
   mediaId,
   inlineImageSource,
   inlineImageAlt,
+  videoUrl,
 }) {
   if (mediaType === 'image') {
     return (
       <>
         <Img fluid={inlineImageSource} alt={inlineImageAlt} key={mediaId} />
-        <p>Image</p>
       </>
     )
   }
   if (mediaType === 'video') {
     return (
       <>
-        <p>Figure out embedding a video here</p>
+        <p>
+          <mark>Figure this out</mark> Video URL: {videoUrl}
+        </p>
       </>
     )
   }
