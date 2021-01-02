@@ -22,7 +22,7 @@ export default function SampleCardListingPage({ data }) {
           <>
             <CardListItem cardListItemKey="1">
               <Card
-                cardTitle="Mark Created a Gatsby Tutorial"
+                cardTitle="Mark Created a Gatsby Tutorial along with Mario"
                 cardPath="/styleguide/article"
                 cardCreated="2 weeks ago"
               />

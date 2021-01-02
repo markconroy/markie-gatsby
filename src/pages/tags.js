@@ -49,7 +49,7 @@ export default function TagsListingPage({ data }) {
       <>
         <Container>
           <h1>Tags</h1>
-          <p>we have {tags.length} tags. They are:</p>
+          <p>This site has {tags.length} tags. They are:</p>
           <TagsListStyles>
             {tags.map(tag => {
               const hasArticles =

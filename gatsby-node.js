@@ -62,6 +62,33 @@ async function turnSpeakingIntoPages({ graphql, actions }) {
   })
 }
 
+async function turnPagesIntoPages({ graphql, actions }) {
+  // 1. Get a template for this page
+  const nodePageTemplate = path.resolve('./src/templates/Page.js')
+  // 2. Query all Basic Page nodes
+  const { data } = await graphql(`
+    query {
+      nodePages: allNodePage {
+        nodes {
+          path {
+            alias
+          }
+        }
+      }
+    }
+  `)
+  // 3. Loop over each article and create a page for it.
+  data.nodePages.nodes.forEach(nodePage => {
+    actions.createPage({
+      path: `${nodePage.path.alias}`,
+      component: nodePageTemplate,
+      context: {
+        slug: nodePage.path.alias,
+      },
+    })
+  })
+}
+
 async function turnTagsIntoPages({ graphql, actions }) {
   // 1. Get a template for this page
   const tagTemplate = path.resolve('./src/templates/Tag.js')
@@ -95,6 +122,7 @@ export async function createPages(params) {
   await Promise.all([
     turnArticlesIntoPages(params),
     turnSpeakingIntoPages(params),
+    turnPagesIntoPages(params),
     turnTagsIntoPages(params),
   ])
 }

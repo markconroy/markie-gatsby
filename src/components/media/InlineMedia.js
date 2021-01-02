@@ -1,6 +1,7 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
+import Video from './video'
 
 const InlineMediaStyles = styled.div`
   img[aria-hidden] {
@@ -19,6 +20,7 @@ export default function InlineMedia({
   inlineImageSource,
   inlineImageAlt,
   videoUrl,
+  videoTitle,
 }) {
   if (mediaType === 'image') {
     return (
@@ -32,9 +34,7 @@ export default function InlineMedia({
   if (mediaType === 'video') {
     return (
       <>
-        <p>
-          <mark>Figure this out</mark> Video URL: {videoUrl}
-        </p>
+        <Video videoSrcURL={videoUrl} videoTitle={videoTitle} />
       </>
     )
   }

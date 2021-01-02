@@ -7,6 +7,7 @@ import Layout from '../components/layout'
 import Container from '../styles/Container'
 import ArticleMeta from '../styles/ArticleMeta'
 import TagList from '../styles/TagList'
+import Video from '../components/media/video'
 
 const ArticleStyles = styled.article`
   h1 {
@@ -18,6 +19,10 @@ const ArticleStyles = styled.article`
 `
 
 export default function SingleArticlePage({ data: { speaking } }) {
+  const videoUrl = speaking.relationships.field_main_video.field_media_video_embed_field
+    .split('=')
+    .pop()
+
   return (
     <>
       <Layout>
@@ -40,12 +45,11 @@ export default function SingleArticlePage({ data: { speaking } }) {
             <div
               dangerouslySetInnerHTML={{ __html: speaking.field_intro.value }}
             />
-            <p>
-              {
-                speaking.relationships.field_main_video
-                  .field_media_video_embed_field
-              }
-            </p>
+
+            <Video
+              videoSrcURL={`https://www.youtube.com/embed/${videoUrl}`}
+              videoTitle={speaking.title}
+            />
             <h2>Filed Under:</h2>
             <TagList>
               {speaking.relationships.field_tags.map(tag => (

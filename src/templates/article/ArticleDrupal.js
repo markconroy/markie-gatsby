@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { renderToString } from 'react-dom/server'
 import { graphql } from 'gatsby'
 import SingleArticlePageTemplate from './ArticleTemplate'
-import InlineMedia from '../../components/InlineMedia'
+import InlineMedia from '../../components/media/InlineMedia'
 
 export default function SingleArticlePageDrupal({
   data: { article, inlineMediaResults },
@@ -42,7 +42,9 @@ export default function SingleArticlePageDrupal({
           const inlineMediaItemHTML = renderToString(
             <InlineMedia
               mediaType="video"
-              videoUrl={inlineMediaVideo[0].field_media_video_embed_field}
+              videoUrl={`https://www.youtube.com/embed/${inlineMediaVideo[0].field_media_video_embed_field
+                .split('=')
+                .pop()}`}
               mediaId={inlineMediaItemId}
             />
           )

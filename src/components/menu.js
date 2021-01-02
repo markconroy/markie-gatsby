@@ -4,7 +4,8 @@ import styled, { css } from 'styled-components'
 
 const MenuStyles = styled.nav`
   overflow: scroll;
-  margin: 4rem 1rem 0 0;
+  max-width: calc(100% - 1rem);
+  margin: 4rem 0 0 1rem;
   padding: 0.5rem;
   background-color: var(--color-white);
   -ms-overflow-style: none; /* IE 11 */
@@ -92,6 +93,16 @@ export default function Menu() {
               partiallyActive
             >
               About
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="menu-link"
+              activeClassName="menu-link--active"
+              to="/thanks"
+              partiallyActive
+            >
+              Thanks
             </Link>
           </li>
           <li>
