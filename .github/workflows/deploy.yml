@@ -25,8 +25,8 @@ jobs:
       
       # Runs commands
       - name: Install Gatsby, build site, deploy
-        env:
-          production: ${{ secrets.GATSBY_DRUPAL_SOURCE }}
+        env: production: 
+        GATSBY_DRUPAL_SOURCE: ${{ secrets.GATSBY_DRUPAL_SOURCE }}
         run: |
           npm ci
           npm run build
