@@ -36,7 +36,9 @@ export default function SingleArticlePageTemplate({
       <Layout>
         <SEO
           title={articleTitle}
-          description={articleIntro.replace(/(<([^>]+)>)/gi, '')}
+          description={
+            articleIntro ? articleIntro.replace(/(<([^>]+)>)/gi, '') : ''
+          }
           metaImageSource={articleImageSource}
         />
         <Container>
