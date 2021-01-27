@@ -74,8 +74,8 @@ export default function SingleArticlePageDrupal({
             : null
         }
         articleImageSource={
-          article.relationships.field_main_image.relationships
-            .field_m_image_image.localFile.childImageSharp.fluid.src
+          article?.relationships?.field_main_image?.relationships
+            ?.field_m_image_image?.localFile.childImageSharp.fluid.src
         }
         tags={
           article?.relationships?.field_tags
