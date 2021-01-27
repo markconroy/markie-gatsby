@@ -1,5 +1,3 @@
-import { Link } from 'gatsby'
-import React from 'react'
 import styled, { css } from 'styled-components'
 
 const MenuStyles = styled.nav`
@@ -48,75 +46,28 @@ const MenuStyles = styled.nav`
     background-color: var(--color-secondary);
     color: var(--color-white);
   }
+  ${props =>
+    props.treated &&
+    css`
+      margin: 0;
+      overflow: initial;
+      ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      li {
+        margin-bottom: 2rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+      }
+      li + li {
+        margin-left: 0.5rem;
+      }
+      .menu-link {
+        color: var(--color-white);
+        background-color: var(--color-secondary);
+      }
+    `}
 `
 
-export default function Menu() {
-  return (
-    <>
-      <MenuStyles>
-        <ul>
-          <li>
-            <Link
-              className="menu-link"
-              activeClassName="menu-link--active"
-              to="/blog"
-              partiallyActive
-            >
-              Blog
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="menu-link"
-              activeClassName="menu-link--active"
-              to="/speaking"
-              partiallyActive
-            >
-              Speaking
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="menu-link"
-              activeClassName="menu-link--active"
-              to="/tags"
-              partiallyActive
-            >
-              Tags
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="menu-link"
-              activeClassName="menu-link--active"
-              to="/about"
-              partiallyActive
-            >
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="menu-link"
-              activeClassName="menu-link--active"
-              to="/thanks"
-              partiallyActive
-            >
-              Thanks
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="menu-link"
-              activeClassName="menu-link--active"
-              to="/contact"
-              partiallyActive
-            >
-              Contact
-            </Link>
-          </li>
-        </ul>
-      </MenuStyles>
-    </>
-  )
-}
+export default MenuStyles

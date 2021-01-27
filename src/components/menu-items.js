@@ -1,0 +1,69 @@
+import React from 'react'
+import { Link } from 'gatsby'
+
+export default function MenuItems() {
+  return (
+    <ul>
+      <li>
+        <Link
+          className="menu-link"
+          activeClassName="menu-link--active"
+          to="/blog"
+          partiallyActive
+        >
+          Blog
+        </Link>
+      </li>
+      <li>
+        <Link
+          className="menu-link"
+          activeClassName="menu-link--active"
+          to="/speaking"
+          partiallyActive
+        >
+          Speaking
+        </Link>
+      </li>
+      <li>
+        <Link
+          className="menu-link"
+          activeClassName="menu-link--active"
+          to="/tags"
+          partiallyActive
+        >
+          Topics
+        </Link>
+      </li>
+      <li>
+        <Link
+          className="menu-link"
+          activeClassName="menu-link--active"
+          to="/about"
+          partiallyActive
+        >
+          About
+        </Link>
+      </li>
+      <li>
+        <Link
+          className="menu-link"
+          activeClassName="menu-link--active"
+          to="/thanks"
+          partiallyActive
+        >
+          Thanks
+        </Link>
+      </li>
+      <li>
+        <Link
+          className="menu-link"
+          activeClassName="menu-link--active"
+          to="/contact"
+          partiallyActive
+        >
+          Contact
+        </Link>
+      </li>
+    </ul>
+  )
+}

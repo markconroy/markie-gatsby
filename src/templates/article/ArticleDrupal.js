@@ -53,12 +53,14 @@ export default function SingleArticlePageDrupal({
       })
     }
   })
+
   return (
     <>
       <SingleArticlePageTemplate
         articleCreated={article.created}
         articleTitle={article.title}
         articleBody={article.body.value}
+        articleIntro={article.field_intro.value}
         articleImage={
           article.relationships?.field_main_image?.relationships
             ?.field_m_image_image?.localFile
@@ -70,6 +72,10 @@ export default function SingleArticlePageDrupal({
           article.relationships?.field_main_image?.field_m_image_image?.alt
             ? article.relationships.field_main_image.field_m_image_image.alt
             : null
+        }
+        articleImageSource={
+          article.relationships.field_main_image.relationships
+            .field_m_image_image.localFile.childImageSharp.fluid.src
         }
         tags={
           article?.relationships?.field_tags
@@ -88,6 +94,9 @@ export const query = graphql`
       created(fromNow: true)
       id
       body {
+        value
+      }
+      field_intro {
         value
       }
       relationships {
