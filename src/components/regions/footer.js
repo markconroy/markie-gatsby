@@ -9,14 +9,35 @@ const FooterStyles = styled.footer`
   a {
     color: var(--color-white);
   }
+  ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+  li {
+    list-style-type: none;
+    margin: 1rem;
+  }
 `
 
 const Footer = () => (
   <FooterStyles>
     <div className="layout-contained padding-horizontal">
-      <p style={{ margin: 0 }}>
-        <Link to="/">This is a footer. Cool, eh?</Link>
-      </p>
+      <ul style={{ margin: 0 }}>
+        <li>
+          <Link to="https://twitter.com/markconroy">Twitter</Link>
+        </li>
+        <li>
+          <Link to="https://github.com/markconroy">Github</Link>
+        </li>
+        <li>
+          <Link to="https://www.drupal.org/u/markconroy">Drupal</Link>
+        </li>
+        <li>
+          <Link to="https://www.linkedin.com/in/conroymark">LinkedIn</Link>
+        </li>
+      </ul>
     </div>
   </FooterStyles>
 )
