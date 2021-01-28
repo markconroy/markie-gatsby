@@ -54,18 +54,31 @@ const MenuStyles = styled.nav`
       ul {
         flex-wrap: wrap;
         justify-content: center;
+        margin-bottom: 0;
       }
       li {
         margin-bottom: 2rem;
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
       }
       li + li {
         margin-left: 0.5rem;
       }
       .menu-link {
-        color: var(--color-white);
-        background-color: var(--color-secondary);
+        /* color: var(--color-white); */
+        /* background-color: var(--color-secondary); */
+        border-bottom: 2px dashed var(--color-secondary);
+        border-radius: 0;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .menu-link:focus {
+        border-bottom-style: none;
+        text-decoration: underline;
+      }
+      .menu-link:hover {
+        border-bottom-style: solid;
+        text-decoration: none;
       }
     `}
 `
