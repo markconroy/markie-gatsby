@@ -6,7 +6,7 @@ dotenv.config({
 
 module.exports = {
   siteMetadata: {
-    title: `Mark Conroy`,
+    title: `Markie`,
     description: `Gatsby-based version of mark.ie by Mark Conroy.`,
     author: `@markconroy`,
     siteUrl: `https://gatsby.mark.ie`,
