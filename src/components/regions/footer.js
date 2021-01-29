@@ -8,6 +8,13 @@ const FooterStyles = styled.footer`
   background-color: var(--color-primary);
   a {
     color: var(--color-white);
+    border-bottom-color: transparent;
+    &:hover {
+      border-bottom-color: var(--color-white);
+    }
+    &:focus {
+      outline-color: var(--color-white);
+    }
   }
   ul {
     display: flex;

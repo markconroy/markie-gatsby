@@ -11,8 +11,9 @@ const TagList = styled.ol`
   }
   a {
     text-decoration: none;
+    border-bottom-color: transparent;
     &:hover {
-      text-decoration: underline;
+      border-bottom-color: var(--color-grey--dark);
     }
   }
 `

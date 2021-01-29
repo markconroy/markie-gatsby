@@ -16,6 +16,7 @@ const TagsListStyles = styled.ul`
   list-style: none;
   a {
     color: var(--color-primary);
+    border-bottom-color: transparent;
   }
   a:focus,
   a:hover {
@@ -27,8 +28,7 @@ const TagsListStyles = styled.ul`
   }
   a:hover {
     transition: 0.3s;
-    border-bottom: 2px solid;
-    padding-bottom: 0.5rem;
+    border-bottom-color: var(--color-grey--dark);
   }
   li {
     margin: 1rem;

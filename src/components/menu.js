@@ -3,9 +3,8 @@ import styled, { css } from 'styled-components'
 const MenuStyles = styled.nav`
   overflow: scroll;
   max-width: calc(100% - 1rem);
-  margin: 4rem 0 0 1rem;
+  margin-left: 1rem;
   padding: 0.5rem;
-  background-color: var(--color-white);
   -ms-overflow-style: none; /* IE 11 */
   scrollbar-width: none; /* Firefox 64 */
   &::-webkit-slider-thumb {
@@ -24,27 +23,16 @@ const MenuStyles = styled.nav`
     color: var(--color-grey--dark);
     padding: 0.5rem 1rem;
     text-decoration: none;
-    border-radius: var(--border-radius);
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
   }
   .menu-link:focus,
   .menu-link:hover {
-    color: var(--color-primary);
-    text-decoration: underline;
+    border-top-color: transparent;
+    border-bottom-color: var(--color-grey--dark);
   }
   .menu-link--active {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    ${props =>
-      props.isPartiallyCurrent &&
-      css`
-        background-color: var(--color-primary);
-        color: var(--color-white);
-      `}
-  }
-  .menu-link--active:focus,
-  .menu-link--active:hover {
-    background-color: var(--color-secondary);
-    color: var(--color-white);
+    border-top-color: var(--var--grey-dark);
   }
   ${props =>
     props.treated &&
@@ -65,20 +53,16 @@ const MenuStyles = styled.nav`
         margin-left: 0.5rem;
       }
       .menu-link {
-        /* color: var(--color-white); */
-        /* background-color: var(--color-secondary); */
-        border-bottom: 2px dashed var(--color-secondary);
-        border-radius: 0;
+        border-bottom-color: var(--color-grey--dark);
         padding-left: 0;
         padding-right: 0;
       }
       .menu-link:focus {
-        border-bottom-style: none;
-        text-decoration: underline;
+        border-bottom-color: transparent;
       }
       .menu-link:hover {
-        border-bottom-style: solid;
-        text-decoration: none;
+        border-bottom-color: transparent;
+        border-top-color: var(--var-grey--dark);
       }
     `}
 `

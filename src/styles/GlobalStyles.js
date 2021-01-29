@@ -60,10 +60,15 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     color: var(--color-secondary);
+    border-bottom: 2px dashed var(--color-grey--dark);
+    display: inline-block;
+    line-height: 1.1;
+    text-decoration: none;
     &:focus,
     &:hover {
       text-decoration: none;
-      color: var(--color-primary);
+      color: var(--color-grey--dark);
+      border-bottom-style: solid;
     }
     &:focus {
       outline: 2px dashed var(--color-secondary);

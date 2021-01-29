@@ -4,7 +4,6 @@ import { Link } from 'gatsby'
 
 import SEO from '../components/seo'
 import GlobalStyles from '../styles/GlobalStyles'
-import Menu from '../components/menu'
 import MenuStyles from '../components/menu'
 import MenuItems from '../components/menu-items'
 
@@ -30,8 +29,8 @@ const HomePage = () => (
         <div>
           <h1>Hello, my name is Mark Conroy</h1>
           <p>
-            I'm a frontend developer, insterested in Styleguides (such as
-            <Link to="/tags/patternlab">Patternlab</Link>), decoupled frontends
+            I'm a frontend developer, insterested in Styleguides (such as{' '}
+            <Link to="/tags/patternlab"> Patternlab</Link>), decoupled frontends
             (such as <Link to="/tags/gatsby">GatsbyJS</Link>), and content
             management systems (such as <Link to="/tags/drupal">Drupal</Link>).
           </p>

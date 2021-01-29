@@ -5,31 +5,27 @@ import MenuStyles from '../menu'
 import MenuItems from '../menu-items'
 
 const HeaderStyles = styled.header`
-  margin-bottom: 4rem;
-  background-color: var(--color-primary);
+  padding-top: 3rem;
+  padding-bottom: 2rem;
 `
 
 const Logo = styled.p`
   margin: 0;
-  background-color: var(--color-white);
   display: flex;
   @media screen and (min-width: 768px) {
-    margin-bottom: 3rem;
     font-size: 2rem;
   }
   a {
     margin: auto;
-    padding: 0.5rem 1rem;
-    color: var(--color-secondary);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom-color: transparent;
+    color: var(--color-grey--dark);
     font-weight: bold;
     text-decoration: none;
     text-transform: uppercase;
-    &:hover,
-    &:focus {
-      text-decoration: underline;
-    }
-    @media screen and (min-width: 768px) {
-      padding: 1rem 2rem;
+    &:hover {
+      border-bottom-color: var(--color-grey--dark);
     }
   }
 `
