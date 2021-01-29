@@ -9,7 +9,7 @@ module.exports = {
     title: `Markie`,
     description: `Gatsby-based version of mark.ie by Mark Conroy.`,
     author: `@markconroy`,
-    siteUrl: `https://gatsby.mark.ie`,
+    siteUrl: `https://mark.ie`,
     metaImage: `mark-conroy.jpg`,
   },
   plugins: [
