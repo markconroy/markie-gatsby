@@ -29,7 +29,7 @@ const HomePage = () => (
         <div>
           <h1>Hello, my name is Mark Conroy</h1>
           <p>
-            I'm a frontend developer, insterested in Styleguides (such as{' '}
+            I'm a frontend developer, interested in Styleguides (such as{' '}
             <Link to="/tags/patternlab"> Patternlab</Link>), decoupled frontends
             (such as <Link to="/tags/gatsby">GatsbyJS</Link>), and content
             management systems (such as <Link to="/tags/drupal">Drupal</Link>).
