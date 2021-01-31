@@ -36,8 +36,8 @@ module.exports = {
         name: `Mark Conroy`,
         short_name: `markie`,
         start_url: `/`,
-        background_color: `##006699`,
-        theme_color: `##006699`,
+        background_color: `#006699`,
+        theme_color: `#006699`,
         display: `minimal-ui`,
         icon: `src/images/markie-icon.jpg`, // This path is relative to the root of the site.
       },
