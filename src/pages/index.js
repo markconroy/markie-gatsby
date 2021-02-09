@@ -27,7 +27,7 @@ const HomePage = () => (
     <div className="layout-contained layout-contained--small padding-horizontal">
       <MainStyles>
         <div>
-          <h1>Hello, my name is Mark Conroy</h1>
+          <h1>Hi! I'm Mark Conroy.</h1>
           <p>
             I'm a frontend developer, interested in Styleguides (such as{' '}
             <Link to="/tags/patternlab"> Patternlab</Link>), decoupled frontends

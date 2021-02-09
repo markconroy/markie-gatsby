@@ -48,6 +48,7 @@
   "scripts": {
     "build": "cross-env NODE_OPTIONS=\"-r esm\" gatsby build",
     "develop": "cross-env NODE_OPTIONS=\"-r esm\" gatsby develop",
+    "develop-rocksal": "cross-env NODE_OPTIONS=\"-r esm\" gatsby develop --host=dev.mark.ie",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
