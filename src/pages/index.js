@@ -18,6 +18,23 @@ const MainStyles = styled.main`
   > * {
     width: 100%;
   }
+  h1 {
+    line-height: 1.3;
+  }
+  p {
+    font-size: 150%;
+  }
+  @media screen and (min-width: 768px) {
+    h1 {
+      font-size: 4rem;
+    }
+    p {
+      font-size: 2rem;
+    }
+    li {
+      font-size: 1.5rem;
+    }
+  }
 `
 
 const HomePage = () => (
