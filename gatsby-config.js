@@ -31,6 +31,57 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allNodeArticle } }) =>
+              allNodeArticle.edges.map(edge => ({
+                description: edge.node.field_intro.value,
+                date: edge.node.created,
+                url: site.siteMetadata.siteUrl + edge.node.path.alias,
+                guid: site.siteMetadata.siteUrl + edge.node.path.alias,
+              })),
+            query: `
+              {
+                allNodeArticle(
+                  sort: {fields: created, order: DESC}, filter: {relationships: {field_tags: {elemMatch: {name: {eq: "Drupal Planet"}}}}},
+                ) {
+                  edges {
+                    node {
+                      id
+                      created
+                      path {
+                        alias
+                      }
+                      title
+                      field_intro {
+                        value
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: 'planet/feed.xml',
+            title: 'Drupal Planet by Mark Conroy',
+          },
+        ],
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Mark Conroy`,
