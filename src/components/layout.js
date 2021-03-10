@@ -41,7 +41,7 @@ const Layout = ({ children }) => {
         <script>
           <script>
             {`
-            console.log('Test', typeof $);
+            ${console.log('Test', typeof $)}
           `}
           </script>
         </script>
