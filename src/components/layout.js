@@ -7,7 +7,7 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Header from './regions/header'
@@ -37,7 +37,14 @@ const Layout = ({ children }) => {
     <>
       <GlobalStyles />
       <Helmet>
-        {`<script src="https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js"></script>`}
+        <script src="https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js" />
+        <script>
+          <script>
+            {`
+            console.log('Test', typeof $);
+          `}
+          </script>
+        </script>
       </Helmet>
       <LayoutContainerStyles>
         <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
