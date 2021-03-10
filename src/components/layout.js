@@ -37,13 +37,12 @@ const Layout = ({ children }) => {
     <>
       <GlobalStyles />
       <Helmet>
-        <script src="https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js" />
         <script>
-          <script>
-            {`
-            ${console.log('Test', typeof $)}
-          `}
-          </script>
+          {window.MSInputMethodContext &&
+            document.documentMode &&
+            document.write(
+              `<script src="https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js"><\x2fscript>`
+            )}
         </script>
       </Helmet>
       <LayoutContainerStyles>
