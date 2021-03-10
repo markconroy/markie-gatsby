@@ -4,4 +4,15 @@
  * See: https://www.gatsbyjs.com/docs/ssr-apis/
  */
 
-// You can delete this file if you're not using it
+ const addScript = url => {
+  const script = document.createElement("script")
+  script.src = url
+  script.async = true
+  document.body.appendChild(script)
+}
+
+export const onClientEntry = () => {
+  window.onload = () => {
+    addScript("https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js")
+  }
+}
