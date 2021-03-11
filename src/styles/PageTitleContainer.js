@@ -6,6 +6,7 @@ const PageTitleContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: var(--element-spacing-vertical);
+  border-bottom: 1px solid var(--color-secondary);
   background-image: linear-gradient(
     to right,
     var(--color-secondary),

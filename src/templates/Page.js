@@ -5,14 +5,17 @@ import styled from 'styled-components'
 import SEO from '../components/seo'
 import Layout from '../components/layout'
 import Container from '../styles/Container'
-import ArticleMeta from '../styles/ArticleMeta'
-import TagList from '../styles/TagList'
-import Video from '../components/media/video'
 import PageTitleContainer from '../styles/PageTitleContainer'
 
 const ArticleStyles = styled.article`
   a {
     color: var(--color-secondary);
+  }
+  h2,
+  h3 {
+    position: sticky;
+    top: 0;
+    background-color: var(--color-white);
   }
 `
 

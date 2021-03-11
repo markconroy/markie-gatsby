@@ -27,6 +27,12 @@ const ArticleStyles = styled.article`
       font-size: clamp(1rem, 2rem, 3rem);
     }
   }
+  h2,
+  h3 {
+    position: sticky;
+    top: 0;
+    background-color: var(--color-white);
+  }
 `
 
 const ArticleImageStyles = styled.div`

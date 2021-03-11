@@ -14,6 +14,12 @@ const ArticleStyles = styled.article`
   a {
     color: var(--color-secondary);
   }
+  h2,
+  h3 {
+    position: sticky;
+    top: 0;
+    background-color: var(--color-white);
+  }
 `
 
 export default function SingleArticlePage({ data: { speaking } }) {
