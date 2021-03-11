@@ -8,6 +8,7 @@ import Container from '../styles/Container'
 import ArticleMeta from '../styles/ArticleMeta'
 import TagList from '../styles/TagList'
 import Video from '../components/media/video'
+import PageTitleContainer from '../styles/PageTitleContainer'
 
 const ArticleStyles = styled.article`
   a {
@@ -39,8 +40,12 @@ export default function SingleArticlePage({ data: { speaking } }) {
               </p>
             </Container>
           </ArticleMeta>
+          <PageTitleContainer>
+            <h1>
+              <Container>{speaking.title}</Container>
+            </h1>
+          </PageTitleContainer>
           <Container>
-            <h1>{speaking.title}</h1>
             <div
               dangerouslySetInnerHTML={{ __html: speaking.field_intro.value }}
             />

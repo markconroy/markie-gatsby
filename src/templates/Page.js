@@ -8,11 +8,9 @@ import Container from '../styles/Container'
 import ArticleMeta from '../styles/ArticleMeta'
 import TagList from '../styles/TagList'
 import Video from '../components/media/video'
+import PageTitleContainer from '../styles/PageTitleContainer'
 
 const ArticleStyles = styled.article`
-  h1 {
-    color: var(--color-primary);
-  }
   a {
     color: var(--color-secondary);
   }
@@ -23,9 +21,13 @@ export default function SingleArticlePage({ data }) {
     <>
       <Layout>
         <SEO title={data.nodePage.title} />
-        <Container>
-          <ArticleStyles>
-            <h1>{data.nodePage.title}</h1>
+        <ArticleStyles>
+          <PageTitleContainer>
+            <h1>
+              <Container>{data.nodePage.title}</Container>
+            </h1>
+          </PageTitleContainer>
+          <Container>
             {data.nodePage.field_intro?.value ? (
               <div
                 dangerouslySetInnerHTML={{
@@ -38,8 +40,8 @@ export default function SingleArticlePage({ data }) {
                 __html: data.nodePage.body.value,
               }}
             />
-          </ArticleStyles>
-        </Container>
+          </Container>
+        </ArticleStyles>
       </Layout>
     </>
   )

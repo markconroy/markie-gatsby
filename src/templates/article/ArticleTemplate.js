@@ -9,6 +9,7 @@ import Container from '../../styles/Container'
 import TagList from '../../styles/TagList'
 import highlightCode from '../../utils/highlightCode'
 import ArticleMeta from '../../styles/ArticleMeta'
+import PageTitleContainer from '../../styles/PageTitleContainer'
 
 const ArticleStyles = styled.article`
   .article__intro {
@@ -60,8 +61,14 @@ export default function SingleArticlePageTemplate({
               <p>Published: {articleCreated}</p>
             </Container>
           </ArticleMeta>
+
+          <PageTitleContainer>
+            <h1>
+              <Container>{articleTitle}</Container>
+            </h1>
+          </PageTitleContainer>
+
           <Container>
-            <h1>{articleTitle}</h1>
             {articleIntro ? (
               <div
                 className="article__intro"

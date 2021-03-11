@@ -156,50 +156,19 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .padding-top {
-    padding-top: var(--base-spacing);
-
-    @media screen and (min-width: 48rem) {
-      padding-top: calc(var(--base-spacing) * 2);
-    }
-
-    @media screen and (min-width: 60rem) {
-      padding-top: calc(var(--base-spacing) * 3);
-    }
+    padding-top: var(--element-spacing-vertical);
   }
 
   .padding-bottom {
-    padding-bottom: var(--base-spacing);
-
-    @media screen and (min-width: 48rem) {
-      padding-bottom: calc(var(--base-spacing) * 2);
-    }
-
-    @media screen and (min-width: 60rem) {
-      padding-bottom: calc(var(--base-spacing) * 3);
-    }
+    padding-bottom: var(--element-spacing-vertical);
   }
 
   .margin-top {
-    margin-top: var(--base-spacing);
-
-    @media screen and (min-width: 48rem) {
-      margin-top: calc(var(--base-spacing) * 2);
-    }
-
-    @media screen and (min-width: 60rem) {
-      margin-top: calc(var(--base-spacing) * 3);
-    }
+    margin-top: var(--element-spacing-vertical);
   }
 
   .margin-bottom {
-    margin-bottom: var(--base-spacing);
-    @media screen and (min-width: 48rem) {
-      margin-bottom: calc(var(--base-spacing) * 2);
-    }
-
-    @media screen and (min-width: 60rem) {
-      margin-bottom: calc(var(--base-spacing) * 3);
-    }
+    margin-bottom: var(--element-spacing-vertical);
   }
 
 `

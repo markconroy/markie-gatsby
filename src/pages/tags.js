@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Container from '../styles/Container'
+import ArticleMeta from '../styles/ArticleMeta'
 
 const TagsListStyles = styled.ul`
   display: flex;
@@ -49,7 +50,13 @@ export default function TagsListingPage({ data }) {
       <>
         <Container>
           <h1>Tags</h1>
-          <p>This site has {tags.length} tags. They are:</p>
+        </Container>
+        <ArticleMeta className="margin-bottom">
+          <Container>
+            <p>This site has {tags.length} tags. They are:</p>
+          </Container>
+        </ArticleMeta>
+        <Container>
           <TagsListStyles>
             {tags.map(tag => {
               const hasArticles =
