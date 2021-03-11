@@ -10,7 +10,7 @@ const PageTitleContainer = styled.div`
   background-image: linear-gradient(
     to right,
     var(--color-secondary),
-    transparent
+    var(--color-grey--dark)
   );
   text-shadow: var(--text-shadow);
   h1 {
