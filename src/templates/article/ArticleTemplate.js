@@ -54,11 +54,13 @@ export default function SingleArticlePageTemplate({
           }
           metaImageSource={articleImageSource}
         />
-        <Container>
-          <ArticleStyles>
-            <ArticleMeta>
+        <ArticleStyles>
+          <ArticleMeta>
+            <Container>
               <p>Published: {articleCreated}</p>
-            </ArticleMeta>
+            </Container>
+          </ArticleMeta>
+          <Container>
             <h1>{articleTitle}</h1>
             {articleIntro ? (
               <div
@@ -87,8 +89,8 @@ export default function SingleArticlePageTemplate({
                 </li>
               ))}
             </TagList>
-          </ArticleStyles>
-        </Container>
+          </Container>
+        </ArticleStyles>
       </Layout>
     </>
   )

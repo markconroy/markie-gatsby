@@ -10,9 +10,6 @@ import TagList from '../styles/TagList'
 import Video from '../components/media/video'
 
 const ArticleStyles = styled.article`
-  h1 {
-    color: var(--color-primary);
-  }
   a {
     color: var(--color-secondary);
   }
@@ -27,9 +24,9 @@ export default function SingleArticlePage({ data: { speaking } }) {
     <>
       <Layout>
         <SEO title={speaking.title} />
-        <Container>
-          <ArticleStyles>
-            <ArticleMeta>
+        <ArticleStyles>
+          <ArticleMeta>
+            <Container>
               <p>
                 <strong>Date:</strong> {speaking.field_speaking_date}
               </p>
@@ -40,7 +37,9 @@ export default function SingleArticlePage({ data: { speaking } }) {
                 <strong>Event:</strong>{' '}
                 {speaking.relationships.field_speaking_conference.name}
               </p>
-            </ArticleMeta>
+            </Container>
+          </ArticleMeta>
+          <Container>
             <h1>{speaking.title}</h1>
             <div
               dangerouslySetInnerHTML={{ __html: speaking.field_intro.value }}
@@ -60,8 +59,8 @@ export default function SingleArticlePage({ data: { speaking } }) {
                 </li>
               ))}
             </TagList>
-          </ArticleStyles>
-        </Container>
+          </Container>
+        </ArticleStyles>
       </Layout>
     </>
   )

@@ -26,6 +26,7 @@ const Logo = styled.p`
     text-decoration: none;
     text-transform: uppercase;
     &:hover {
+      color: var(--color-white);
       border-bottom-color: var(--color-white);
     }
   }
