@@ -15,6 +15,7 @@ const ArticleStyles = styled.article`
   .article__intro {
     margin-bottom: var(--element-spacing-vertical);
     line-height: 1.75;
+    border: 2px solid var(--color-grey--light);
     border-left: 1rem solid var(--color-primary);
     background-image: linear-gradient(
       270deg,
