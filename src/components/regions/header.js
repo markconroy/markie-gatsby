@@ -7,6 +7,7 @@ import MenuItems from '../menu-items'
 const HeaderStyles = styled.header`
   padding-top: 3rem;
   padding-bottom: 2rem;
+  background-color: var(--color-grey--dark);
 `
 
 const Logo = styled.p`
@@ -20,12 +21,12 @@ const Logo = styled.p`
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     border-bottom-color: transparent;
-    color: var(--color-grey--dark);
+    color: var(--color-white);
     font-weight: bold;
     text-decoration: none;
     text-transform: uppercase;
     &:hover {
-      border-bottom-color: var(--color-grey--dark);
+      border-bottom-color: var(--color-white);
     }
   }
 `

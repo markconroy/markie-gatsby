@@ -34,10 +34,17 @@ const GlobalStyles = createGlobalStyle`
     /* Extras */
     --border-radius: 5px;
     --box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
+    --element-spacing-vertical: clamp(3rem, 6vw, 6rem);
   }
-
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
   html {
     font-size: var(--base-font-size);
+    line-height: var(--base-line-height);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
   
@@ -47,7 +54,10 @@ const GlobalStyles = createGlobalStyle`
 
   h1, .h1 {
     margin-bottom: 3rem;
-    font-size: 2.5rem;
+    margin-bottom: var(--element-spacing-vertical);
+    font-size: 3rem;
+    font-size: clamp(3rem, 8vw, 8rem);
+    line-height: 1.1;
   }
 
   h2, .h2 {
@@ -120,6 +130,18 @@ const GlobalStyles = createGlobalStyle`
 
   .layout-contained--small {
     max-width: var(--bp-medium);
+  }
+
+  .layout-content {
+    > * {
+      margin-top: 3rem;
+      max-width: var(--bp-medium);
+      margin-top: var(--element-spacing-vertical);
+    }
+    [data-entity-type="media"],
+    pre {
+      max-width: 100%;
+    }
   }
 
   .padding-horizontal {

@@ -20,7 +20,7 @@ const MenuStyles = styled.nav`
     margin-left: 1rem;
   }
   .menu-link {
-    color: var(--color-grey--dark);
+    color: var(--color-white);
     padding: 0.5rem 1rem;
     text-decoration: none;
     border-top: 2px solid transparent;
@@ -29,10 +29,10 @@ const MenuStyles = styled.nav`
   .menu-link:focus,
   .menu-link:hover {
     border-top-color: transparent;
-    border-bottom-color: var(--color-grey--dark);
+    border-bottom-color: var(--color-white);
   }
   .menu-link--active {
-    border-top-color: var(--var--grey-dark);
+    border-top-color: var(--color-white);
   }
   ${props =>
     props.treated &&
@@ -56,6 +56,7 @@ const MenuStyles = styled.nav`
         border-bottom-color: var(--color-grey--dark);
         padding-left: 0;
         padding-right: 0;
+        color: var(--color-grey--dark);
       }
       .menu-link:focus {
         border-bottom-color: transparent;

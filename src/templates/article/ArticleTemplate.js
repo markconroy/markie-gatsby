@@ -12,10 +12,23 @@ import ArticleMeta from '../../styles/ArticleMeta'
 
 const ArticleStyles = styled.article`
   .article__intro {
-    margin-bottom: 3rem;
-    border-left: 0.5rem solid var(--color-primary);
-    padding: 0.5rem 1rem;
+    margin-bottom: var(--element-spacing-vertical);
+    line-height: 1.75;
+    border-left: 1rem solid var(--color-primary);
+    background-image: linear-gradient(
+      to left,
+      var(--color-grey--light),
+      transparent
+    );
+    padding: 0.5rem 3rem;
+    * {
+      font-size: clamp(1rem, 2rem, 3rem);
+    }
   }
+`
+
+const ArticleImageStyles = styled.div`
+  margin-bottom: var(--element-spacing-vertical);
 `
 
 export default function SingleArticlePageTemplate({
@@ -55,8 +68,15 @@ export default function SingleArticlePageTemplate({
             ) : (
               ''
             )}
-            {articleImage && <Img fluid={articleImage} alt={articleImageAlt} />}
-            <div dangerouslySetInnerHTML={{ __html: articleBody }} />
+            {articleImage && (
+              <ArticleImageStyles>
+                <Img fluid={articleImage} alt={articleImageAlt} />
+              </ArticleImageStyles>
+            )}
+            <div
+              className="layout-content"
+              dangerouslySetInnerHTML={{ __html: articleBody }}
+            />
             <h2>Filed Under:</h2>
             <TagList>
               {tags.map(tag => (
