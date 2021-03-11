@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const PageTitleContainer = styled.div`
-  min-height: 100vh;
+  min-height: calc(100vh - 165px); // height of header
   display: flex;
   justify-content: center;
   align-items: center;
