@@ -16,7 +16,7 @@ const ArticleStyles = styled.article`
     line-height: 1.75;
     border-left: 1rem solid var(--color-primary);
     background-image: linear-gradient(
-      to left,
+      270deg,
       var(--color-grey--light),
       transparent
     );
