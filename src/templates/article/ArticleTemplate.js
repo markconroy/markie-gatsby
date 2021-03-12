@@ -31,6 +31,7 @@ const ArticleStyles = styled.article`
   h3 {
     position: sticky;
     top: 0;
+    z-index: 1;
     background-color: var(--color-white);
   }
 `
