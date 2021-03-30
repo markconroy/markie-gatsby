@@ -19,6 +19,12 @@ const TagStyles = styled.article`
 export default function SingleArticlePage({ data: { tag } }) {
   const tags =
     tag.relationships.node__article || tag.relationships.node__speaking
+
+  const sortedTags = tags.sort(function compare(a, b) {
+    const dateA = new Date(a.created)
+    const dateB = new Date(b.created)
+    return dateA - dateB
+  })
   return (
     <>
       <Layout>
@@ -30,10 +36,12 @@ export default function SingleArticlePage({ data: { tag } }) {
               The following {tags.length} pages are tagged with "{tag.name}":
             </h2>
             <TagList>
-              {tags.map(tagItem => (
+              {sortedTags.reverse().map(tagItem => (
                 <li>
                   <Link to={tagItem.path.alias} key={tagItem.id}>
                     {tagItem.title}
+                    {' - '}
+                    {tagItem.created}
                   </Link>
                 </li>
               ))}
@@ -54,6 +62,7 @@ export const query = graphql`
         node__article {
           id
           title
+          created(fromNow: true)
           path {
             alias
           }
@@ -61,6 +70,7 @@ export const query = graphql`
         node__speaking {
           id
           title
+          created(fromNow: true)
           path {
             alias
           }
