@@ -12,9 +12,11 @@ const FooterStyles = styled.footer`
     color: var(--color-white);
     border-bottom-color: transparent;
     &:hover {
+      color: var(--color-white);
       border-bottom-color: var(--color-white);
     }
     &:focus {
+      color: var(--color-white);
       outline-color: var(--color-white);
     }
   }
