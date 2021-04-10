@@ -19,7 +19,7 @@ const LayoutContainerStyles = styled.div`
   min-height: 100vh;
   flex-direction: column;
   > *:nth-last-child(2) {
-    margin-bottom: 4rem;
+    padding-bottom: 4rem;
   }
 `
 const Layout = ({ children }) => {

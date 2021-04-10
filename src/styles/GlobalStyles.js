@@ -53,6 +53,10 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
   }
 
+  main {
+    background-color: var(--color-white);
+  }
+
   h1, .h1 {
     margin-bottom: 3rem;
     margin-bottom: var(--element-spacing-vertical);

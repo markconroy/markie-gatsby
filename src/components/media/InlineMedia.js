@@ -25,7 +25,7 @@ export default function InlineMedia({
   if (mediaType === 'image') {
     return (
       <>
-        <InlineMediaStyles className="marky">
+        <InlineMediaStyles>
           <Img fluid={inlineImageSource} alt={inlineImageAlt} key={mediaId} />
         </InlineMediaStyles>
       </>
