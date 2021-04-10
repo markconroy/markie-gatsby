@@ -7,7 +7,11 @@ const PageTitleContainer = styled.div`
   align-items: center;
   margin-bottom: var(--element-spacing-vertical);
   border-bottom: 1px solid var(--color-secondary);
-  background-color: var(--color-secondary);
+  background-image: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-grey--dark)
+  );
   text-shadow: var(--text-shadow);
   h1 {
     color: var(--color-white);

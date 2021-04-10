@@ -5,7 +5,11 @@ const ArticleMeta = styled.div`
   width: 100%;
   padding: 0 1rem;
   color: var(--color-white);
-  background-color: var(--color-secondary);
+  background-image: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-grey--dark)
+  );
   text-shadow: var(--text-shadow);
 `
 
