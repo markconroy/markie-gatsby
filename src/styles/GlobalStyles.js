@@ -54,6 +54,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   main {
+    position: relative;
+    z-index: 1;
     background-color: var(--color-white);
   }
 

@@ -5,7 +5,6 @@ import styled from 'styled-components'
 const FooterStyles = styled.footer`
   position: sticky;
   bottom: 0;
-  z-index: -1;
   margin-top: auto;
   padding: 2rem 0;
   background-color: var(--color-primary);

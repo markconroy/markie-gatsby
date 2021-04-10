@@ -7,7 +7,6 @@ import MenuItems from '../menu-items'
 const HeaderStyles = styled.header`
   position: sticky;
   top: 0;
-  z-index: -1;
   padding-top: 3rem;
   padding-bottom: 2rem;
   background-color: var(--color-grey--dark);
