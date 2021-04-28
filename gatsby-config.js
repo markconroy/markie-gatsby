@@ -49,6 +49,7 @@ module.exports = {
           {
             serialize: ({ query: { site, allNodeArticle } }) =>
               allNodeArticle.edges.map(edge => ({
+                title: edge.node.title,
                 description: edge.node.field_intro.value,
                 date: edge.node.created,
                 url: site.siteMetadata.siteUrl + edge.node.path.alias,
