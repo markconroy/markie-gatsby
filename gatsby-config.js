@@ -25,6 +25,10 @@ module.exports = {
       resolve: `gatsby-source-drupal`,
       options: {
         baseUrl: `${process.env.GATSBY_DRUPAL_SOURCE}`,
+        basicAuth: {
+          username: `${process.env.BASIC_AUTH_USERNAME}`,
+          password: `${process.env.BASIC_AUTH_PASSWORD}`,
+        },
       },
     },
     `gatsby-plugin-styled-components`,
