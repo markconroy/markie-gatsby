@@ -26,8 +26,8 @@ module.exports = {
       options: {
         baseUrl: `${process.env.GATSBY_DRUPAL_SOURCE}`,
         basicAuth: {
-          username: `${process.env.BASIC_AUTH_USERNAME}`,
-          password: `${process.env.BASIC_AUTH_PASSWORD}`,
+          username: "tempname",
+          password: "temppw",
         },
       },
     },
