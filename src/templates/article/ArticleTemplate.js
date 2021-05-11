@@ -10,6 +10,7 @@ import TagList from '../../styles/TagList'
 import highlightCode from '../../utils/highlightCode'
 import ArticleMeta from '../../styles/ArticleMeta'
 import PageTitleContainer from '../../styles/PageTitleContainer'
+import SocialShare from '../../components/SocialShare'
 
 const ArticleStyles = styled.article`
   .article__intro {
@@ -49,6 +50,7 @@ export default function SingleArticlePageTemplate({
   articleImageAlt,
   articleImageSource,
   tags,
+  location,
 }) {
   useEffect(() => {
     highlightCode()
@@ -94,6 +96,17 @@ export default function SingleArticlePageTemplate({
               className="layout-content"
               dangerouslySetInnerHTML={{ __html: articleBody }}
             />
+
+            <SocialShare
+              location={location}
+              twitterText={articleTitle}
+              whatsAppText={articleTitle}
+              linkedInTitle={articleTitle}
+              linkedInSummary={articleTitle}
+              emailSubject={articleTitle}
+              emailBody={articleTitle}
+            />
+
             <h2>Filed Under:</h2>
             <TagList>
               {tags.map(tag => (

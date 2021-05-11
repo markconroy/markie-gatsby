@@ -6,6 +6,7 @@ import InlineMedia from '../../components/media/InlineMedia'
 
 export default function SingleArticlePageDrupal({
   data: { article, inlineMediaResults },
+  location,
 }) {
   useEffect(() => {
     const inlineMedia = document.querySelectorAll('drupal-media')
@@ -54,6 +55,8 @@ export default function SingleArticlePageDrupal({
     }
   })
 
+  console.log(location)
+
   return (
     <>
       <SingleArticlePageTemplate
@@ -77,6 +80,7 @@ export default function SingleArticlePageDrupal({
           article?.relationships?.field_main_image?.relationships
             ?.field_m_image_image?.localFile.childImageSharp.fluid.src
         }
+        location={location}
         tags={
           article?.relationships?.field_tags
             ? article.relationships.field_tags
