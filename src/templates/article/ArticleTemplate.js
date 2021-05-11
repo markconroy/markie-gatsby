@@ -50,7 +50,7 @@ export default function SingleArticlePageTemplate({
   articleImageAlt,
   articleImageSource,
   tags,
-  location,
+  shareLink,
 }) {
   useEffect(() => {
     highlightCode()
@@ -98,7 +98,7 @@ export default function SingleArticlePageTemplate({
             />
 
             <SocialShare
-              location={location}
+              shareLink={shareLink}
               twitterText={articleTitle}
               whatsAppText={articleTitle}
               linkedInTitle={articleTitle}

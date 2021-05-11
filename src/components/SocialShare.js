@@ -54,9 +54,9 @@ export default function SocialShare({
   linkedInSummary,
   emailSubject,
   emailBody,
-  location,
+  shareLink,
 }) {
-  const URL = location.href
+  const URL = shareLink
   return (
     <>
       <SocialShareStyles className="social-sharing">
