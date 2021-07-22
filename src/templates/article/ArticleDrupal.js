@@ -10,13 +10,14 @@ export default function SingleArticlePageDrupal({
 }) {
   useEffect(() => {
     const inlineMedia = document.querySelectorAll('drupal-media')
+
+    // TODO: get this via graphql allMediaImage instead of allMediaTypeMediaType
     const inlineMediaImages =
       inlineMediaResults.edges[1].node.relationships.media__image
-    // Not sure why, but videos seem to be item 0 sometimes, and item 2
-    // sometimes in the array of inlineMediaResults
+
+    // TODO: get this via graphql allMediaVideo instead of allMediaTypeMediaType
     const inlineMediaVideos =
-      inlineMediaResults.edges[0].node.relationships.media__video ||
-      inlineMediaResults.edges[2].node.relationships.media__video
+      inlineMediaResults.edges[0].node.relationships.media__video
 
     if (inlineMedia) {
       inlineMedia.forEach(inlineMediaItem => {
