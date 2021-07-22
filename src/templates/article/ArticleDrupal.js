@@ -12,15 +12,20 @@ export default function SingleArticlePageDrupal({
     const inlineMedia = document.querySelectorAll('drupal-media')
     const inlineMediaImages =
       inlineMediaResults.edges[1].node.relationships.media__image
+    // Not sure why, but videos seem to be item 0 sometimes, and item 2
+    // sometimes in the array of inlineMediaResults
     const inlineMediaVideos =
-      inlineMediaResults.edges[0].node.relationships.media__video
+      inlineMediaResults.edges[0].node.relationships.media__video ||
+      inlineMediaResults.edges[2].node.relationships.media__video
 
     if (inlineMedia) {
       inlineMedia.forEach(inlineMediaItem => {
         const inlineMediaItemId = inlineMediaItem.dataset.entityUuid
+
         const inlineMediaImage = inlineMediaImages.filter(
           item => item.drupal_id === inlineMediaItemId
         )
+
         const inlineMediaVideo = inlineMediaVideos.filter(
           item => item.drupal_id === inlineMediaItemId
         )
@@ -44,7 +49,7 @@ export default function SingleArticlePageDrupal({
             <InlineMedia
               mediaType="video"
               videoUrl={`https://www.youtube.com/embed/${inlineMediaVideo[0].field_media_video_embed_field
-                .split('=')
+                .split('?v=')
                 .pop()}`}
               mediaId={inlineMediaItemId}
             />

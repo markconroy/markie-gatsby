@@ -34,7 +34,7 @@ export default function InlineMedia({
   if (mediaType === 'video') {
     return (
       <>
-        <Video videoSrcURL={videoUrl} videoTitle={videoTitle} />
+        <Video videoSrcURL={videoUrl} videoTitle={videoTitle} key={mediaId} />
       </>
     )
   }

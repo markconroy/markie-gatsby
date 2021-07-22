@@ -20,7 +20,7 @@ const VideoInnerStyles = styled.div`
   }
 `
 
-const Video = ({ videoSrcURL, videoTitle, ...props }) => (
+const Video = ({ videoSrcURL, videoTitle, mediaId, ...props }) => (
   <VideoContainerStyles>
     <VideoInnerStyles>
       <iframe
