@@ -13,7 +13,7 @@ export default function SingleArticlePageDrupal({
     const inlineMediaImages =
       inlineMediaResults.edges[1].node.relationships.media__image
     const inlineMediaVideos =
-      inlineMediaResults.edges[2].node.relationships.media__video
+      inlineMediaResults.edges[0].node.relationships.media__video
 
     if (inlineMedia) {
       inlineMedia.forEach(inlineMediaItem => {

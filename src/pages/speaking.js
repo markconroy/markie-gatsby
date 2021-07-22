@@ -12,6 +12,7 @@ import Card from '../components/display-types/card'
 
 export default function SpeakingListingPage({ data }) {
   const cards = data.speakingPosts.edges
+
   return (
     <Layout>
       <SEO title="Blog" />
