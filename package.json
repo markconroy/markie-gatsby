@@ -53,7 +53,7 @@
     "develop-rocksal": "cross-env NODE_OPTIONS=\"-r esm\" env-cmd --file ./.env.local --expand-envs gatsby develop --host=\\$ROCKSAL_HOST",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
-    "serve": "gatsby serve",
+    "serve": "cross-env NODE_OPTIONS=\"-r esm\" env-cmd --file ./.env.local --expand-envs gatsby serve --host=\\$ROCKSAL_HOST",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "deploy": "npm run build && gh-pages -d public",
