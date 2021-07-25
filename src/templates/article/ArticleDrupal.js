@@ -5,30 +5,25 @@ import SingleArticlePageTemplate from './ArticleTemplate'
 import InlineMedia from '../../components/media/InlineMedia'
 
 export default function SingleArticlePageDrupal({
-  data: { article, inlineMediaResults },
+  data: { article, inlineMediaVideoResults, inlineMediaImageResults },
   location,
 }) {
   useEffect(() => {
     const inlineMedia = document.querySelectorAll('drupal-media')
 
-    // TODO: get this via graphql allMediaImage instead of allMediaTypeMediaType
-    const inlineMediaImages =
-      inlineMediaResults.edges[1].node.relationships.media__image
+    const inlineMediaImages = inlineMediaImageResults.edges
 
-    // TODO: get this via graphql allMediaVideo instead of allMediaTypeMediaType
-    const inlineMediaVideos =
-      inlineMediaResults.edges[0].node.relationships.media__video
-
+    const inlineMediaVideos = inlineMediaVideoResults.edges
     if (inlineMedia) {
       inlineMedia.forEach(inlineMediaItem => {
         const inlineMediaItemId = inlineMediaItem.dataset.entityUuid
 
         const inlineMediaImage = inlineMediaImages.filter(
-          item => item.drupal_id === inlineMediaItemId
+          item => item.node.drupal_id === inlineMediaItemId
         )
 
         const inlineMediaVideo = inlineMediaVideos.filter(
-          item => item.drupal_id === inlineMediaItemId
+          item => item.node.drupal_id === inlineMediaItemId
         )
 
         if (inlineMediaImage.length) {
@@ -36,20 +31,21 @@ export default function SingleArticlePageDrupal({
             <InlineMedia
               mediaType="image"
               inlineImageSource={
-                inlineMediaImage[0].relationships.field_m_image_image.localFile
-                  .childImageSharp.fluid
+                inlineMediaImage[0].node.relationships.field_m_image_image
+                  .localFile.childImageSharp.fluid
               }
-              inlineImageAlt={inlineMediaImage[0].field_m_image_image.alt}
+              inlineImageAlt={inlineMediaImage[0].node.field_m_image_image.alt}
               mediaId={inlineMediaItemId}
             />
           )
           return `${(inlineMediaItem.innerHTML = inlineMediaItemHTML)}`
         }
+
         if (inlineMediaVideo.length) {
           const inlineMediaItemHTML = renderToString(
             <InlineMedia
               mediaType="video"
-              videoUrl={`https://www.youtube.com/embed/${inlineMediaVideo[0].field_media_video_embed_field
+              videoUrl={`https://www.youtube.com/embed/${inlineMediaVideo[0].node.field_media_video_embed_field
                 .split('?v=')
                 .pop()}`}
               mediaId={inlineMediaItemId}
@@ -133,34 +129,33 @@ export const query = graphql`
         }
       }
     }
-    inlineMediaResults: allMediaTypeMediaType {
+    inlineMediaVideoResults: allMediaVideo {
+      edges {
+        node {
+          field_media_video_embed_field
+          name
+          id
+          drupal_id
+        }
+      }
+    }
+    inlineMediaImageResults: allMediaImage {
       edges {
         node {
           id
+          drupal_id
+          field_m_image_image {
+            alt
+          }
           relationships {
-            media__image {
-              id
-              drupal_id
-              field_m_image_image {
-                alt
-              }
-              relationships {
-                field_m_image_image {
-                  localFile {
-                    childImageSharp {
-                      fluid(maxWidth: 600) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
+            field_m_image_image {
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 600) {
+                    ...GatsbyImageSharpFluid
                   }
                 }
               }
-            }
-            media__video {
-              drupal_id
-              id
-              name
-              field_media_video_embed_field
             }
           }
         }
