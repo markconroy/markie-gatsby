@@ -20,8 +20,8 @@ export default function SpeakingListingPage({ data }) {
         <h1>Speaking</h1>
 
         <p style={{ marginBottom: '4rem' }}>
-          I speak about Frontend Development and Approaches to Frontend
-          Development at lots of conferences around Europe.
+          I speak about Frontend Development at lots of conferences around
+          Europe.
         </p>
         <CardListContainer>
           {cards.map(card => (
