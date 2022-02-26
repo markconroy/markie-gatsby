@@ -1,4 +1,3 @@
-import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -37,16 +36,16 @@ const Footer = () => (
     <div className="layout-contained padding-horizontal">
       <ul style={{ margin: 0 }}>
         <li>
-          <Link to="https://twitter.com/markconroy">Twitter</Link>
+          <a href="https://twitter.com/markconroy">Twitter</a>
         </li>
         <li>
-          <Link to="https://github.com/markconroy">Github</Link>
+          <a href="https://github.com/markconroy">Github</a>
         </li>
         <li>
-          <Link to="https://www.drupal.org/u/markconroy">Drupal</Link>
+          <a href="https://www.drupal.org/u/markconroy">Drupal</a>
         </li>
         <li>
-          <Link to="https://www.linkedin.com/in/conroymark">LinkedIn</Link>
+          <a href="https://www.linkedin.com/in/conroymark">LinkedIn</a>
         </li>
       </ul>
     </div>
