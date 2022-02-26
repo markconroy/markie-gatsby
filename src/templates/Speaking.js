@@ -24,9 +24,10 @@ const ArticleStyles = styled.article`
 `
 
 export default function SingleArticlePage({ data: { speaking } }) {
-  const videoUrl = speaking.relationships.field_main_video.field_media_video_embed_field
-    .split('=')
-    .pop()
+  const videoUrl =
+    speaking.relationships.field_main_video.field_media_video_embed_field
+      .split('=')
+      .pop()
 
   return (
     <>
@@ -79,7 +80,7 @@ export default function SingleArticlePage({ data: { speaking } }) {
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     speaking: nodeSpeaking(path: { alias: { eq: $slug } }) {
       id
       title

@@ -52,7 +52,7 @@ export default function SingleArticlePage({ data }) {
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     nodePage(path: { alias: { eq: $slug } }) {
       id
       title

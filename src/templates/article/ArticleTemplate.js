@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 
 import SEO from '../../components/seo'
@@ -89,13 +89,11 @@ export default function SingleArticlePageTemplate({
             )}
             {articleImage && (
               <ArticleImageStyles>
-                <Img fluid={articleImage} alt={articleImageAlt} />
+                <GatsbyImage image={articleImage} alt={articleImageAlt} />
               </ArticleImageStyles>
             )}
-            <div
-              className="layout-content"
-              dangerouslySetInnerHTML={{ __html: articleBody }}
-            />
+
+            {articleBody}
 
             <SocialShare
               shareLink={shareLink}

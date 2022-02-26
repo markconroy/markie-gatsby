@@ -54,7 +54,7 @@ export default function SingleArticlePage({ data: { tag } }) {
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     tag: taxonomyTermTags(path: { alias: { eq: $slug } }) {
       name
       id

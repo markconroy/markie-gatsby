@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
-import { renderToString } from 'react-dom/server'
+import React from 'react'
 import { graphql } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import ReactHtmlParser from 'react-html-parser'
 import SingleArticlePageTemplate from './ArticleTemplate'
 import InlineMedia from '../../components/media/InlineMedia'
 
@@ -8,67 +9,63 @@ export default function SingleArticlePageDrupal({
   data: { article, inlineMediaVideoResults, inlineMediaImageResults },
   location,
 }) {
-  useEffect(() => {
-    const inlineMedia = document.querySelectorAll('drupal-media')
+  const articleBody = article.body.processed
+  let postBody = <div dangerouslySetInnerHTML={{ __html: articleBody }} />
 
-    const inlineMediaImages = inlineMediaImageResults.edges
+  const regexpMedia = /data-media-id="(\d+)"/gm
+  const matchesMedia = [...articleBody.matchAll(regexpMedia)]
+  const imageMediaIds = matchesMedia.map(match => parseInt(match[1]))
 
-    const inlineMediaVideos = inlineMediaVideoResults.edges
-    if (inlineMedia) {
-      inlineMedia.forEach(inlineMediaItem => {
-        const inlineMediaItemId = inlineMediaItem.dataset.entityUuid
+  const bodyMediaImages = inlineMediaImageResults.edges
+    .filter(item => {
+      if (imageMediaIds.includes(item.node.drupal_internal__mid)) {
+        return item.node.drupal_internal__mid
+      }
+    })
+    .map(item => item.node)
 
-        const inlineMediaImage = inlineMediaImages.filter(
-          item => item.node.drupal_id === inlineMediaItemId
-        )
-
-        const inlineMediaVideo = inlineMediaVideos.filter(
-          item => item.node.drupal_id === inlineMediaItemId
-        )
-
-        if (inlineMediaImage.length) {
-          const inlineMediaItemHTML = renderToString(
-            <InlineMedia
-              mediaType="image"
-              inlineImageSource={
-                inlineMediaImage[0].node.relationships.field_m_image_image
-                  .localFile.childImageSharp.fluid
-              }
-              inlineImageAlt={inlineMediaImage[0].node.field_m_image_image.alt}
-              mediaId={inlineMediaItemId}
-            />
+  if (bodyMediaImages) {
+    postBody = new ReactHtmlParser(articleBody, {
+      transform: function transform(node) {
+        if (
+          node.type === 'tag' &&
+          node.name === 'article' &&
+          node.attribs['data-media-source'] === 'image'
+        ) {
+          const imageData = bodyMediaImages.filter(
+            item =>
+              item.drupal_internal__mid ===
+              parseInt(node.attribs['data-media-id'])
           )
-          return `${(inlineMediaItem.innerHTML = inlineMediaItemHTML)}`
+          if (imageData) {
+            return (
+              <GatsbyImage
+                image={
+                  imageData[0].relationships.field_m_image_image.localFile
+                    .childImageSharp.gatsbyImageData
+                }
+                alt={imageData[0].field_m_image_image.alt}
+                key={imageData[0].drupal_id}
+              />
+            )
+          }
         }
-
-        if (inlineMediaVideo.length) {
-          const inlineMediaItemHTML = renderToString(
-            <InlineMedia
-              mediaType="video"
-              videoUrl={`https://www.youtube.com/embed/${inlineMediaVideo[0].node.field_media_video_embed_field
-                .split('?v=')
-                .pop()}`}
-              mediaId={inlineMediaItemId}
-            />
-          )
-          return `${(inlineMediaItem.innerHTML = inlineMediaItemHTML)}`
-        }
-      })
-    }
-  })
+      },
+    })
+  }
 
   return (
     <>
       <SingleArticlePageTemplate
         articleCreated={article.created}
         articleTitle={article.title}
-        articleBody={article.body.value}
+        articleBody={postBody}
         articleIntro={article.field_intro.value}
         articleImage={
           article.relationships?.field_main_image?.relationships
             ?.field_m_image_image?.localFile
             ? article.relationships.field_main_image.relationships
-                .field_m_image_image.localFile.childImageSharp.fluid
+                .field_m_image_image.localFile.childImageSharp.gatsbyImageData
             : null
         }
         articleImageAlt={
@@ -78,7 +75,7 @@ export default function SingleArticlePageDrupal({
         }
         articleImageSource={
           article?.relationships?.field_main_image?.relationships
-            ?.field_m_image_image?.localFile.childImageSharp.fluid.src
+            ?.field_m_image_image?.localFile.childImageSharp.gatsbyImageData
         }
         shareLink={location.href}
         tags={
@@ -92,13 +89,14 @@ export default function SingleArticlePageDrupal({
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     article: nodeArticle(path: { alias: { eq: $slug } }) {
       title
       created(fromNow: true)
       id
       body {
         value
+        processed
       }
       field_intro {
         value
@@ -112,9 +110,10 @@ export const query = graphql`
             field_m_image_image {
               localFile {
                 childImageSharp {
-                  fluid(maxWidth: 600) {
-                    ...GatsbyImageSharpFluid
-                  }
+                  gatsbyImageData(
+                    layout: FULL_WIDTH
+                    placeholder: DOMINANT_COLOR
+                  )
                 }
               }
             }
@@ -142,8 +141,7 @@ export const query = graphql`
     inlineMediaImageResults: allMediaImage {
       edges {
         node {
-          id
-          drupal_id
+          drupal_internal__mid
           field_m_image_image {
             alt
           }
@@ -151,9 +149,7 @@ export const query = graphql`
             field_m_image_image {
               localFile {
                 childImageSharp {
-                  fluid(maxWidth: 600) {
-                    ...GatsbyImageSharpFluid
-                  }
+                  gatsbyImageData(width: 600, placeholder: BLURRED)
                 }
               }
             }
