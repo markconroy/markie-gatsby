@@ -35,6 +35,7 @@ const GlobalStyles = createGlobalStyle`
     --border-radius: 5px;
     --box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
     --text-shadow: 2px 2px 0 var(--color-black);
+    --text-shadow-large-text: var(--color-grey--dark) 9px 6px 3px, var(--color-grey--dark) -6px -6px 3px, var(--color-grey--dark) -12px 6px 3px;
     --element-spacing-vertical: clamp(3rem, 6vw, 6rem);
   }
   *,

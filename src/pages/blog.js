@@ -9,14 +9,17 @@ import {
   CardListItem,
 } from '../components/list-types/card-list'
 import Card from '../components/display-types/card'
+import PageTitleContainer from '../styles/PageTitleContainer'
 
 export default function BlogListingPage({ data }) {
   const cards = data.articles.edges
   return (
     <Layout>
       <SEO title="Blog" />
-      <Container>
+      <PageTitleContainer>
         <h1>Blog</h1>
+      </PageTitleContainer>
+      <Container>
         <p style={{ marginBottom: '4rem' }}>
           Read {cards.length} articles ... and counting!
         </p>

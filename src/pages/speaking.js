@@ -9,6 +9,7 @@ import {
   CardListItem,
 } from '../components/list-types/card-list'
 import Card from '../components/display-types/card'
+import PageTitleContainer from '../styles/PageTitleContainer'
 
 export default function SpeakingListingPage({ data }) {
   const cards = data.speakingPosts.edges
@@ -16,9 +17,10 @@ export default function SpeakingListingPage({ data }) {
   return (
     <Layout>
       <SEO title="Blog" />
-      <Container>
+      <PageTitleContainer>
         <h1>Speaking</h1>
-
+      </PageTitleContainer>
+      <Container>
         <p style={{ marginBottom: '4rem' }}>
           I speak about Frontend Development at lots of conferences around
           Europe.

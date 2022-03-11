@@ -6,6 +6,7 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Container from '../styles/Container'
 import ArticleMeta from '../styles/ArticleMeta'
+import PageTitleContainer from '../styles/PageTitleContainer'
 
 const TagsListStyles = styled.ul`
   display: flex;
@@ -48,9 +49,10 @@ export default function TagsListingPage({ data }) {
     <Layout>
       <SEO title="Tags" />
       <>
-        <Container>
+        <PageTitleContainer noMarginBottom>
           <h1>Tags</h1>
-        </Container>
+        </PageTitleContainer>
+        <Container />
         <ArticleMeta className="margin-bottom">
           <Container>
             <p>This site has {tags.length} tags. They are:</p>
