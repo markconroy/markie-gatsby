@@ -7,6 +7,9 @@ const ArticleMeta = styled.div`
   color: var(--color-white);
   background-color: var(--color-secondary);
   text-shadow: var(--text-shadow);
+  p:last-of-type {
+    margin-bottom: 0;
+  }
 `
 
 export default ArticleMeta

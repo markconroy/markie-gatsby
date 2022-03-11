@@ -16,16 +16,11 @@ const ArticleStyles = styled.article`
   .article__intro {
     margin-bottom: var(--element-spacing-vertical);
     line-height: 1.75;
-    border: 2px solid var(--color-grey--light);
+    border: 2px solid var(--color-primary);
     border-left: 1rem solid var(--color-primary);
-    background-image: linear-gradient(
-      270deg,
-      var(--color-grey--light),
-      transparent
-    );
     padding: 0.5rem 3rem;
     * {
-      font-size: clamp(1rem, 2rem, 3rem);
+      font-size: clamp(1.5rem, 5vw, 2rem);
     }
   }
   h2,
@@ -73,9 +68,9 @@ export default function SingleArticlePageTemplate({
           </ArticleMeta>
 
           <PageTitleContainer>
-            <h1>
-              <Container>{articleTitle}</Container>
-            </h1>
+            <Container paddingHorizontal>
+              <h1>{articleTitle}</h1>
+            </Container>
           </PageTitleContainer>
 
           <Container>
