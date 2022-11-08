@@ -47,6 +47,9 @@ const Footer = () => (
         <li>
           <a href="https://www.linkedin.com/in/conroymark">LinkedIn</a>
         </li>
+        <li>
+          <a href="https://mastodon.ie/@markconroy" rel="me">Mastodon</a>
+        </li>
       </ul>
     </div>
   </FooterStyles>
