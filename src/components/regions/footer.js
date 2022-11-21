@@ -36,6 +36,9 @@ const Footer = () => (
     <div className="layout-contained padding-horizontal">
       <ul style={{ margin: 0 }}>
         <li>
+          <a href="https://markie.eo.page/xrpd5">Mailing List</a>
+        </li>
+        <li>
           <a href="https://twitter.com/markconroy">Twitter</a>
         </li>
         <li>
