@@ -48,10 +48,10 @@ export default function MenuItems() {
         <Link
           className="menu-link"
           activeClassName="menu-link--active"
-          to="/thanks"
+          to="https://fun.mark.ie"
           partiallyActive
         >
-          Thanks
+          Fun
         </Link>
       </li>
       <li>
