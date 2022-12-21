@@ -1,10 +1,11 @@
-const dotenv = require('dotenv')
+// const dotenv = require('dotenv')
+import dotenv from 'dotenv'
 
 dotenv.config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-module.exports = {
+const config = {
   siteMetadata: {
     title: `Markie`,
     description: `Gatsby-based version of mark.ie by Mark Conroy.`,
@@ -18,7 +19,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `./src/images`,
       },
     },
     {
@@ -102,3 +103,5 @@ module.exports = {
     `gatsby-plugin-offline`,
   ],
 }
+
+export default config

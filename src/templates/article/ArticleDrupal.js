@@ -1,9 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import ReactHtmlParser from 'react-html-parser'
+import parse from 'html-react-parser';
 import SingleArticlePageTemplate from './ArticleTemplate'
-import InlineMedia from '../../components/media/InlineMedia'
 
 export default function SingleArticlePageDrupal({
   data: { article, inlineMediaVideoResults, inlineMediaImageResults },
@@ -24,35 +23,33 @@ export default function SingleArticlePageDrupal({
     })
     .map(item => item.node)
 
-  if (bodyMediaImages) {
-    postBody = new ReactHtmlParser(articleBody, {
-      transform: function transform(node) {
-        if (
-          node.type === 'tag' &&
-          node.name === 'article' &&
-          node.attribs['data-media-source'] === 'image'
-        ) {
-          const imageData = bodyMediaImages.filter(
-            item =>
-              item.drupal_internal__mid ===
-              parseInt(node.attribs['data-media-id'])
-          )
-          if (imageData) {
-            return (
-              <GatsbyImage
-                image={
-                  imageData[0].relationships.field_m_image_image.localFile
-                    .childImageSharp.gatsbyImageData
-                }
-                alt={imageData[0].field_m_image_image.alt}
-                key={imageData[0].drupal_id}
-              />
+    
+    if (bodyMediaImages) {
+      postBody = parse (articleBody, {
+        replace: domNode => {
+          if (domNode.attribs && domNode.attribs['data-media-source'] === 'image') {
+            const imageData = bodyMediaImages.filter(
+              item =>
+                item.drupal_internal__mid ===
+                parseInt(domNode.attribs['data-media-id'])
             )
+            if (imageData) {
+              return (
+                <GatsbyImage
+                  image={
+                    imageData[0].relationships.field_m_image_image.localFile
+                      .childImageSharp.gatsbyImageData
+                  }
+                  alt={imageData[0].field_m_image_image.alt}
+                  key={imageData[0].drupal_id}
+                />
+              )
+            }
+            
           }
         }
-      },
-    })
-  }
+      });
+    }
 
   return (
     <>
