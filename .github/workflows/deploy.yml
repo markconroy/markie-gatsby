@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: markconroy/gatsby-gh-pages-action@v1
+      - uses: markconroy/gatsby-gh-pages-action@1.0.0
         env:
           GATSBY_DRUPAL_SOURCE: ${{ secrets.GATSBY_DRUPAL_SOURCE }}
           BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
