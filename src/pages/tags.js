@@ -96,7 +96,7 @@ export default function TagsListingPage({ data }) {
 
 export const TagsListingPageQuery = graphql`
   query TagsListingQuery {
-    tags: allTaxonomyTermTags(sort: { fields: name, order: ASC }) {
+    tags: allTaxonomyTermTags(sort: { name: ASC }) {
       nodes {
         name
         id

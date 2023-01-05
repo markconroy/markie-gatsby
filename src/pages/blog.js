@@ -43,7 +43,7 @@ export default function BlogListingPage({ data }) {
 
 export const BlogListingPageQuery = graphql`
   query BlogListingQuery {
-    articles: allNodeArticle(sort: { fields: created, order: DESC }) {
+    articles: allNodeArticle(sort: { created: DESC }) {
       edges {
         node {
           title

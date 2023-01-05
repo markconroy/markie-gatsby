@@ -1,9 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import ReactHtmlParser from 'react-html-parser'
+import parse from 'html-react-parser'
 import SingleArticlePageTemplate from './ArticleTemplate'
-import InlineMedia from '../../components/media/InlineMedia'
 
 export default function SingleArticlePageDrupal({
   data: { article, inlineMediaVideoResults, inlineMediaImageResults },
@@ -25,17 +24,16 @@ export default function SingleArticlePageDrupal({
     .map(item => item.node)
 
   if (bodyMediaImages) {
-    postBody = new ReactHtmlParser(articleBody, {
-      transform: function transform(node) {
+    postBody = parse(articleBody, {
+      replace: domNode => {
         if (
-          node.type === 'tag' &&
-          node.name === 'article' &&
-          node.attribs['data-media-source'] === 'image'
+          domNode.attribs &&
+          domNode.attribs['data-media-source'] === 'image'
         ) {
           const imageData = bodyMediaImages.filter(
             item =>
               item.drupal_internal__mid ===
-              parseInt(node.attribs['data-media-id'])
+              parseInt(domNode.attribs['data-media-id'])
           )
           if (imageData) {
             return (

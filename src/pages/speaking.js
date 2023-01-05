@@ -45,7 +45,7 @@ export default function SpeakingListingPage({ data }) {
 
 export const SpeakingListingPageQuery = graphql`
   query SpeakingistingQuery {
-    speakingPosts: allNodeSpeaking(sort: { fields: created, order: DESC }) {
+    speakingPosts: allNodeSpeaking(sort: { created: DESC }) {
       edges {
         node {
           title
