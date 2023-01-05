@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - master
-      - gatsby-v-5
 
   # Triggers the workflow on cron run, at 2am each night
   schedule:
