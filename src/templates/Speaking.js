@@ -9,6 +9,7 @@ import ArticleMeta from '../styles/ArticleMeta'
 import TagList from '../styles/TagList'
 import Video from '../components/media/video'
 import PageTitleContainer from '../styles/PageTitleContainer'
+import SocialShare from '../components/SocialShare'
 
 const ArticleStyles = styled.article`
   a {
@@ -23,11 +24,13 @@ const ArticleStyles = styled.article`
   }
 `
 
-export default function SingleArticlePage({ data: { speaking } }) {
+export default function SingleArticlePage({ data: { speaking }, location }) {
   const videoUrl =
     speaking.relationships.field_main_video.field_media_video_embed_field
       .split('=')
       .pop()
+  const shareLink = location.href
+  const articleTitle = speaking.title
 
   return (
     <Layout>
@@ -61,6 +64,17 @@ export default function SingleArticlePage({ data: { speaking } }) {
             videoSrcURL={`https://www.youtube.com/embed/${videoUrl}`}
             videoTitle={speaking.title}
           />
+
+          <SocialShare
+            shareLink={shareLink}
+            twitterText={articleTitle}
+            whatsAppText={articleTitle}
+            linkedInTitle={articleTitle}
+            linkedInSummary={articleTitle}
+            emailSubject={articleTitle}
+            emailBody={articleTitle}
+          />
+
           <h2>Filed Under:</h2>
           <TagList>
             {speaking.relationships.field_tags.map(tag => (

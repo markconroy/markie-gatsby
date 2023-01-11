@@ -48,6 +48,9 @@ function HomePage() {
             <h1>Hi! I'm Mark Conroy.</h1>
             <p>I'm a frontend developer.</p>
             <p>
+              I keep <a href="/blog">a blog</a>.
+            </p>
+            <p>
               I like to <a href="https://fun.mark.ie">build things for fun</a>.
             </p>
             <p>
