@@ -28,16 +28,6 @@ export default function MenuItems() {
         <Link
           className="menu-link"
           activeClassName="menu-link--active"
-          to="/tags"
-          partiallyActive
-        >
-          Topics
-        </Link>
-      </li>
-      <li>
-        <Link
-          className="menu-link"
-          activeClassName="menu-link--active"
           to="/about"
           partiallyActive
         >
