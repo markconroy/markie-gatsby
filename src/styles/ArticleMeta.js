@@ -4,12 +4,7 @@ const ArticleMeta = styled.div`
   display: inline-block;
   width: 100%;
   padding: 1rem;
-  color: var(--color-white);
-  background-color: var(--color-secondary);
-  text-shadow: var(--text-shadow);
-  p:last-of-type {
-    /* margin-bottom: 0; */
-  }
+  border-bottom: 1px solid var(--color-grey--dark);
 `
 
 export default ArticleMeta
