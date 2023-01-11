@@ -38,20 +38,20 @@ export default function MenuItems() {
         <Link
           className="menu-link"
           activeClassName="menu-link--active"
-          to="https://fun.mark.ie"
+          to="/contact"
           partiallyActive
         >
-          Fun
+          Contact
         </Link>
       </li>
       <li>
         <Link
           className="menu-link"
           activeClassName="menu-link--active"
-          to="/contact"
+          to="https://fun.mark.ie"
           partiallyActive
         >
-          Contact
+          Fun
         </Link>
       </li>
     </ul>
