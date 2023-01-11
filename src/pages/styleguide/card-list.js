@@ -57,20 +57,3 @@ export default function SampleCardListingPage({ data }) {
     </Layout>
   )
 }
-
-// export const SampleCardListingPageQuery = graphql`
-//   query SampleCardListingQuery {
-//     articles: allNodeArticle(sort: { fields: created, order: DESC }) {
-//       edges {
-//         node {
-//           title
-//           created(fromNow: true)
-//           id
-//           path {
-//             alias
-//           }
-//         }
-//       }
-//     }
-//   }
-// `

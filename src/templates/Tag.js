@@ -6,11 +6,9 @@ import SEO from '../components/seo'
 import Layout from '../components/layout'
 import Container from '../styles/Container'
 import TagList from '../styles/TagList'
+import PageTitleContainer from '../styles/PageTitleContainer'
 
 const TagStyles = styled.article`
-  h1 {
-    color: var(--color-primary);
-  }
   a {
     color: var(--color-secondary);
   }
@@ -30,7 +28,9 @@ export default function SingleArticlePage({ data: { tag } }) {
       <SEO title={tag.name} />
       <Container>
         <TagStyles>
-          <h1>{tag.name}</h1>
+          <PageTitleContainer>
+            <h1>{tag.name}</h1>
+          </PageTitleContainer>
           <h2>
             The following {tags.length} pages are tagged with "{tag.name}":
           </h2>
@@ -60,7 +60,7 @@ export const query = graphql`
         node__article {
           id
           title
-          created(fromNow: true)
+          created(formatString: "LL")
           path {
             alias
           }
@@ -68,7 +68,7 @@ export const query = graphql`
         node__speaking {
           id
           title
-          created(fromNow: true)
+          created(formatString: "LL")
           path {
             alias
           }

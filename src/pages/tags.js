@@ -49,9 +49,11 @@ export default function TagsListingPage({ data }) {
     <Layout>
       <SEO title="Tags" />
       <>
-        <PageTitleContainer noMarginBottom>
-          <h1>Tags</h1>
-        </PageTitleContainer>
+        <Container>
+          <PageTitleContainer noMarginBottom>
+            <h1>Tags</h1>
+          </PageTitleContainer>
+        </Container>
         <Container />
         <ArticleMeta className="margin-bottom">
           <Container>

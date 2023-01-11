@@ -64,7 +64,7 @@ const GlobalStyles = createGlobalStyle`
     margin-bottom: var(--element-spacing-vertical);
     margin-top: var(--element-spacing-vertical);
     font-size: 3rem;
-    font-size: clamp(4rem, 10vw, 8rem);
+    font-size: clamp(3rem, 8vw, 6rem);
     line-height: 1.1;
   }
 

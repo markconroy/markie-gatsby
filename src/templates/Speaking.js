@@ -30,52 +30,50 @@ export default function SingleArticlePage({ data: { speaking } }) {
       .pop()
 
   return (
-    <>
-      <Layout>
-        <SEO title={speaking.title} />
-        <ArticleStyles>
-          <ArticleMeta>
-            <Container>
-              <p>
-                <strong>Date:</strong> {speaking.field_speaking_date}
-              </p>
-              <p>
-                <strong>Location:</strong> {speaking.field_speaking_where}
-              </p>
-              <p>
-                <strong>Event:</strong>{' '}
-                {speaking.relationships.field_speaking_conference.name}
-              </p>
-            </Container>
-          </ArticleMeta>
-          <PageTitleContainer>
-            <h1>
-              <Container>{speaking.title}</Container>
-            </h1>
-          </PageTitleContainer>
+    <Layout>
+      <SEO title={speaking.title} />
+      <ArticleStyles>
+        <ArticleMeta>
           <Container>
-            <div
-              dangerouslySetInnerHTML={{ __html: speaking.field_intro.value }}
-            />
-
-            <Video
-              videoSrcURL={`https://www.youtube.com/embed/${videoUrl}`}
-              videoTitle={speaking.title}
-            />
-            <h2>Filed Under:</h2>
-            <TagList>
-              {speaking.relationships.field_tags.map(tag => (
-                <li>
-                  <Link to={tag.path.alias} key={tag.id}>
-                    {tag.name}
-                  </Link>
-                </li>
-              ))}
-            </TagList>
+            <p>
+              <strong>Date:</strong> {speaking.field_speaking_date}
+            </p>
+            <p>
+              <strong>Location:</strong> {speaking.field_speaking_where}
+            </p>
+            <p>
+              <strong>Event:</strong>{' '}
+              {speaking.relationships.field_speaking_conference.name}
+            </p>
           </Container>
-        </ArticleStyles>
-      </Layout>
-    </>
+        </ArticleMeta>
+        <Container>
+          <PageTitleContainer>
+            <h1>{speaking.title}</h1>
+          </PageTitleContainer>
+        </Container>
+        <Container>
+          <div
+            dangerouslySetInnerHTML={{ __html: speaking.field_intro.value }}
+          />
+
+          <Video
+            videoSrcURL={`https://www.youtube.com/embed/${videoUrl}`}
+            videoTitle={speaking.title}
+          />
+          <h2>Filed Under:</h2>
+          <TagList>
+            {speaking.relationships.field_tags.map(tag => (
+              <li>
+                <Link to={tag.path.alias} key={tag.id}>
+                  {tag.name}
+                </Link>
+              </li>
+            ))}
+          </TagList>
+        </Container>
+      </ArticleStyles>
+    </Layout>
   )
 }
 

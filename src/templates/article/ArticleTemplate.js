@@ -23,13 +23,6 @@ const ArticleStyles = styled.article`
       font-size: clamp(1.5rem, 5vw, 2rem);
     }
   }
-  h2,
-  h3 {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    background-color: var(--color-white);
-  }
 `
 
 const ArticleImageStyles = styled.div`
@@ -51,68 +44,66 @@ export default function SingleArticlePageTemplate({
     highlightCode()
   })
   return (
-    <>
-      <Layout>
-        <SEO
-          title={articleTitle}
-          description={
-            articleIntro ? articleIntro.replace(/(<([^>]+)>)/gi, '') : ''
-          }
-          metaImageSource={articleImageSource}
-        />
-        <ArticleStyles>
-          <ArticleMeta>
-            <Container>
-              <p>Published: {articleCreated}</p>
-            </Container>
-          </ArticleMeta>
-
-          <PageTitleContainer>
-            <Container paddingHorizontal>
-              <h1>{articleTitle}</h1>
-            </Container>
-          </PageTitleContainer>
-
+    <Layout>
+      <SEO
+        title={articleTitle}
+        description={
+          articleIntro ? articleIntro.replace(/(<([^>]+)>)/gi, '') : ''
+        }
+        metaImageSource={articleImageSource}
+      />
+      <ArticleStyles>
+        <ArticleMeta>
           <Container>
-            {articleIntro ? (
-              <div
-                className="article__intro"
-                dangerouslySetInnerHTML={{ __html: articleIntro }}
-              />
-            ) : (
-              ''
-            )}
-            {articleImage && (
-              <ArticleImageStyles>
-                <GatsbyImage image={articleImage} alt={articleImageAlt} />
-              </ArticleImageStyles>
-            )}
-
-            {articleBody}
-
-            <SocialShare
-              shareLink={shareLink}
-              twitterText={articleTitle}
-              whatsAppText={articleTitle}
-              linkedInTitle={articleTitle}
-              linkedInSummary={articleTitle}
-              emailSubject={articleTitle}
-              emailBody={articleTitle}
-            />
-
-            <h2>Filed Under:</h2>
-            <TagList>
-              {tags.map(tag => (
-                <li key={`list-item${tag.id}`}>
-                  <Link to={tag.path.alias} key={`link-to${tag.id}`}>
-                    {tag.name}
-                  </Link>
-                </li>
-              ))}
-            </TagList>
+            <p>Published: {articleCreated}</p>
           </Container>
-        </ArticleStyles>
-      </Layout>
-    </>
+        </ArticleMeta>
+
+        <Container paddingHorizontal>
+          <PageTitleContainer>
+            <h1>{articleTitle}</h1>
+          </PageTitleContainer>
+        </Container>
+
+        <Container>
+          {articleIntro ? (
+            <div
+              className="article__intro"
+              dangerouslySetInnerHTML={{ __html: articleIntro }}
+            />
+          ) : (
+            ''
+          )}
+          {articleImage && (
+            <ArticleImageStyles>
+              <GatsbyImage image={articleImage} alt={articleImageAlt} />
+            </ArticleImageStyles>
+          )}
+
+          {articleBody}
+
+          <SocialShare
+            shareLink={shareLink}
+            twitterText={articleTitle}
+            whatsAppText={articleTitle}
+            linkedInTitle={articleTitle}
+            linkedInSummary={articleTitle}
+            emailSubject={articleTitle}
+            emailBody={articleTitle}
+          />
+
+          <h2>Filed Under:</h2>
+          <TagList>
+            {tags.map(tag => (
+              <li key={`list-item${tag.id}`}>
+                <Link to={tag.path.alias} key={`link-to${tag.id}`}>
+                  {tag.name}
+                </Link>
+              </li>
+            ))}
+          </TagList>
+        </Container>
+      </ArticleStyles>
+    </Layout>
   )
 }

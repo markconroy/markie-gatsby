@@ -17,9 +17,11 @@ export default function SpeakingListingPage({ data }) {
   return (
     <Layout>
       <SEO title="Blog" />
-      <PageTitleContainer>
-        <h1>Speaking</h1>
-      </PageTitleContainer>
+      <Container>
+        <PageTitleContainer>
+          <h1>Speaking</h1>
+        </PageTitleContainer>
+      </Container>
       <Container>
         <p style={{ marginBottom: '4rem' }}>
           I speak about Frontend Development at lots of conferences around
@@ -27,15 +29,13 @@ export default function SpeakingListingPage({ data }) {
         </p>
         <CardListContainer>
           {cards.map(card => (
-            <>
-              <CardListItem cardListItemKey={card.node.id}>
-                <Card
-                  cardTitle={card.node.title}
-                  cardPath={card.node.path.alias}
-                  cardCreated={card.node.created}
-                />
-              </CardListItem>
-            </>
+            <CardListItem cardListItemKey={card.node.id}>
+              <Card
+                cardTitle={card.node.title}
+                cardPath={card.node.path.alias}
+                cardCreated={card.node.created}
+              />
+            </CardListItem>
           ))}
         </CardListContainer>
       </Container>
@@ -49,7 +49,7 @@ export const SpeakingListingPageQuery = graphql`
       edges {
         node {
           title
-          created(fromNow: true)
+          created(formatString: "LL")
           id
           path {
             alias

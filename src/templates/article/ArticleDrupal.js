@@ -53,36 +53,34 @@ export default function SingleArticlePageDrupal({
   }
 
   return (
-    <>
-      <SingleArticlePageTemplate
-        articleCreated={article.created}
-        articleTitle={article.title}
-        articleBody={postBody}
-        articleIntro={article.field_intro.value}
-        articleImage={
-          article.relationships?.field_main_image?.relationships
-            ?.field_m_image_image?.localFile
-            ? article.relationships.field_main_image.relationships
-                .field_m_image_image.localFile.childImageSharp.gatsbyImageData
-            : null
-        }
-        articleImageAlt={
-          article.relationships?.field_main_image?.field_m_image_image?.alt
-            ? article.relationships.field_main_image.field_m_image_image.alt
-            : null
-        }
-        articleImageSource={
-          article?.relationships?.field_main_image?.relationships
-            ?.field_m_image_image?.localFile.childImageSharp.gatsbyImageData
-        }
-        shareLink={location.href}
-        tags={
-          article?.relationships?.field_tags
-            ? article.relationships.field_tags
-            : null
-        }
-      />
-    </>
+    <SingleArticlePageTemplate
+      articleCreated={article.created}
+      articleTitle={article.title}
+      articleBody={postBody}
+      articleIntro={article.field_intro.value}
+      articleImage={
+        article.relationships?.field_main_image?.relationships
+          ?.field_m_image_image?.localFile
+          ? article.relationships.field_main_image.relationships
+              .field_m_image_image.localFile.childImageSharp.gatsbyImageData
+          : null
+      }
+      articleImageAlt={
+        article.relationships?.field_main_image?.field_m_image_image?.alt
+          ? article.relationships.field_main_image.field_m_image_image.alt
+          : null
+      }
+      articleImageSource={
+        article?.relationships?.field_main_image?.relationships
+          ?.field_m_image_image?.localFile.childImageSharp.gatsbyImageData
+      }
+      shareLink={location.href}
+      tags={
+        article?.relationships?.field_tags
+          ? article.relationships.field_tags
+          : null
+      }
+    />
   )
 }
 
@@ -90,7 +88,7 @@ export const query = graphql`
   query ($slug: String!) {
     article: nodeArticle(path: { alias: { eq: $slug } }) {
       title
-      created(fromNow: true)
+      created(formatString: "LL")
       id
       body {
         value

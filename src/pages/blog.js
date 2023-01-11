@@ -16,24 +16,24 @@ export default function BlogListingPage({ data }) {
   return (
     <Layout>
       <SEO title="Blog" />
-      <PageTitleContainer>
-        <h1>Blog</h1>
-      </PageTitleContainer>
+      <Container>
+        <PageTitleContainer>
+          <h1>Blog</h1>
+        </PageTitleContainer>
+      </Container>
       <Container>
         <p style={{ marginBottom: '4rem' }}>
           Read {cards.length} articles ... and counting!
         </p>
         <CardListContainer>
           {cards.map(card => (
-            <>
-              <CardListItem cardListItemKey={card.node.id}>
-                <Card
-                  cardTitle={card.node.title}
-                  cardPath={card.node.path.alias}
-                  cardCreated={card.node.created}
-                />
-              </CardListItem>
-            </>
+            <CardListItem cardListItemKey={card.node.id}>
+              <Card
+                cardTitle={card.node.title}
+                cardPath={card.node.path.alias}
+                cardCreated={card.node.created}
+              />
+            </CardListItem>
           ))}
         </CardListContainer>
       </Container>
@@ -47,7 +47,7 @@ export const BlogListingPageQuery = graphql`
       edges {
         node {
           title
-          created(fromNow: true)
+          created(formatString: "LL")
           id
           path {
             alias
