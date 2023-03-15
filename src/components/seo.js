@@ -40,6 +40,12 @@ function SEO({ description, lang, meta, title, metaImageSource }) {
       }}
       title={title}
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      link={[
+        {
+          href: `https://github.com/markconroy`,
+          rel: `me`,
+        },
+      ]}
       meta={[
         {
           name: `description`,
