@@ -45,6 +45,18 @@ function SEO({ description, lang, meta, title, metaImageSource }) {
           href: `https://github.com/markconroy`,
           rel: `me`,
         },
+        {
+          href: `https://twitter.com/markconroy`,
+          rel: `me`,
+        },
+        {
+          href: `href="https://webmention.io/mark.ie/webmention`,
+          rel: `webmention`,
+        },
+        {
+          href: `href="https://webmention.io/mark.ie/xmlrpc`,
+          rel: `pingback`,
+        },
       ]}
       meta={[
         {
