@@ -41,7 +41,7 @@ function HomePage() {
   return (
     <>
       <GlobalStyles />
-      <SEO title="Mark Conroy, Drupal and GatsbyJS" />
+      <SEO />
       <div className="layout-contained layout-contained--small padding-horizontal">
         <MainStyles>
           <div>

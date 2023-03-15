@@ -8,7 +8,7 @@ dotenv.config({
 const config = {
   siteMetadata: {
     title: `Markie`,
-    description: `Gatsby-based version of mark.ie by Mark Conroy.`,
+    description: `Mark Conroy. Frontend Developer. Drupal, Gatsby, and other open source technologies.`,
     author: `@markconroy`,
     siteUrl: `https://mark.ie`,
     metaImage: `mark-conroy.jpg`,

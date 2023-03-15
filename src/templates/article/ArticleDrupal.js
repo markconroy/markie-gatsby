@@ -10,7 +10,6 @@ export default function SingleArticlePageDrupal({
 }) {
   const articleBody = article.body.processed
   let postBody = <div dangerouslySetInnerHTML={{ __html: articleBody }} />
-
   const regexpMedia = /data-media-id="(\d+)"/gm
   const matchesMedia = [...articleBody.matchAll(regexpMedia)]
   const imageMediaIds = matchesMedia.map(match => parseInt(match[1]))
@@ -73,6 +72,7 @@ export default function SingleArticlePageDrupal({
       articleImageSource={
         article?.relationships?.field_main_image?.relationships
           ?.field_m_image_image?.localFile.childImageSharp.gatsbyImageData
+          .images.fallback.src || 'https://mark.ie/mark-conroy.jpg'
       }
       shareLink={location.href}
       tags={
@@ -105,6 +105,7 @@ export const query = graphql`
           relationships {
             field_m_image_image {
               localFile {
+                relativePath
                 childImageSharp {
                   gatsbyImageData(
                     layout: FULL_WIDTH

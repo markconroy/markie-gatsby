@@ -15,7 +15,12 @@ export default function BlogListingPage({ data }) {
   const cards = data.articles.edges
   return (
     <Layout>
-      <SEO title="Blog" />
+      <SEO
+        title="Blog"
+        description={
+          " Mark Conroy's blog about Drupal, Gatsby, and other open source technologies"
+        }
+      />
       <Container>
         <PageTitleContainer>
           <h1>Blog</h1>
