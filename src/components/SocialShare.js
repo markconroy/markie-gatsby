@@ -126,6 +126,11 @@ export default function SocialShare({
       <p>
         Why not <a href="https://markie.eo.page/xrpd5">join my mailing list</a>?
       </p>
+      <script
+        async
+        src="https://eocampaign1.com/form/d8730bd4-c81c-11ed-9794-af315f113760.js"
+        data-form="d8730bd4-c81c-11ed-9794-af315f113760"
+      />
     </SocialShareStyles>
   )
 }

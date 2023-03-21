@@ -22,7 +22,7 @@ const LayoutContainerStyles = styled.div`
     padding-bottom: 4rem;
   }
 `
-const Layout = ({ children }) => {
+function Layout({ children }) {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
