@@ -45,14 +45,9 @@ export default function MenuItems() {
         </Link>
       </li>
       <li>
-        <Link
-          className="menu-link"
-          activeClassName="menu-link--active"
-          to="https://fun.mark.ie"
-          partiallyActive
-        >
+        <a className="menu-link" href="https://fun.mark.ie" partiallyActive>
           Fun
-        </Link>
+        </a>
       </li>
     </ul>
   )
