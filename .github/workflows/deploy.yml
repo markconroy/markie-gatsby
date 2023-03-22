@@ -27,6 +27,8 @@ jobs:
           GATSBY_DRUPAL_SOURCE: ${{ secrets.GATSBY_DRUPAL_SOURCE }}
           BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
           BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
+          list_id: ${{ secrets.list_id }}
+          email_octopus_api_key: ${{ secrets.email_octopus_api_key }}
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           deploy-branch: gh-pages
