@@ -32,10 +32,13 @@ const SocialShareStyles = styled.div`
     }
   }
 
-  ul {
+  .social-sharing__list {
     display: flex;
     margin: 0;
     padding: 0;
+  }
+  .social-sharing__list + .social-sharing__mailing-list {
+    margin-top: var(--base-spacing);
   }
 
   li {
@@ -52,8 +55,20 @@ const SocialShareStyles = styled.div`
     }
   }
 `
+const JoinMailingList = styled.div`
+  a {
+    background: var(--color-secondary);
+    color: var(--color-white);
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    padding: var(--base-spacing);
+  }
+`
 
 export default function SocialShare({
+  withShareLinks,
+  withMailingList,
   twitterText,
   whatsAppText,
   linkedInTitle,
@@ -65,67 +80,79 @@ export default function SocialShare({
   const URL = shareLink
   return (
     <SocialShareStyles className="social-sharing">
-      <h2>Share (please)</h2>
-      <ul>
-        <li>
-          <a
-            href={`https://twitter.com/intent/tweet/?text=${twitterText} by @markconroy%0a%0a&url=${URL}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <TwitterIcon />
-            <span className="visually-hidden">Share via Twitter</span>
-          </a>
-        </li>
+      {withShareLinks ? (
+        <>
+          <h2>Share (please)</h2>
+          <ul className="social-sharing__list">
+            <li>
+              <a
+                href={`https://twitter.com/intent/tweet/?text=${twitterText} by @markconroy%0a%0a&url=${URL}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <TwitterIcon />
+                <span className="visually-hidden">Share via Twitter</span>
+              </a>
+            </li>
 
-        <li>
-          <a
-            href={`https://facebook.com/sharer/sharer.php?u=${URL}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FacebookIcon />
-            <span className="visually-hidden">Share via Facebook</span>
-          </a>
-        </li>
+            <li>
+              <a
+                href={`https://facebook.com/sharer/sharer.php?u=${URL}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FacebookIcon />
+                <span className="visually-hidden">Share via Facebook</span>
+              </a>
+            </li>
 
-        <li>
-          <a
-            href={`https://www.linkedin.com/shareArticle?mini=true&url=${URL}&amp;title=${linkedInTitle}&summary=${linkedInSummary}&source=${URL}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <LinkedInIcon />
-            <span className="visually-hidden">Share via LinkedIn</span>
-          </a>
-        </li>
+            <li>
+              <a
+                href={`https://www.linkedin.com/shareArticle?mini=true&url=${URL}&amp;title=${linkedInTitle}&summary=${linkedInSummary}&source=${URL}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <LinkedInIcon />
+                <span className="visually-hidden">Share via LinkedIn</span>
+              </a>
+            </li>
 
-        <li>
-          <a
-            href={`whatsapp://send?text=Checkout%20this%20article%20by%20Mark%20Conroy.%0a%0a${whatsAppText}%0a%0a${URL}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <WhatsAppIcon />
-            <span className="visually-hidden">Share via Whatsapp</span>
-          </a>
-        </li>
+            <li>
+              <a
+                href={`whatsapp://send?text=Checkout%20this%20article%20by%20Mark%20Conroy.%0a%0a${whatsAppText}%0a%0a${URL}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <WhatsAppIcon />
+                <span className="visually-hidden">Share via Whatsapp</span>
+              </a>
+            </li>
 
-        <li>
-          <a
-            href={`mailto:?subject=${emailSubject}&body=${emailBody} - ${URL}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <EmailIcon />
-            <span className="visually-hidden">Share via Email</span>
+            <li>
+              <a
+                href={`mailto:?subject=${emailSubject}&body=${emailBody} - ${URL}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <EmailIcon />
+                <span className="visually-hidden">Share via Email</span>
+              </a>
+            </li>
+          </ul>
+        </>
+      ) : (
+        ''
+      )}
+
+      {withMailingList ? (
+        <JoinMailingList className="social-sharing__mailing-list">
+          <a href="https://markie.eo.page/xrpd5">
+            Join the Markie Mailing List
           </a>
-        </li>
-      </ul>
-      <h2>Liked this?</h2>
-      <p>
-        Why not <a href="https://markie.eo.page/xrpd5">join my mailing list</a>?
-      </p>
+        </JoinMailingList>
+      ) : (
+        ''
+      )}
     </SocialShareStyles>
   )
 }
