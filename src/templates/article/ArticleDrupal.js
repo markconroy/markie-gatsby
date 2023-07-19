@@ -4,17 +4,15 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
 import SingleArticlePageTemplate from './ArticleTemplate'
 
-export default function SingleArticlePageDrupal({
-  data: { article, inlineMediaVideoResults, inlineMediaImageResults },
-  location,
-}) {
-  const articleBody = article.body.processed
-  let postBody = <div dangerouslySetInnerHTML={{ __html: articleBody }} />
+let postBody
+
+function generateArticleBody(articleContent, inlineImages) {
+  const articleBody = articleContent.body.processed
   const regexpMedia = /data-media-id="(\d+)"/gm
   const matchesMedia = [...articleBody.matchAll(regexpMedia)]
   const imageMediaIds = matchesMedia.map(match => parseInt(match[1]))
 
-  const bodyMediaImages = inlineMediaImageResults.edges
+  const bodyMediaImages = inlineImages.edges
     .filter(item => {
       if (imageMediaIds.includes(item.node.drupal_internal__mid)) {
         return item.node.drupal_internal__mid
@@ -49,13 +47,22 @@ export default function SingleArticlePageDrupal({
         }
       },
     })
+  } else {
+    postBody = <div dangerouslySetInnerHTML={{ __html: articleBody }} />
   }
 
+  return postBody
+}
+
+export default function SingleArticlePageDrupal({
+  data: { article, inlineMediaVideoResults, inlineMediaImageResults },
+  location,
+}) {
   return (
     <SingleArticlePageTemplate
       articleCreated={article.created}
       articleTitle={article.title}
-      articleBody={postBody}
+      articleBody={generateArticleBody(article, inlineMediaImageResults)}
       articleIntro={article.field_intro.value}
       articleImage={
         article.relationships?.field_main_image?.relationships
