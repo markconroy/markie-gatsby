@@ -56,13 +56,35 @@ const SocialShareStyles = styled.div`
   }
 `
 const JoinMailingList = styled.div`
+  @keyframes mailingList {
+    0% {
+      background-color: var(--color-secondary);
+      border-radius: 0;
+    }
+    50% {
+      background-color: var(--color-primary);
+      border-radius: 10px;
+    }
+    100% {
+      background-color: var(--color-secondary);
+      border-radius: 0;
+    }
+  }
   a {
-    background: var(--color-secondary);
+    background-color: var(--color-secondary);
     color: var(--color-white);
     font-weight: bold;
     text-align: center;
     display: block;
     padding: var(--base-spacing);
+    animation: mailingList 20s infinite;
+    text-decoration: underline;
+  }
+  a:hover,
+  a:focus {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    text-decoration: none;
   }
 `
 
