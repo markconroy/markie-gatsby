@@ -18,7 +18,7 @@ const GlobalStyles = createGlobalStyle`
 
     /* Vertical Rhythm */
     --base-font-size: 16px;
-    --base-line-height: 1.5; 
+    --base-line-height: 1.5;
     --base-spacing: 1.5rem;
 
     /* Breakpoints */
@@ -43,13 +43,13 @@ const GlobalStyles = createGlobalStyle`
   *::after {
     box-sizing: border-box;
   }
-  
+
   html {
     font-size: var(--base-font-size);
     line-height: var(--base-line-height);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
-  
+
   body {
     margin: 0;
   }
@@ -186,6 +186,10 @@ const GlobalStyles = createGlobalStyle`
     position: absolute;
     white-space: nowrap;
     width: 1px;
+  }
+
+  iframe {
+    max-width: 100%;
   }
 
 `
