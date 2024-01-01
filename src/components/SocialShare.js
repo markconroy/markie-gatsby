@@ -28,7 +28,7 @@ const SocialShareStyles = styled.div`
     width: 1.5rem;
     height: auto;
     path {
-      fill: var(--color-secondary);
+      fill: var(--color-primary);
     }
   }
 
@@ -51,27 +51,27 @@ const SocialShareStyles = styled.div`
   a:hover,
   a:focus {
     svg path {
-      fill: var(--color-primary);
+      fill: var(--color-secondary);
     }
   }
 `
 const JoinMailingList = styled.div`
   @keyframes mailingList {
     0% {
-      background-color: var(--color-secondary);
+      background-color: var(--color-primary);
       border-radius: 0;
     }
     50% {
-      background-color: var(--color-primary);
+      background-color: var(--color-secondary);
       border-radius: 10px;
     }
     100% {
-      background-color: var(--color-secondary);
+      background-color: var(--color-primary);
       border-radius: 0;
     }
   }
   a {
-    background-color: var(--color-secondary);
+    background-color: var(--color-primary);
     color: var(--color-white);
     font-weight: bold;
     text-align: center;

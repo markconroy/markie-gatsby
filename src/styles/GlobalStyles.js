@@ -3,10 +3,10 @@ import { createGlobalStyle } from 'styled-components'
 const GlobalStyles = createGlobalStyle`
   :root {
     /* Colours */
-    --color-primary: hsl(200,100%,30%);
+    --color-primary: hsl(220, 70%, 60%);
     --color-primary--light: hsl(200,100%,40%);
     --color-primary--dark: hsl(200,100%,20%);
-    --color-secondary: hsl(330,75%,45%);
+    --color-secondary: hsl(23, 90%, 55%);
     --color-secondary--light: hsl(330,75%,55%);
     --color-secondary--dark: hsl(330,75%,35%);
     --color-white: hsl(0,0%,100%);
@@ -14,7 +14,7 @@ const GlobalStyles = createGlobalStyle`
     --color-grey--light: hsl(0,0%,75%);
     --color-grey--dark: hsl(75,15%,15%);
     --color-black: hsl(0,0%,0%);
-    --color-border: var(--color-secondary);
+    --color-border: var(--color-primary);
 
     /* Vertical Rhythm */
     --base-font-size: 16px;
@@ -77,7 +77,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   a {
-    color: var(--color-secondary);
+    color: var(--color-primary);
     border-bottom: 2px dashed var(--color-grey--dark);
     display: inline-block;
     line-height: 1.1;
@@ -89,7 +89,7 @@ const GlobalStyles = createGlobalStyle`
       border-bottom-style: solid;
     }
     &:focus {
-      outline: 2px dashed var(--color-secondary);
+      outline: 2px dashed var(--color-primary);
       outline-offset: 2px;
     }
     &:hover {

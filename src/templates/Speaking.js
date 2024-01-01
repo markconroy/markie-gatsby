@@ -13,7 +13,7 @@ import SocialShare from '../components/SocialShare'
 
 const ArticleStyles = styled.article`
   a {
-    color: var(--color-secondary);
+    color: var(--color-primary);
   }
   h2,
   h3 {

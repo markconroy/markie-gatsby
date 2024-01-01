@@ -9,7 +9,7 @@ import PageTitleContainer from '../styles/PageTitleContainer'
 
 const ArticleStyles = styled.article`
   a {
-    color: var(--color-secondary);
+    color: var(--color-primary);
   }
 `
 

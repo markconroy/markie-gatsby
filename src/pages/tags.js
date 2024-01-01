@@ -17,7 +17,7 @@ const TagsListStyles = styled.ul`
   padding: 0;
   list-style: none;
   a {
-    color: var(--color-primary);
+    color: var(--color-secondary);
     border-bottom-color: transparent;
   }
   a:focus,
@@ -36,7 +36,7 @@ const TagsListStyles = styled.ul`
     margin: 1rem;
   }
   li:nth-of-type(2n + 2) a {
-    color: var(--color-secondary);
+    color: var(--color-primary);
   }
   li:nth-of-type(3n + 3) a {
     color: var(--color-grey-dark);

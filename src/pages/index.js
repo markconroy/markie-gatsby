@@ -46,7 +46,10 @@ function HomePage() {
         <MainStyles>
           <div>
             <h1>Hi! I'm Mark Conroy.</h1>
-            <p>I'm a frontend developer.</p>
+            <p>
+              A frontend architect, interested in design systems, web
+              components, and Drupal.
+            </p>
             <p>
               I keep <a href="/blog">a blog</a>.
             </p>
