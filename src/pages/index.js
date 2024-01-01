@@ -46,10 +46,12 @@ function HomePage() {
         <MainStyles>
           <div>
             <h1>Hi! I'm Mark Conroy.</h1>
+            <hr />
             <p>
               A frontend architect, interested in design systems, web
               components, and Drupal.
             </p>
+            <hr />
             <p>
               I keep <a href="/blog">a blog</a>.
             </p>
@@ -60,6 +62,7 @@ function HomePage() {
               And I have a pretty cool{' '}
               <a href="https://markie.eo.page/xrpd5">mailing list</a>.
             </p>
+            <hr />
             <MenuStyles treated>
               <MenuItems />
             </MenuStyles>
