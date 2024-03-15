@@ -5,7 +5,10 @@ const PageTitleContainer = styled.div`
   align-items: center;
   margin-bottom: var(--element-spacing-vertical);
   h1 {
-    color: var(--color-grey--dark);
+    color: var(--color-primary--dark);
+    border: 4px solid var(--color-primary--dark);
+    padding: var(--base-spacing);
+    padding: var(--base-spacing);
   }
   ${props =>
     props.noMarginBottom &&
