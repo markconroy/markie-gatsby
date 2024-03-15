@@ -114,11 +114,11 @@ const GlobalStyles = createGlobalStyle`
   }
 
   code {
-    background: #c9fffa;
+    background: var(--color-primary);
     padding: 0 .5rem;
     color: black;
     display: inline-block;
-    outline: 1px solid black;
+    outline: 1px solid var(--color-primary--dark);
   }
 
   /* Utility Classes */
