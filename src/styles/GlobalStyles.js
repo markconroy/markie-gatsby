@@ -114,7 +114,6 @@ const GlobalStyles = createGlobalStyle`
   }
 
   code {
-    background: var(--color-primary);
     padding: 0 .5rem;
     color: black;
     display: inline-block;
