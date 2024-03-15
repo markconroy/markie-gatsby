@@ -113,6 +113,14 @@ const GlobalStyles = createGlobalStyle`
     border-radius: var(--border-radius);
   }
 
+  code {
+    background: #c9fffa;
+    padding: 0 .5rem;
+    color: black;
+    display: inline-block;
+    outline: 1px solid black;
+  }
+
   /* Utility Classes */
 
   /* Layout Classes */
