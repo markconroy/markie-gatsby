@@ -32,6 +32,7 @@ const GlobalStyles = createGlobalStyle`
     --bp-super: 90rem; // 1440px
 
     /* Extras */
+    --transition-time: 0.3s;
     --border-radius: 5px;
     --box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
     --text-shadow: 2px 2px 0 var(--color-black);
@@ -58,6 +59,15 @@ const GlobalStyles = createGlobalStyle`
     position: relative;
     z-index: 1;
     background-color: var(--color-white);
+  }
+
+  h1, .h1,
+  h2, .h2,
+  h3, .h3,
+  h4, .h4,
+  h5, .h5,
+  h6, .h6 {
+    color: var(--color-primary--dark);
   }
 
   h1, .h1 {
@@ -93,7 +103,7 @@ const GlobalStyles = createGlobalStyle`
       outline-offset: 2px;
     }
     &:hover {
-      transition: 0.3s;
+      transition: var(--transition-time);
     }
   }
 

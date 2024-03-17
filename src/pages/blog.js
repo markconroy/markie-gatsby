@@ -27,9 +27,6 @@ export default function BlogListingPage({ data }) {
         </PageTitleContainer>
       </Container>
       <Container>
-        <p style={{ marginBottom: '4rem' }}>
-          Read {cards.length} articles ... and counting!
-        </p>
         <CardListContainer>
           {cards.map(card => (
             <CardListItem cardListItemKey={card.node.id}>

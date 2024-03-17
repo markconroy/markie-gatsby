@@ -16,8 +16,8 @@ const ArticleStyles = styled.article`
   .article__intro {
     margin-bottom: var(--element-spacing-vertical);
     line-height: 1.75;
-    border: 2px solid var(--color-grey--dark);
-    border-left: 1rem solid var(--color-grey--dark);
+    border: 2px solid var(--color-primary--dark);
+    border-left: 1rem solid var(--color-primary--dark);
     padding: 0.5rem 3rem;
     * {
       font-size: clamp(1.5rem, 5vw, 2rem);

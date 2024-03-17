@@ -8,12 +8,15 @@ const CardStyles = styled.article`
   > a {
     display: block;
     padding: 1rem 2rem;
-    border-bottom: 0;
-    border-left: 5px solid var(--color-grey--dark);
-    color: var(--color-grey--dark);
+    color: var(--color-white);
     text-decoration: none;
+    background-color: var(--color-primary--dark);
+    > h2 {
+      color: var(--color-white);
+    }
     &:hover,
     &:focus {
+      color: var(--color-white);
       h2 {
         text-decoration: underline;
       }

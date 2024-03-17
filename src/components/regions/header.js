@@ -5,11 +5,7 @@ import MenuStyles from '../menu'
 import MenuItems from '../menu-items'
 
 const HeaderStyles = styled.header`
-  position: sticky;
-  top: 0;
-  padding-top: 3rem;
-  padding-bottom: 2rem;
-  background-color: var(--color-grey--dark);
+  background-color: var(--color-primary--dark);
 `
 
 const Logo = styled.p`
@@ -39,19 +35,21 @@ const HeaderInnerStyles = styled.div`
   justify-content: space-between;
 `
 
-const Header = ({ siteTitle }) => (
-  <HeaderStyles>
-    <div className="layout-contained padding-horizontal">
-      <HeaderInnerStyles>
-        <Logo>
-          <Link to="/">{siteTitle}</Link>
-        </Logo>
-        <MenuStyles>
-          <MenuItems />
-        </MenuStyles>
-      </HeaderInnerStyles>
-    </div>
-  </HeaderStyles>
-)
+function Header({ siteTitle }) {
+  return (
+    <HeaderStyles>
+      <div className="layout-contained padding-horizontal">
+        <HeaderInnerStyles>
+          <Logo>
+            <Link to="/">{siteTitle}</Link>
+          </Logo>
+          <MenuStyles>
+            <MenuItems />
+          </MenuStyles>
+        </HeaderInnerStyles>
+      </div>
+    </HeaderStyles>
+  )
+}
 
 export default Header

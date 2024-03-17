@@ -11,10 +11,7 @@ import {
 } from './icons'
 
 const SocialShareStyles = styled.div`
-  margin-top: 3rem;
-  padding: 2rem;
-  border: 1px solid var(--color-grey--dark);
-  border-left: 5px solid var(--color-grey--dark);
+  margin: 3rem;
   h2 {
     margin-top: 0;
     font-size: 1rem;
@@ -22,7 +19,7 @@ const SocialShareStyles = styled.div`
   h2 ~ h2 {
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px solid var(--color-grey--dark);
+    border-top: 1px solid var(--color-primary--dark);
   }
   svg {
     width: 1.5rem;
@@ -59,26 +56,39 @@ const JoinMailingList = styled.div`
   @keyframes mailingList {
     0% {
       background-color: var(--color-primary);
-      border-radius: 0;
     }
     50% {
       background-color: var(--color-secondary);
-      border-radius: 10px;
     }
     100% {
       background-color: var(--color-primary);
-      border-radius: 0;
     }
   }
   a {
+    position: relative;
     background-color: var(--color-primary);
     color: var(--color-white);
+    font-size: 2rem;
     font-weight: bold;
     text-align: center;
     display: block;
+    border: 2px solid var(--color-white);
     padding: var(--base-spacing);
     animation: mailingList 20s infinite;
     text-decoration: underline;
+  }
+  a::before {
+    position: absolute;
+    z-index: -1;
+    align-self: start;
+    content: '';
+    width: calc(100% - 2rem);
+    height: calc(100% - 2rem);
+    left: 3rem;
+    bottom: -0.5rem;
+    animation: mailingList 20s infinite;
+    background-color: var(--color-primary);
+    transform: rotate(-3deg);
   }
   a:hover,
   a:focus {
