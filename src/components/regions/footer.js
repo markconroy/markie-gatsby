@@ -1,18 +1,19 @@
-import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 
 const FooterStyles = styled.footer`
   margin-top: auto;
   padding: 2rem 0;
-  background-color: var(--color-primary);
+  background-color: var(--color-grey--dark);
   a {
     color: var(--color-white);
     border-bottom-color: transparent;
     &:hover {
+      color: var(--color-white);
       border-bottom-color: var(--color-white);
     }
     &:focus {
+      color: var(--color-white);
       outline-color: var(--color-white);
     }
   }
@@ -28,25 +29,33 @@ const FooterStyles = styled.footer`
   }
 `
 
-const Footer = () => (
-  <FooterStyles>
-    <div className="layout-contained padding-horizontal">
-      <ul style={{ margin: 0 }}>
-        <li>
-          <Link to="https://twitter.com/markconroy">Twitter</Link>
-        </li>
-        <li>
-          <Link to="https://github.com/markconroy">Github</Link>
-        </li>
-        <li>
-          <Link to="https://www.drupal.org/u/markconroy">Drupal</Link>
-        </li>
-        <li>
-          <Link to="https://www.linkedin.com/in/conroymark">LinkedIn</Link>
-        </li>
-      </ul>
-    </div>
-  </FooterStyles>
-)
+function Footer() {
+  return (
+    <FooterStyles>
+      <div className="layout-contained padding-horizontal">
+        <ul style={{ margin: 0 }}>
+          <li>
+            <a href="https://markie.eo.page/xrpd5">Mailing List</a>
+          </li>
+          <li>
+            <a href="https://twitter.com/markconroy">Twitter</a>
+          </li>
+          <li>
+            <a href="https://github.com/markconroy">Github</a>
+          </li>
+          <li>
+            <a href="https://www.drupal.org/u/markconroy">Drupal</a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/conroymark">LinkedIn</a>
+          </li>
+          <li>
+            <a href="https://mastodon.ie/@markconroy">Mastodon</a>
+          </li>
+        </ul>
+      </div>
+    </FooterStyles>
+  )
+}
 
 export default Footer

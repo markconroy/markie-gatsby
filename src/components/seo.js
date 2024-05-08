@@ -30,8 +30,9 @@ function SEO({ description, lang, meta, title, metaImageSource }) {
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = 'Mark Conroy'
   const metaImage =
-    `${site.siteMetadata.siteUrl}/${metaImageSource}` ||
-    `${site.siteMetadata.siteUrl}/${site.siteMetadata.metaImage}`
+    metaImageSource === undefined
+      ? `${site.siteMetadata.siteUrl}/${site.siteMetadata.metaImage}`
+      : `${site.siteMetadata.siteUrl}/${metaImageSource}`
 
   return (
     <Helmet
@@ -40,6 +41,24 @@ function SEO({ description, lang, meta, title, metaImageSource }) {
       }}
       title={title}
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      link={[
+        {
+          href: `https://github.com/markconroy`,
+          rel: `me`,
+        },
+        {
+          href: `https://twitter.com/markconroy`,
+          rel: `me`,
+        },
+        {
+          href: `href="https://webmention.io/mark.ie/webmention`,
+          rel: `webmention`,
+        },
+        {
+          href: `href="https://webmention.io/mark.ie/xmlrpc`,
+          rel: `pingback`,
+        },
+      ]}
       meta={[
         {
           name: `description`,

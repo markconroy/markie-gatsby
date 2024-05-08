@@ -9,30 +9,33 @@ import {
   CardListItem,
 } from '../components/list-types/card-list'
 import Card from '../components/display-types/card'
+import PageTitleContainer from '../styles/PageTitleContainer'
 
 export default function SpeakingListingPage({ data }) {
   const cards = data.speakingPosts.edges
+
   return (
     <Layout>
       <SEO title="Blog" />
       <Container>
-        <h1>Speaking</h1>
-
+        <PageTitleContainer>
+          <h1>Speaking</h1>
+        </PageTitleContainer>
+      </Container>
+      <Container>
         <p style={{ marginBottom: '4rem' }}>
-          I speak about Frontend Development and Approaches to Frontend
-          Development at lots of conferences around Europe.
+          I speak about Frontend Development at lots of conferences around
+          Europe.
         </p>
         <CardListContainer>
           {cards.map(card => (
-            <>
-              <CardListItem cardListItemKey={card.node.id}>
-                <Card
-                  cardTitle={card.node.title}
-                  cardPath={card.node.path.alias}
-                  cardCreated={card.node.created}
-                />
-              </CardListItem>
-            </>
+            <CardListItem cardListItemKey={card.node.id}>
+              <Card
+                cardTitle={card.node.title}
+                cardPath={card.node.path.alias}
+                cardCreated={card.node.created}
+              />
+            </CardListItem>
           ))}
         </CardListContainer>
       </Container>
@@ -42,11 +45,11 @@ export default function SpeakingListingPage({ data }) {
 
 export const SpeakingListingPageQuery = graphql`
   query SpeakingistingQuery {
-    speakingPosts: allNodeSpeaking(sort: { fields: created, order: DESC }) {
+    speakingPosts: allNodeSpeaking(sort: { created: DESC }) {
       edges {
         node {
           title
-          created(fromNow: true)
+          created(formatString: "LL")
           id
           path {
             alias

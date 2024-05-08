@@ -1,100 +1,105 @@
-import React, { useEffect } from 'react'
-import { renderToString } from 'react-dom/server'
+import React from 'react'
 import { graphql } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import parse from 'html-react-parser'
 import SingleArticlePageTemplate from './ArticleTemplate'
-import InlineMedia from '../../components/media/InlineMedia'
+
+let postBody
+
+function generateArticleBody(articleContent, inlineImages) {
+  const articleBody = articleContent.body.processed
+  const regexpMedia = /data-media-id="(\d+)"/gm
+  const matchesMedia = [...articleBody.matchAll(regexpMedia)]
+  const imageMediaIds = matchesMedia.map(match => parseInt(match[1]))
+
+  const bodyMediaImages = inlineImages.edges
+    .filter(item => {
+      if (imageMediaIds.includes(item.node.drupal_internal__mid)) {
+        return item.node.drupal_internal__mid
+      }
+    })
+    .map(item => item.node)
+
+  if (bodyMediaImages) {
+    postBody = parse(articleBody, {
+      replace: domNode => {
+        if (
+          domNode.attribs &&
+          domNode.attribs['data-media-source'] === 'image'
+        ) {
+          const imageData = bodyMediaImages.filter(
+            item =>
+              item.drupal_internal__mid ===
+              parseInt(domNode.attribs['data-media-id'])
+          )
+          if (imageData) {
+            return (
+              <GatsbyImage
+                image={
+                  imageData[0].relationships.field_m_image_image.localFile
+                    .childImageSharp.gatsbyImageData
+                }
+                alt={imageData[0].field_m_image_image.alt}
+                key={imageData[0].drupal_id}
+              />
+            )
+          }
+        }
+      },
+    })
+  } else {
+    postBody = <div dangerouslySetInnerHTML={{ __html: articleBody }} />
+  }
+
+  return postBody
+}
 
 export default function SingleArticlePageDrupal({
-  data: { article, inlineMediaResults },
+  data: { article, inlineMediaVideoResults, inlineMediaImageResults },
+  location,
 }) {
-  useEffect(() => {
-    const inlineMedia = document.querySelectorAll('drupal-media')
-    const inlineMediaImages =
-      inlineMediaResults.edges[1].node.relationships.media__image
-    const inlineMediaVideos =
-      inlineMediaResults.edges[2].node.relationships.media__video
-
-    if (inlineMedia) {
-      inlineMedia.forEach(inlineMediaItem => {
-        const inlineMediaItemId = inlineMediaItem.dataset.entityUuid
-        const inlineMediaImage = inlineMediaImages.filter(
-          item => item.drupal_id === inlineMediaItemId
-        )
-        const inlineMediaVideo = inlineMediaVideos.filter(
-          item => item.drupal_id === inlineMediaItemId
-        )
-
-        if (inlineMediaImage.length) {
-          const inlineMediaItemHTML = renderToString(
-            <InlineMedia
-              mediaType="image"
-              inlineImageSource={
-                inlineMediaImage[0].relationships.field_m_image_image.localFile
-                  .childImageSharp.fluid
-              }
-              inlineImageAlt={inlineMediaImage[0].field_m_image_image.alt}
-              mediaId={inlineMediaItemId}
-            />
-          )
-          return `${(inlineMediaItem.innerHTML = inlineMediaItemHTML)}`
-        }
-        if (inlineMediaVideo.length) {
-          const inlineMediaItemHTML = renderToString(
-            <InlineMedia
-              mediaType="video"
-              videoUrl={`https://www.youtube.com/embed/${inlineMediaVideo[0].field_media_video_embed_field
-                .split('=')
-                .pop()}`}
-              mediaId={inlineMediaItemId}
-            />
-          )
-          return `${(inlineMediaItem.innerHTML = inlineMediaItemHTML)}`
-        }
-      })
-    }
-  })
-
   return (
-    <>
-      <SingleArticlePageTemplate
-        articleCreated={article.created}
-        articleTitle={article.title}
-        articleBody={article.body.value}
-        articleIntro={article.field_intro.value}
-        articleImage={
-          article.relationships?.field_main_image?.relationships
-            ?.field_m_image_image?.localFile
-            ? article.relationships.field_main_image.relationships
-                .field_m_image_image.localFile.childImageSharp.fluid
-            : null
-        }
-        articleImageAlt={
-          article.relationships?.field_main_image?.field_m_image_image?.alt
-            ? article.relationships.field_main_image.field_m_image_image.alt
-            : null
-        }
-        articleImageSource={
-          article?.relationships?.field_main_image?.relationships
-            ?.field_m_image_image?.localFile.childImageSharp.fluid.src
-        }
-        tags={
-          article?.relationships?.field_tags
-            ? article.relationships.field_tags
-            : null
-        }
-      />
-    </>
+    <SingleArticlePageTemplate
+      articleCreated={article.created}
+      articleTitle={article.title}
+      articleBody={generateArticleBody(article, inlineMediaImageResults)}
+      articleIntro={article.field_intro.value}
+      articleImage={
+        article.relationships?.field_main_image?.relationships
+          ?.field_m_image_image?.localFile
+          ? article.relationships.field_main_image.relationships
+              .field_m_image_image.localFile.childImageSharp.gatsbyImageData
+          : null
+      }
+      articleImageAlt={
+        article.relationships?.field_main_image?.field_m_image_image?.alt
+          ? article.relationships.field_main_image.field_m_image_image.alt
+          : null
+      }
+      articleImageSource={
+        article?.relationships?.field_main_image?.relationships
+          ?.field_m_image_image?.localFile.childImageSharp.gatsbyImageData
+          .images.fallback.src || 'https://mark.ie/mark-conroy.jpg'
+      }
+      shareLink={location.href}
+      tags={
+        article?.relationships?.field_tags
+          ? article.relationships.field_tags
+          : null
+      }
+    />
   )
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     article: nodeArticle(path: { alias: { eq: $slug } }) {
       title
-      created(fromNow: true)
+      created(formatString: "LL")
       id
       body {
         value
+        processed
       }
       field_intro {
         value
@@ -107,10 +112,12 @@ export const query = graphql`
           relationships {
             field_m_image_image {
               localFile {
+                relativePath
                 childImageSharp {
-                  fluid(maxWidth: 600) {
-                    ...GatsbyImageSharpFluid
-                  }
+                  gatsbyImageData(
+                    layout: FULL_WIDTH
+                    placeholder: DOMINANT_COLOR
+                  )
                 }
               }
             }
@@ -125,34 +132,30 @@ export const query = graphql`
         }
       }
     }
-    inlineMediaResults: allMediaTypeMediaType {
+    inlineMediaVideoResults: allMediaVideo {
       edges {
         node {
+          field_media_video_embed_field
+          name
           id
+          drupal_id
+        }
+      }
+    }
+    inlineMediaImageResults: allMediaImage {
+      edges {
+        node {
+          drupal_internal__mid
+          field_m_image_image {
+            alt
+          }
           relationships {
-            media__image {
-              id
-              drupal_id
-              field_m_image_image {
-                alt
-              }
-              relationships {
-                field_m_image_image {
-                  localFile {
-                    childImageSharp {
-                      fluid(maxWidth: 600) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
+            field_m_image_image {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(width: 600, placeholder: BLURRED)
                 }
               }
-            }
-            media__video {
-              drupal_id
-              id
-              name
-              field_media_video_embed_field
             }
           }
         }

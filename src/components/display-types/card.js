@@ -4,21 +4,19 @@ import styled from 'styled-components'
 
 const CardStyles = styled.article`
   width: 100%;
-  a {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 0 2rem;
+  max-width: 700px;
+  > a {
+    display: block;
+    padding: 1rem 2rem;
     color: var(--color-white);
-    background-color: var(--color-secondary);
     text-decoration: none;
+    background-color: var(--color-primary--dark);
+    > h2 {
+      color: var(--color-white);
+    }
     &:hover,
     &:focus {
-      background-color: var(--color-primary);
-      h2,
-      p {
-        color: var(--color-white);
-      }
+      color: var(--color-white);
       h2 {
         text-decoration: underline;
       }

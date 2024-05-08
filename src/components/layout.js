@@ -7,6 +7,7 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Header from './regions/header'
@@ -18,10 +19,10 @@ const LayoutContainerStyles = styled.div`
   min-height: 100vh;
   flex-direction: column;
   > *:nth-last-child(2) {
-    margin-bottom: 4rem;
+    padding-bottom: 4rem;
   }
 `
-const Layout = ({ children }) => {
+function Layout({ children }) {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {

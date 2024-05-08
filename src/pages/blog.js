@@ -9,28 +9,33 @@ import {
   CardListItem,
 } from '../components/list-types/card-list'
 import Card from '../components/display-types/card'
+import PageTitleContainer from '../styles/PageTitleContainer'
 
 export default function BlogListingPage({ data }) {
   const cards = data.articles.edges
   return (
     <Layout>
-      <SEO title="Blog" />
+      <SEO
+        title="Blog"
+        description={
+          " Mark Conroy's blog about Drupal, Gatsby, and other open source technologies"
+        }
+      />
       <Container>
-        <h1>Blog</h1>
-        <p style={{ marginBottom: '4rem' }}>
-          Read {cards.length} articles ... and counting!
-        </p>
+        <PageTitleContainer>
+          <h1>Blog</h1>
+        </PageTitleContainer>
+      </Container>
+      <Container>
         <CardListContainer>
           {cards.map(card => (
-            <>
-              <CardListItem cardListItemKey={card.node.id}>
-                <Card
-                  cardTitle={card.node.title}
-                  cardPath={card.node.path.alias}
-                  cardCreated={card.node.created}
-                />
-              </CardListItem>
-            </>
+            <CardListItem cardListItemKey={card.node.id}>
+              <Card
+                cardTitle={card.node.title}
+                cardPath={card.node.path.alias}
+                cardCreated={card.node.created}
+              />
+            </CardListItem>
           ))}
         </CardListContainer>
       </Container>
@@ -40,11 +45,11 @@ export default function BlogListingPage({ data }) {
 
 export const BlogListingPageQuery = graphql`
   query BlogListingQuery {
-    articles: allNodeArticle(sort: { fields: created, order: DESC }) {
+    articles: allNodeArticle(sort: { created: DESC }) {
       edges {
         node {
           title
-          created(fromNow: true)
+          created(formatString: "LL")
           id
           path {
             alias

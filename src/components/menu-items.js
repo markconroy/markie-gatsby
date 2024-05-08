@@ -28,30 +28,10 @@ export default function MenuItems() {
         <Link
           className="menu-link"
           activeClassName="menu-link--active"
-          to="/tags"
-          partiallyActive
-        >
-          Topics
-        </Link>
-      </li>
-      <li>
-        <Link
-          className="menu-link"
-          activeClassName="menu-link--active"
           to="/about"
           partiallyActive
         >
           About
-        </Link>
-      </li>
-      <li>
-        <Link
-          className="menu-link"
-          activeClassName="menu-link--active"
-          to="/thanks"
-          partiallyActive
-        >
-          Thanks
         </Link>
       </li>
       <li>
@@ -63,6 +43,11 @@ export default function MenuItems() {
         >
           Contact
         </Link>
+      </li>
+      <li>
+        <a className="menu-link" href="https://fun.mark.ie" partiallyActive>
+          Fun
+        </a>
       </li>
     </ul>
   )

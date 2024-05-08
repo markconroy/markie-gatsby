@@ -5,8 +5,7 @@ import MenuStyles from '../menu'
 import MenuItems from '../menu-items'
 
 const HeaderStyles = styled.header`
-  padding-top: 3rem;
-  padding-bottom: 2rem;
+  background-color: var(--color-primary--dark);
 `
 
 const Logo = styled.p`
@@ -20,12 +19,13 @@ const Logo = styled.p`
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     border-bottom-color: transparent;
-    color: var(--color-grey--dark);
+    color: var(--color-white);
     font-weight: bold;
     text-decoration: none;
     text-transform: uppercase;
     &:hover {
-      border-bottom-color: var(--color-grey--dark);
+      color: var(--color-white);
+      border-bottom-color: var(--color-white);
     }
   }
 `
@@ -35,19 +35,21 @@ const HeaderInnerStyles = styled.div`
   justify-content: space-between;
 `
 
-const Header = ({ siteTitle }) => (
-  <HeaderStyles>
-    <div className="layout-contained padding-horizontal">
-      <HeaderInnerStyles>
-        <Logo>
-          <Link to="/">{siteTitle}</Link>
-        </Logo>
-        <MenuStyles>
-          <MenuItems />
-        </MenuStyles>
-      </HeaderInnerStyles>
-    </div>
-  </HeaderStyles>
-)
+function Header({ siteTitle }) {
+  return (
+    <HeaderStyles>
+      <div className="layout-contained padding-horizontal">
+        <HeaderInnerStyles>
+          <Logo>
+            <Link to="/">{siteTitle}</Link>
+          </Logo>
+          <MenuStyles>
+            <MenuItems />
+          </MenuStyles>
+        </HeaderInnerStyles>
+      </div>
+    </HeaderStyles>
+  )
+}
 
 export default Header

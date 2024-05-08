@@ -1,14 +1,15 @@
 name: Deploy Site
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: 
+    branches:
       - master
+
   # Triggers the workflow on cron run, at 2am each night
   schedule:
-    - cron: '0 02 * * *'
+    - cron: "0 02 * * *"
 
   # Allows us to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -18,9 +19,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
       - uses: enriikke/gatsby-gh-pages-action@v2
         env:
           GATSBY_DRUPAL_SOURCE: ${{ secrets.GATSBY_DRUPAL_SOURCE }}
+          BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
+          BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           deploy-branch: gh-pages

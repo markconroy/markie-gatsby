@@ -1,12 +1,12 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 import Video from './video'
 
 const InlineMediaStyles = styled.div`
   img[aria-hidden] {
-    opacity: 0 !important;
-    transition: 0 !important;
+    /* opacity: 0 !important;
+    transition: 0 !important; */
   }
   picture img {
     opacity: 1 !important;
@@ -25,16 +25,21 @@ export default function InlineMedia({
   if (mediaType === 'image') {
     return (
       <>
-        <InlineMediaStyles className="marky">
-          <Img fluid={inlineImageSource} alt={inlineImageAlt} key={mediaId} />
+        <InlineMediaStyles>
+          <GatsbyImage
+            image={inlineImageSource}
+            alt={inlineImageAlt}
+            key={mediaId}
+          />
         </InlineMediaStyles>
       </>
     )
   }
+
   if (mediaType === 'video') {
     return (
       <>
-        <Video videoSrcURL={videoUrl} videoTitle={videoTitle} />
+        <Video videoSrcURL={videoUrl} videoTitle={videoTitle} key={mediaId} />
       </>
     )
   }

@@ -3,10 +3,10 @@ import { createGlobalStyle } from 'styled-components'
 const GlobalStyles = createGlobalStyle`
   :root {
     /* Colours */
-    --color-primary: hsl(200,100%,30%);
+    --color-primary: hsl(220, 70%, 60%);
     --color-primary--light: hsl(200,100%,40%);
     --color-primary--dark: hsl(200,100%,20%);
-    --color-secondary: hsl(330,75%,45%);
+    --color-secondary: hsl(23, 90%, 55%);
     --color-secondary--light: hsl(330,75%,55%);
     --color-secondary--dark: hsl(330,75%,35%);
     --color-white: hsl(0,0%,100%);
@@ -14,11 +14,11 @@ const GlobalStyles = createGlobalStyle`
     --color-grey--light: hsl(0,0%,75%);
     --color-grey--dark: hsl(75,15%,15%);
     --color-black: hsl(0,0%,0%);
-    --color-border: var(--color-secondary);
+    --color-border: var(--color-primary);
 
     /* Vertical Rhythm */
     --base-font-size: 16px;
-    --base-line-height: 1.5; 
+    --base-line-height: 1.5;
     --base-spacing: 1.5rem;
 
     /* Breakpoints */
@@ -32,22 +32,50 @@ const GlobalStyles = createGlobalStyle`
     --bp-super: 90rem; // 1440px
 
     /* Extras */
+    --transition-time: 0.3s;
     --border-radius: 5px;
     --box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
+    --text-shadow: 2px 2px 0 var(--color-black);
+    --text-shadow-large-text: var(--color-grey--dark) 9px 6px 3px, var(--color-grey--dark) -6px -6px 3px, var(--color-grey--dark) -12px 6px 3px;
+    --element-spacing-vertical: clamp(3rem, 6vw, 6rem);
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
 
   html {
     font-size: var(--base-font-size);
+    line-height: var(--base-line-height);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
-  
+
   body {
     margin: 0;
   }
 
+  main {
+    position: relative;
+    z-index: 1;
+    background-color: var(--color-white);
+  }
+
+  h1, .h1,
+  h2, .h2,
+  h3, .h3,
+  h4, .h4,
+  h5, .h5,
+  h6, .h6 {
+    color: var(--color-primary--dark);
+  }
+
   h1, .h1 {
-    margin-bottom: 3rem;
-    font-size: 2.5rem;
+    margin-bottom: var(--element-spacing-vertical);
+    margin-top: var(--element-spacing-vertical);
+    font-size: 3rem;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1.1;
   }
 
   h2, .h2 {
@@ -59,7 +87,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   a {
-    color: var(--color-secondary);
+    color: var(--color-primary);
     border-bottom: 2px dashed var(--color-grey--dark);
     display: inline-block;
     line-height: 1.1;
@@ -71,11 +99,11 @@ const GlobalStyles = createGlobalStyle`
       border-bottom-style: solid;
     }
     &:focus {
-      outline: 2px dashed var(--color-secondary);
+      outline: 2px dashed var(--color-primary);
       outline-offset: 2px;
     }
     &:hover {
-      transition: 0.3s;
+      transition: var(--transition-time);
     }
   }
 
@@ -93,6 +121,13 @@ const GlobalStyles = createGlobalStyle`
     line-height: var(--base-line-height);
     font-size: 1.25rem;
     border-radius: var(--border-radius);
+  }
+
+  code {
+    padding: 0 .5rem;
+    color: black;
+    display: inline-block;
+    outline: 1px solid var(--color-primary--dark);
   }
 
   /* Utility Classes */
@@ -122,6 +157,18 @@ const GlobalStyles = createGlobalStyle`
     max-width: var(--bp-medium);
   }
 
+  .layout-content {
+    > * {
+      margin-top: 3rem;
+      max-width: var(--bp-medium);
+      margin-top: var(--element-spacing-vertical);
+    }
+    [data-entity-type="media"],
+    pre {
+      max-width: 100%;
+    }
+  }
+
   .padding-horizontal {
     padding-right: var(--base-spacing);
     padding-left: var(--base-spacing);
@@ -133,50 +180,33 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .padding-top {
-    padding-top: var(--base-spacing);
-
-    @media screen and (min-width: 48rem) {
-      padding-top: calc(var(--base-spacing) * 2);
-    }
-
-    @media screen and (min-width: 60rem) {
-      padding-top: calc(var(--base-spacing) * 3);
-    }
+    padding-top: var(--element-spacing-vertical);
   }
 
   .padding-bottom {
-    padding-bottom: var(--base-spacing);
-
-    @media screen and (min-width: 48rem) {
-      padding-bottom: calc(var(--base-spacing) * 2);
-    }
-
-    @media screen and (min-width: 60rem) {
-      padding-bottom: calc(var(--base-spacing) * 3);
-    }
+    padding-bottom: var(--element-spacing-vertical);
   }
 
   .margin-top {
-    margin-top: var(--base-spacing);
-
-    @media screen and (min-width: 48rem) {
-      margin-top: calc(var(--base-spacing) * 2);
-    }
-
-    @media screen and (min-width: 60rem) {
-      margin-top: calc(var(--base-spacing) * 3);
-    }
+    margin-top: var(--element-spacing-vertical);
   }
 
   .margin-bottom {
-    margin-bottom: var(--base-spacing);
-    @media screen and (min-width: 48rem) {
-      margin-bottom: calc(var(--base-spacing) * 2);
-    }
+    margin-bottom: var(--element-spacing-vertical);
+  }
 
-    @media screen and (min-width: 60rem) {
-      margin-bottom: calc(var(--base-spacing) * 3);
-    }
+  .visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  iframe {
+    max-width: 100%;
   }
 
 `

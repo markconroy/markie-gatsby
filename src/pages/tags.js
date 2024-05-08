@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Container from '../styles/Container'
+import ArticleMeta from '../styles/ArticleMeta'
+import PageTitleContainer from '../styles/PageTitleContainer'
 
 const TagsListStyles = styled.ul`
   display: flex;
@@ -15,7 +17,7 @@ const TagsListStyles = styled.ul`
   padding: 0;
   list-style: none;
   a {
-    color: var(--color-primary);
+    color: var(--color-secondary);
     border-bottom-color: transparent;
   }
   a:focus,
@@ -34,7 +36,7 @@ const TagsListStyles = styled.ul`
     margin: 1rem;
   }
   li:nth-of-type(2n + 2) a {
-    color: var(--color-secondary);
+    color: var(--color-primary);
   }
   li:nth-of-type(3n + 3) a {
     color: var(--color-grey-dark);
@@ -48,8 +50,17 @@ export default function TagsListingPage({ data }) {
       <SEO title="Tags" />
       <>
         <Container>
-          <h1>Tags</h1>
-          <p>This site has {tags.length} tags. They are:</p>
+          <PageTitleContainer noMarginBottom>
+            <h1>Tags</h1>
+          </PageTitleContainer>
+        </Container>
+        <Container />
+        <ArticleMeta className="margin-bottom">
+          <Container>
+            <p>This site has {tags.length} tags. They are:</p>
+          </Container>
+        </ArticleMeta>
+        <Container>
           <TagsListStyles>
             {tags.map(tag => {
               const hasArticles =
@@ -87,7 +98,7 @@ export default function TagsListingPage({ data }) {
 
 export const TagsListingPageQuery = graphql`
   query TagsListingQuery {
-    tags: allTaxonomyTermTags(sort: { fields: name, order: ASC }) {
+    tags: allTaxonomyTermTags(sort: { name: ASC }) {
       nodes {
         name
         id
