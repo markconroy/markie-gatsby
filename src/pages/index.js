@@ -14,6 +14,7 @@ const MainStyles = styled.main`
   min-height: 100vh;
   flex-wrap: wrap;
   text-align: center;
+  text-wrap: balance;
   line-height: 2;
   > * {
     width: 100%;
@@ -47,9 +48,11 @@ function HomePage() {
           <div>
             <h1>Hi! I'm Mark Conroy.</h1>
             <hr />
+            <p>Current status: <a href="/contact">available</a>!</p>
+            <hr />
             <p>
-              A frontend architect, interested in design systems, web
-              components, and Drupal.
+              I'm a consultant, interested in design systems, web
+              components, and Drupal, especially LocalGov Drupal.
             </p>
             <hr />
             <p>

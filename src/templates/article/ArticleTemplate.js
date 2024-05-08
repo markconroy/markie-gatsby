@@ -96,16 +96,18 @@ export default function SingleArticlePageTemplate({
             emailBody={articleTitle}
           />
 
-          <h2>Filed Under:</h2>
-          <TagList>
-            {tags.map(tag => (
-              <li key={`list-item${tag.id}`}>
-                <Link to={tag.path.alias} key={`link-to${tag.id}`}>
-                  {tag.name}
-                </Link>
-              </li>
-            ))}
-          </TagList>
+          {tags.length ? (<h2>Filed Under:</h2>) : ''}
+          {tags.length ? (
+            <TagList>
+              {tags.map(tag => (
+                <li key={`list-item${tag.id}`}>
+                  <Link to={tag.path.alias} key={`link-to${tag.id}`}>
+                    {tag.name}
+                  </Link>
+                </li>
+              ))}
+            </TagList>
+          ) : ''}
         </Container>
       </ArticleStyles>
     </Layout>
