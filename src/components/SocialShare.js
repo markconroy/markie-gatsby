@@ -179,7 +179,7 @@ export default function SocialShare({
       {withMailingList ? (
         <JoinMailingList className="social-sharing__mailing-list">
           <a href="https://markie.eo.page/xrpd5">
-            Join the Markie Mailing List
+            Join the 1,100+ people on the Markie Mailing List
           </a>
         </JoinMailingList>
       ) : (
