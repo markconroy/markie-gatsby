@@ -48,11 +48,18 @@ function HomePage() {
           <div>
             <h1>Hi! I'm Mark Conroy.</h1>
             <hr />
-            <p>Current status: <a href="/contact">available</a>!</p>
+
+            <p>
+              Work status: <a href="/contact">engaged</a>.
+            </p>
+            <p>
+              Next availability: <a href="/contact">September 2024</a>.
+            </p>
+
             <hr />
             <p>
-              I'm a consultant, interested in design systems, web
-              components, and Drupal, especially LocalGov Drupal.
+              I'm a consultant, interested in design systems, web components,
+              and Drupal, especially LocalGov Drupal.
             </p>
             <hr />
             <p>
@@ -62,7 +69,7 @@ function HomePage() {
               I like to <a href="https://fun.mark.ie">build things for fun</a>.
             </p>
             <p>
-              And I have a pretty cool{' '}
+              And I have a{' '}
               <a href="https://markie.eo.page/xrpd5">mailing list</a>.
             </p>
             <hr />
