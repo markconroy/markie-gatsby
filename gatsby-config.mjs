@@ -86,6 +86,39 @@ const config = {
             output: 'planet/feed.xml',
             title: 'Drupal Planet by Mark Conroy',
           },
+          {
+            serialize: ({ query: { site, allNodeArticle } }) =>
+              allNodeArticle.edges.map(edge => ({
+                title: edge.node.title,
+                description: edge.node.field_intro.value,
+                date: edge.node.created,
+                url: site.siteMetadata.siteUrl + edge.node.path.alias,
+                guid: site.siteMetadata.siteUrl + edge.node.path.alias,
+              })),
+            query: `
+              {
+                allNodeArticle(
+                  sort: {created: DESC}
+                ) {
+                  edges {
+                    node {
+                      id
+                      created
+                      path {
+                        alias
+                      }
+                      title
+                      field_intro {
+                        value
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: 'sitemap.xml',
+            title: 'Sitemap',
+          },
         ],
       },
     },
