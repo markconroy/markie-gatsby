@@ -75,16 +75,18 @@ const GlobalStyles = createGlobalStyle`
     margin-bottom: var(--element-spacing-vertical);
     margin-top: var(--element-spacing-vertical);
     font-size: 3rem;
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: clamp(2rem, 8vw, 6rem);
     line-height: 1.1;
   }
 
   h2, .h2 {
     font-size: 2rem;
+    font-size: clamp(1.75rem, 6vw, 3rem);
   }
 
   h3, .h3 {
     font-size: 1.75rem;
+    font-size: clamp(1.3rem, 4vw, 2rem);
   }
 
   a {
