@@ -12,6 +12,8 @@ const GlobalStyles = createGlobalStyle`
     --color-white: hsl(0,0%,100%);
     --color-grey: hsl(0,0%,50%);
     --color-grey--light: hsl(0,0%,75%);
+    --color-grey--lighter: hsl(0,0%,85%);
+    --color-grey--lightest: hsl(0,0%,95%);
     --color-grey--dark: hsl(75,15%,15%);
     --color-black: hsl(0,0%,0%);
     --color-border: var(--color-primary);
@@ -87,7 +89,7 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     color: var(--color-primary);
-    border-bottom: 2px dashed var(--color-grey--dark);
+    border-bottom: 2px solid var(--color-primary);
     display: inline-block;
     line-height: 1.1;
     text-decoration: none;
@@ -132,6 +134,16 @@ const GlobalStyles = createGlobalStyle`
     color: black;
     display: inline-block;
     outline: 1px solid var(--color-primary--dark);
+  }
+
+  blockquote {
+    border-left: 5px solid var(--color-primary--dark);
+    padding: 1rem var(--base-spacing);
+    margin-left: 0;
+    margin-block: var(--element-spacing-vertical);
+    font-style: italic;
+    font-size: 120%;
+    background-color: var(--color-grey--lightest);
   }
 
   /* Utility Classes */
