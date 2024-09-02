@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
@@ -32,6 +32,19 @@ function Layout({ children }) {
       }
     }
   `)
+
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src =
+      'https://eocampaign1.com/form/d8730bd4-c81c-11ed-9794-af315f113760.js'
+    script.async = true
+    script.setAttribute('data-form', 'd8730bd4-c81c-11ed-9794-af315f113760')
+    document.body.appendChild(script)
+
+    return () => {
+      document.body.removeChild(script)
+    }
+  }, [])
 
   return (
     <>
