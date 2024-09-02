@@ -39,7 +39,7 @@ function SEO({ description, lang, meta, title, metaImageSource }) {
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={title || defaultTitle}
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
       link={[
         {
