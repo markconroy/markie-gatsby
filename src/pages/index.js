@@ -50,13 +50,15 @@ function HomePage() {
             <hr />
 
             <p>
-              Work status: <a href="/contact">engaged</a>.
+              Work status: <a href="/contact">engaged</a>
             </p>
             <p>
-              Next availability: <a href="/contact">September 2024</a>.
+              Next availability: <a href="/contact">November 2024</a>
+              <small>(Let's start chatting now to book you in)</small>
             </p>
 
             <hr />
+
             <p>
               I'm a consultant, interested in design systems, web components,
               and Drupal, especially LocalGov Drupal.
