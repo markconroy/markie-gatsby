@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
@@ -39,6 +39,21 @@ const MainStyles = styled.main`
 `
 
 function HomePage() {
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src =
+      'https://eocampaign1.com/form/d8730bd4-c81c-11ed-9794-af315f113760.js'
+    script.async = true
+    script.setAttribute('data-form', 'd8730bd4-c81c-11ed-9794-af315f113760')
+
+    document.body.appendChild(script)
+
+    return () => {
+      if (script.parentNode) {
+        script.parentNode.removeChild(script)
+      }
+    }
+  }, [])
   return (
     <>
       <GlobalStyles />
@@ -64,17 +79,7 @@ function HomePage() {
               and Drupal, especially LocalGov Drupal.
             </p>
             <hr />
-            <p>
-              I keep <a href="/blog">a blog</a>.
-            </p>
-            <p>
-              I like to <a href="https://fun.mark.ie">build things for fun</a>.
-            </p>
-            <p>
-              And I have a{' '}
-              <a href="https://markie.eo.page/xrpd5">mailing list</a>.
-            </p>
-            <hr />
+
             <MenuStyles treated>
               <MenuItems />
             </MenuStyles>

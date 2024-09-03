@@ -16,7 +16,7 @@ export default function SpeakingListingPage({ data }) {
 
   return (
     <Layout>
-      <SEO title="Blog" />
+      <SEO title="Speaking" />
       <Container>
         <PageTitleContainer>
           <h1>Speaking</h1>
