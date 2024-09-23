@@ -48,16 +48,11 @@ export default function MenuItems() {
         <Link
           className="menu-link"
           activeClassName="menu-link--active"
-          to="/mailing-list"
+          to="/available-drupal-developers"
           partiallyActive
         >
-          Newsletter
+          Available Drupal Developers
         </Link>
-      </li>
-      <li>
-        <a className="menu-link" href="https://fun.mark.ie" partiallyActive>
-          Fun
-        </a>
       </li>
     </ul>
   )

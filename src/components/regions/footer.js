@@ -38,6 +38,9 @@ function Footer() {
             <a href="/mailing-list">Newsletter</a>
           </li>
           <li>
+            <a href="https://fun.mark.ie">Fun</a>
+          </li>
+          <li>
             <a href="https://twitter.com/markconroy">Twitter</a>
           </li>
           <li>

@@ -78,6 +78,13 @@ function HomePage() {
               I'm a consultant, interested in design systems, web components,
               and Drupal, especially LocalGov Drupal.
             </p>
+            <p>
+              I also help recruiters and agencies to
+              <a href="/available-drupal-developers/">
+                find the right developer
+              </a>{' '}
+              for your project.
+            </p>
             <hr />
 
             <MenuStyles treated>
