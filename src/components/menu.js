@@ -26,6 +26,7 @@ const MenuStyles = styled.nav`
     text-decoration: none;
     border-top: 0;
     border-bottom: 0;
+    white-space: nowrap;
   }
   .menu-link::after {
     content: '';

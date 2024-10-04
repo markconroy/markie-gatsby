@@ -69,6 +69,7 @@ function HomePage() {
             </p>
             <p>
               Next availability: <a href="/contact">November 2024</a>
+              <br />
               <small>(Let's start chatting now to book you in)</small>
             </p>
 
@@ -82,7 +83,7 @@ function HomePage() {
             <hr />
 
             <p>
-              I help recruiters and agencies to
+              I help recruiters and agencies to{' '}
               <a href="/available-drupal-developers/">
                 find the right developer
               </a>{' '}

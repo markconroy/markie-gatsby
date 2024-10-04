@@ -91,15 +91,13 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     color: var(--color-primary);
-    border-bottom: 2px solid var(--color-primary);
-    display: inline-block;
-    line-height: 1.1;
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
     &:focus,
     &:hover {
       text-decoration: none;
       color: var(--color-grey--dark);
-      border-bottom-style: solid;
     }
     &:focus {
       outline: 2px dashed var(--color-primary);
