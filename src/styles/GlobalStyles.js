@@ -69,6 +69,7 @@ const GlobalStyles = createGlobalStyle`
   h5, .h5,
   h6, .h6 {
     color: var(--color-primary--dark);
+    line-height: 1.2;
   }
 
   h1, .h1 {
