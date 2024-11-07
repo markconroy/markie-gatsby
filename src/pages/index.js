@@ -62,16 +62,6 @@ function HomePage() {
         <MainStyles>
           <div>
             <h1>Hi! I'm Mark Conroy.</h1>
-            <hr />
-
-            <p>
-              Work status: <a href="/contact">engaged</a>
-            </p>
-            <p>
-              Next availability: <a href="/contact">November 2024</a>
-              <br />
-              <small>(Let's start chatting now to book you in)</small>
-            </p>
 
             <hr />
 
@@ -83,7 +73,7 @@ function HomePage() {
             <hr />
 
             <p>
-              I help recruiters and agencies to{' '}
+              I also help recruiters and agencies to{' '}
               <a href="/available-drupal-developers/">
                 find the right developer
               </a>{' '}
