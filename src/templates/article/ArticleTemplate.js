@@ -80,13 +80,10 @@ export default function SingleArticlePageTemplate({
             </ArticleImageStyles>
           )}
 
-          <SocialShare withMailingList />
-
           {articleBody}
 
           <SocialShare
             withShareLinks
-            withMailingList
             shareLink={shareLink}
             twitterText={articleTitle}
             whatsAppText={articleTitle}
@@ -96,7 +93,7 @@ export default function SingleArticlePageTemplate({
             emailBody={articleTitle}
           />
 
-          {tags.length ? (<h2>Filed Under:</h2>) : ''}
+          {tags.length ? <h2>Filed Under:</h2> : ''}
           {tags.length ? (
             <TagList>
               {tags.map(tag => (
@@ -107,7 +104,9 @@ export default function SingleArticlePageTemplate({
                 </li>
               ))}
             </TagList>
-          ) : ''}
+          ) : (
+            ''
+          )}
         </Container>
       </ArticleStyles>
     </Layout>
