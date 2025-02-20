@@ -75,7 +75,7 @@ function HomePage() {
             <p>
               I also help recruiters and agencies to{' '}
               <a href="/available-drupal-developers/">
-                find the right developer
+                find the right Drupal developer
               </a>{' '}
               for your project.
             </p>
