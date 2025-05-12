@@ -26,7 +26,7 @@ const ArticleStyles = styled.article`
 
 export default function SingleArticlePage({ data: { speaking }, location }) {
   const videoUrl =
-    speaking.relationships.field_main_video.field_media_video_embed_field
+    speaking.relationships.field_main_video.field_media_oembed_video
       .split('=')
       .pop()
   const shareLink = location.href
@@ -112,7 +112,7 @@ export const query = graphql`
           }
         }
         field_main_video {
-          field_media_video_embed_field
+          field_media_oembed_video
         }
       }
     }
