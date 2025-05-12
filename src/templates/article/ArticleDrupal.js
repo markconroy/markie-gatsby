@@ -132,7 +132,7 @@ export const query = graphql`
         }
       }
     }
-    inlineMediaVideoResults: allMediaVideo {
+    inlineMediaVideoResults: allMediaRemoteVideo {
       edges {
         node {
           field_media_oembed_video

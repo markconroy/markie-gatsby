@@ -112,7 +112,9 @@ export const query = graphql`
           }
         }
         field_main_video {
-          field_media_oembed_video
+          ... on media__remote_video {
+            field_media_oembed_video
+          }
         }
       }
     }
