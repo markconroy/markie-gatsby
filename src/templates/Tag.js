@@ -18,11 +18,14 @@ export default function SingleArticlePage({ data: { tag } }) {
   const tags =
     tag.relationships.node__article || tag.relationships.node__speaking
 
-  const sortedTags = tags.sort((a, b) => {
-    const dateA = new Date(a.created)
-    const dateB = new Date(b.created)
-    return dateA - dateB
-  })
+  // First, safely define sortedTags
+  const sortedTags = tags
+    ? tags.sort((a, b) => {
+        const dateA = new Date(a.created)
+        const dateB = new Date(b.created)
+        return dateA - dateB
+      })
+    : []
   return (
     <Layout>
       <SEO title={tag.name} />
@@ -32,7 +35,8 @@ export default function SingleArticlePage({ data: { tag } }) {
             <h1>{tag.name}</h1>
           </PageTitleContainer>
           <h2>
-            The following {tags.length} pages are tagged with "{tag.name}":
+            The following {tags ? tags.length : 0} pages are tagged with "
+            {tag.name}":
           </h2>
           <TagList>
             {sortedTags.reverse().map(tagItem => (

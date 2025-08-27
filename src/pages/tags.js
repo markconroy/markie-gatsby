@@ -79,7 +79,7 @@ export default function TagsListingPage({ data }) {
                       style={{
                         display: 'inline-block',
                         fontSize: `${
-                          count === 1 ? '100' : `${100 + count * 7}`
+                          count === 1 ? '100' : `${100 + count * 3}`
                         }%`,
                       }}
                     >
