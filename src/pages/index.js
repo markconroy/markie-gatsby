@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
 
 import SEO from '../components/seo'
 import GlobalStyles from '../styles/GlobalStyles'
@@ -39,21 +38,6 @@ const MainStyles = styled.main`
 `
 
 function HomePage() {
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.src =
-      'https://eocampaign1.com/form/d8730bd4-c81c-11ed-9794-af315f113760.js'
-    script.async = true
-    script.setAttribute('data-form', 'd8730bd4-c81c-11ed-9794-af315f113760')
-
-    document.body.appendChild(script)
-
-    return () => {
-      if (script.parentNode) {
-        script.parentNode.removeChild(script)
-      }
-    }
-  }, [])
   return (
     <>
       <GlobalStyles />
@@ -66,18 +50,30 @@ function HomePage() {
             <hr />
 
             <p>
-              I'm a consultant, interested in design systems, web components,
-              and Drupal, especially LocalGov Drupal.
+              I'm a consultant, architecting local government websites and
+              related applications.
             </p>
 
             <hr />
 
             <p>
-              I also help recruiters and agencies to{' '}
-              <a href="/available-drupal-developers/">
-                find the right Drupal developer
+              I run <a href="https://the-confident.com">The Confident</a>, the
+              only agency dedicated 100% to the{' '}
+              <a href="https://localgovdrupal.org">LocalGov Drupal</a> platform.
+            </p>
+
+            <hr />
+
+            <p>
+              I have a course coming soon:
+              <br />
+              <em>Build a LocalGov Drupal Website</em>.
+              <br />
+              You can{' '}
+              <a href="https://the-confident.com/courses/build-a-localgov-drupal-website/">
+                sign up for updates
               </a>{' '}
-              for your project.
+              about it.
             </p>
             <hr />
 
