@@ -11,6 +11,7 @@ import highlightCode from '../../utils/highlightCode'
 import ArticleMeta from '../../styles/ArticleMeta'
 import PageTitleContainer from '../../styles/PageTitleContainer'
 import SocialShare from '../../components/SocialShare'
+import NewsletterForm from '../../components/NewsletterForm'
 
 const ArticleStyles = styled.article`
   .article__intro {
@@ -81,6 +82,8 @@ export default function SingleArticlePageTemplate({
           )}
 
           {articleBody}
+
+          <NewsletterForm />
 
           <SocialShare
             withShareLinks
