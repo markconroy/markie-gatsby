@@ -8,7 +8,7 @@ const FormContainer = styled.div`
   border-radius: 8px;
   border: 1px solid var(--color-border, #e9ecef);
 
-  h3 {
+  h2 {
     margin-bottom: 1rem;
     color: var(--color-primary--dark);
   }
@@ -22,24 +22,26 @@ const FormContainer = styled.div`
 export default function NewsletterForm({
   formId = '02e55ac2-7205-11f0-afe3-6f416b030533',
 }) {
-  const formContainerRef = useRef(null)
+  const containerRef = useRef(null)
 
   useEffect(() => {
-    if (!formContainerRef.current) return
+    if (!containerRef.current || typeof window === 'undefined') return
 
+    // Create script element
     const script = document.createElement('script')
-    script.src = `https://eocampaign1.com/form/${formId}.js`
     script.async = true
+    script.src = `https://eocampaign1.com/form/${formId}.js`
     script.setAttribute('data-form', formId)
 
-    formContainerRef.current.appendChild(script)
+    // Append script to the container (not head)
+    containerRef.current.appendChild(script)
 
-    console.log('Newsletter form script loaded:', script)
+    console.log('EmailOctopus script added and should execute')
 
     return () => {
+      // Clean up
       if (script.parentNode) {
         script.parentNode.removeChild(script)
-        console.log('Newsletter form script removed:', script)
       }
     }
   }, [formId])
@@ -51,7 +53,7 @@ export default function NewsletterForm({
         Subscribe to get updates about the course (and perhaps a discount code
         before it is launched).
       </p>
-      <div ref={formContainerRef} />
+      <div ref={containerRef} />
     </FormContainer>
   )
 }

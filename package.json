@@ -47,7 +47,7 @@
   "keywords": ["gatsby"],
   "license": "0BSD",
   "scripts": {
-    "build": "gatsby build",
+    "build": "env-cmd --file ./.env.local gatsby build",
     "develop": "gatsby develop",
     "develop-rocksal": "env-cmd --file ./.env.local --expand-envs gatsby develop --host=\\$ROCKSAL_HOST",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
