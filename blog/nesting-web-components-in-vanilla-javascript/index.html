@@ -1,0 +1,311 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.3.3"/><meta data-react-helmet="true" name="description" content="I don’t think web components get the kudos they deserve. But as we start to see a shift towards writing more vanilla CSS and JavaScript, I think they are going to become more popular in the coming years."/><meta data-react-helmet="true" property="og:title" content="Nesting web components in vanilla JavaScript"/><meta data-react-helmet="true" property="og:description" content="I don’t think web components get the kudos they deserve. But as we start to see a shift towards writing more vanilla CSS and JavaScript, I think they are going to become more popular in the coming years."/><meta data-react-helmet="true" property="og:image" content="https://mark.ie//static/d9f68a86764aabfd517215c0ed0cb588/f3f2d/nesting-web-components.jpg"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"/><meta data-react-helmet="true" name="twitter:creator" content="@markconroy"/><meta data-react-helmet="true" name="twitter:title" content="Nesting web components in vanilla JavaScript"/><meta data-react-helmet="true" name="twitter:description" content="I don’t think web components get the kudos they deserve. But as we start to see a shift towards writing more vanilla CSS and JavaScript, I think they are going to become more popular in the coming years."/><meta data-react-helmet="true" name="twitter:image" content="https://mark.ie//static/d9f68a86764aabfd517215c0ed0cb588/f3f2d/nesting-web-components.jpg"/><meta name="theme-color" content="#006699"/><style data-href="/styles.d35dc1ac7e4cdc0652b9.css" data-identity="gatsby-global-css">pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}.hljs{background:#23241f}.hljs,.hljs-subst,.hljs-tag{color:#f8f8f2}.hljs-emphasis,.hljs-strong{color:#a8a8a2}.hljs-bullet,.hljs-link,.hljs-literal,.hljs-number,.hljs-quote,.hljs-regexp{color:#ae81ff}.hljs-code,.hljs-section,.hljs-selector-class,.hljs-title{color:#a6e22e}.hljs-strong{font-weight:700}.hljs-emphasis{font-style:italic}.hljs-attr,.hljs-keyword,.hljs-name,.hljs-selector-tag{color:#f92672}.hljs-attribute,.hljs-symbol{color:#66d9ef}.hljs-class .hljs-title,.hljs-params,.hljs-title.class_{color:#f8f8f2}.hljs-addition,.hljs-built_in,.hljs-selector-attr,.hljs-selector-id,.hljs-selector-pseudo,.hljs-string,.hljs-template-variable,.hljs-type,.hljs-variable{color:#e6db74}.hljs-comment,.hljs-deletion,.hljs-meta{color:#75715e}</style><title data-react-helmet="true">Nesting web components in vanilla JavaScript | Mark Conroy</title><link data-react-helmet="true" href="https://github.com/markconroy" rel="me"/><link data-react-helmet="true" href="https://twitter.com/markconroy" rel="me"/><link data-react-helmet="true" href="href=&quot;https://webmention.io/mark.ie/webmention" rel="webmention"/><link data-react-helmet="true" href="href=&quot;https://webmention.io/mark.ie/xmlrpc" rel="pingback"/><style data-styled="" data-styled-version="5.3.6">.hVhibe{overflow:scroll;max-width:calc(100% - 1rem);margin-left:1rem;padding:0.5rem;-ms-overflow-style:none;-webkit-scrollbar-width:none;-moz-scrollbar-width:none;-ms-scrollbar-width:none;scrollbar-width:none;}/*!sc*/
+.hVhibe::-webkit-slider-thumb{--webkit-appearance:none;}/*!sc*/
+.hVhibe ul{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;list-style:none;padding-left:1rem;padding-right:1rem;}/*!sc*/
+.hVhibe li + li{margin-left:1rem;}/*!sc*/
+.hVhibe .menu-link{position:relative;color:var(--color-white);padding:0.5rem 1rem;-webkit-text-decoration:none;text-decoration:none;border-top:0;border-bottom:0;white-space:nowrap;}/*!sc*/
+.hVhibe .menu-link::after{content:'';display:block;position:absolute;bottom:0;left:0;width:100%;height:2px;background-color:var(--color-white);-webkit-transition:var(--transition-time);transition:var(--transition-time);}/*!sc*/
+.hVhibe .menu-link:hover::after{bottom:100%;}/*!sc*/
+.hVhibe .menu-link--active{border-top-color:var(--color-white);}/*!sc*/
+data-styled.g1[id="menu__MenuStyles-sc-hq4w69-0"]{content:"hVhibe,"}/*!sc*/
+.dyIqYP{background-color:var(--color-primary--dark);}/*!sc*/
+data-styled.g2[id="header__HeaderStyles-sc-1557527-0"]{content:"dyIqYP,"}/*!sc*/
+.QKOtA{margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}/*!sc*/
+@media screen and (min-width:768px){.QKOtA{font-size:2rem;}}/*!sc*/
+.QKOtA a{margin:auto;padding-top:0.5rem;padding-bottom:0.5rem;border-bottom-color:transparent;color:var(--color-white);font-weight:bold;-webkit-text-decoration:none;text-decoration:none;text-transform:uppercase;}/*!sc*/
+.QKOtA a:hover{color:var(--color-white);border-bottom-color:var(--color-white);}/*!sc*/
+data-styled.g3[id="header__Logo-sc-1557527-1"]{content:"QKOtA,"}/*!sc*/
+.iHOBus{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}/*!sc*/
+data-styled.g4[id="header__HeaderInnerStyles-sc-1557527-2"]{content:"iHOBus,"}/*!sc*/
+:root{--color-primary:hsl(220,70%,60%);--color-primary--light:hsl(200,100%,40%);--color-primary--dark:hsl(200,100%,20%);--color-secondary:hsl(23,90%,55%);--color-secondary--light:hsl(330,75%,55%);--color-secondary--dark:hsl(330,75%,35%);--color-white:hsl(0,0%,100%);--color-grey:hsl(0,0%,50%);--color-grey--light:hsl(0,0%,75%);--color-grey--lighter:hsl(0,0%,85%);--color-grey--lightest:hsl(0,0%,95%);--color-grey--dark:hsl(75,15%,15%);--color-black:hsl(0,0%,0%);--color-border:var(--color-primary);--base-font-size:16px;--base-line-height:2;--base-spacing:1.5rem;--bp-xsmall:23.75rem;--bp-small:31.25rem;--bp-medium:40.625rem;--bp-large:48rem;--bp-xlarge:60rem;--bp-xxlarge:66.625rem;--bp-xxxlarge:78rem;--bp-super:90rem;--transition-time:0.3s;--border-radius:5px;--box-shadow:0 2px 4px 0 rgba(0,0,0,.5);--text-shadow:2px 2px 0 var(--color-black);--text-shadow-large-text:var(--color-grey--dark) 9px 6px 3px,var(--color-grey--dark) -6px -6px 3px,var(--color-grey--dark) -12px 6px 3px;--element-spacing-vertical:clamp(3rem,6vw,6rem);}/*!sc*/
+*,*::before,*::after{box-sizing:border-box;}/*!sc*/
+html{font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;}/*!sc*/
+body{margin:0;line-height:var(--base-line-height);}/*!sc*/
+main{position:relative;z-index:1;background-color:var(--color-white);}/*!sc*/
+h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6{color:var(--color-primary--dark);line-height:1.2;}/*!sc*/
+h1,.h1{margin-bottom:var(--element-spacing-vertical);margin-top:var(--element-spacing-vertical);font-size:3rem;font-size:clamp(2rem,8vw,6rem);line-height:1.1;}/*!sc*/
+h2,.h2{font-size:2rem;font-size:clamp(1.75rem,6vw,3rem);}/*!sc*/
+h3,.h3{font-size:1.75rem;font-size:clamp(1.3rem,4vw,2rem);}/*!sc*/
+a{color:var(--color-primary);-webkit-text-decoration:underline;text-decoration:underline;-webkit-text-decoration-thickness:2px;text-decoration-thickness:2px;text-underline-offset:4px;}/*!sc*/
+a:focus,a:hover{-webkit-text-decoration:none;text-decoration:none;color:var(--color-grey--dark);}/*!sc*/
+a:focus{outline:2px dashed var(--color-primary);outline-offset:2px;}/*!sc*/
+a:hover{-webkit-transition:var(--transition-time);transition:var(--transition-time);}/*!sc*/
+p,li{max-width:var(--bp-large);}/*!sc*/
+img{max-width:100%;}/*!sc*/
+pre{overflow:scroll;margin:3rem 0;border-radius:var(--border-radius);}/*!sc*/
+pre > code{line-height:var(--base-line-height);font-size:1.25rem;border-radius:var(--border-radius);}/*!sc*/
+code{padding:0 .5rem;color:black;display:inline-block;outline:1px solid var(--color-primary--dark);}/*!sc*/
+blockquote{border-left:5px solid var(--color-primary--dark);padding:1rem var(--base-spacing);margin-left:0;margin-block:var(--element-spacing-vertical);font-style:italic;font-size:120%;background-color:var(--color-grey--lightest);}/*!sc*/
+.layout-contained{max-width:var(--bp-xlarge);margin-right:auto;margin-left:auto;}/*!sc*/
+.layout-contained--xxlarge{max-width:var(--bp-xxxlarge);}/*!sc*/
+.layout-contained--xlarge{max-width:var(--bp-xxlarge);}/*!sc*/
+.layout-contained--medium{max-width:var(--bp-large);}/*!sc*/
+.layout-contained--small{max-width:var(--bp-medium);}/*!sc*/
+.layout-content > *{margin-top:3rem;max-width:var(--bp-medium);margin-top:var(--element-spacing-vertical);}/*!sc*/
+.layout-content [data-entity-type="media"],.layout-content pre{max-width:100%;}/*!sc*/
+.padding-horizontal{padding-right:var(--base-spacing);padding-left:var(--base-spacing);}/*!sc*/
+.padding-vertical{padding-top:var(--base-spacing);padding-bottom:var(--base-spacing);}/*!sc*/
+.padding-top{padding-top:var(--element-spacing-vertical);}/*!sc*/
+.padding-bottom{padding-bottom:var(--element-spacing-vertical);}/*!sc*/
+.margin-top{margin-top:var(--element-spacing-vertical);}/*!sc*/
+.margin-bottom{margin-bottom:var(--element-spacing-vertical);}/*!sc*/
+.visually-hidden{-webkit-clip:rect(0 0 0 0);clip:rect(0 0 0 0);-webkit-clip-path:inset(50%);clip-path:inset(50%);height:1px;overflow:hidden;position:absolute;white-space:nowrap;width:1px;}/*!sc*/
+iframe{max-width:100%;}/*!sc*/
+data-styled.g5[id="sc-global-ihmpVJ1"]{content:"sc-global-ihmpVJ1,"}/*!sc*/
+.gGsBHE{margin-top:auto;padding:2rem 0;background-color:var(--color-grey--dark);}/*!sc*/
+.gGsBHE a{color:var(--color-white);border-bottom-color:transparent;}/*!sc*/
+.gGsBHE a:hover{color:var(--color-white);border-bottom-color:var(--color-white);}/*!sc*/
+.gGsBHE a:focus{color:var(--color-white);outline-color:var(--color-white);}/*!sc*/
+.gGsBHE ul{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;padding:0;}/*!sc*/
+.gGsBHE li{list-style-type:none;margin:1rem;}/*!sc*/
+data-styled.g6[id="footer__FooterStyles-sc-1upxyeb-0"]{content:"gGsBHE,"}/*!sc*/
+.hzfmsF{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;min-height:100vh;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}/*!sc*/
+.hzfmsF > *:nth-last-child(2){padding-bottom:4rem;}/*!sc*/
+data-styled.g7[id="layout__LayoutContainerStyles-sc-1f40xyi-0"]{content:"hzfmsF,"}/*!sc*/
+.eJCPnP{max-width:960px;margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem;}/*!sc*/
+.gtddLY{max-width:960px;margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem;padding-left:1rem;padding-right:1rem;}/*!sc*/
+data-styled.g8[id="Container-sc-1nlkfy1-0"]{content:"eJCPnP,gtddLY,"}/*!sc*/
+.cofDTk li + li{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--color-grey--light);}/*!sc*/
+.cofDTk li:last-of-type{margin-bottom:var(--base-line-height);}/*!sc*/
+.cofDTk a{-webkit-text-decoration:none;text-decoration:none;border-bottom-color:transparent;}/*!sc*/
+.cofDTk a:hover{border-bottom-color:var(--color-grey--dark);}/*!sc*/
+data-styled.g9[id="TagList-sc-1tlql9o-0"]{content:"cofDTk,"}/*!sc*/
+.iXKnNp{display:inline-block;width:100%;padding:1rem;border-bottom:1px solid var(--color-grey--dark);}/*!sc*/
+data-styled.g10[id="ArticleMeta-sc-gqmht9-0"]{content:"iXKnNp,"}/*!sc*/
+.eWRabk{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-bottom:var(--element-spacing-vertical);}/*!sc*/
+.eWRabk h1{position:relative;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:var(--base-spacing);width:calc(100% - 2rem);min-height:300px;border:4px solid var(--color-white);color:var(--color-white);background-color:var(--color-primary--dark);}/*!sc*/
+.eWRabk h1::before{position:absolute;z-index:-1;-webkit-align-self:start;-ms-flex-item-align:start;align-self:start;content:'';width:calc(100% - 2rem);height:calc(100% - 2rem);left:3rem;bottom:-1rem;background-color:var(--color-primary--dark);-webkit-transform:rotate(-3deg);-ms-transform:rotate(-3deg);transform:rotate(-3deg);}/*!sc*/
+data-styled.g11[id="PageTitleContainer-sc-1wdt2wp-0"]{content:"eWRabk,"}/*!sc*/
+.gxDZWY{margin:3rem;}/*!sc*/
+.gxDZWY h2{margin-top:0;font-size:1rem;}/*!sc*/
+.gxDZWY h2 ~ h2{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--color-primary--dark);}/*!sc*/
+.gxDZWY svg{width:1.5rem;height:auto;}/*!sc*/
+.gxDZWY svg path{fill:var(--color-primary);}/*!sc*/
+.gxDZWY .social-sharing__list{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;margin:0;padding:0;}/*!sc*/
+.gxDZWY .social-sharing__list + .social-sharing__mailing-list{margin-top:var(--base-spacing);}/*!sc*/
+.gxDZWY li{list-style-type:none;margin-right:1rem;}/*!sc*/
+.gxDZWY a{border-bottom:0;}/*!sc*/
+.gxDZWY a:hover svg path,.gxDZWY a:focus svg path{fill:var(--color-secondary);}/*!sc*/
+data-styled.g12[id="SocialShare__SocialShareStyles-sc-bubltu-0"]{content:"gxDZWY,"}/*!sc*/
+.kUaxwA{margin:var(--element-spacing-vertical) 0;padding:2rem;background:var(--color-background-light,#f8f9fa);border-radius:8px;border:1px solid var(--color-border,#e9ecef);}/*!sc*/
+.kUaxwA h2{margin-bottom:1rem;color:var(--color-primary--dark);}/*!sc*/
+.kUaxwA p{margin-bottom:1.5rem;color:var(--color-text);}/*!sc*/
+data-styled.g14[id="NewsletterForm__FormContainer-sc-1e2cutj-0"]{content:"kUaxwA,"}/*!sc*/
+.kfDbEq .article__intro{margin-bottom:var(--element-spacing-vertical);line-height:1.75;border:2px solid var(--color-primary--dark);border-left:1rem solid var(--color-primary--dark);padding:0.5rem 3rem;}/*!sc*/
+.kfDbEq .article__intro *{font-size:clamp(1.5rem,5vw,2rem);}/*!sc*/
+data-styled.g15[id="ArticleTemplate__ArticleStyles-sc-lu016k-0"]{content:"kfDbEq,"}/*!sc*/
+.lfvUod{margin-bottom:var(--element-spacing-vertical);}/*!sc*/
+data-styled.g16[id="ArticleTemplate__ArticleImageStyles-sc-lu016k-1"]{content:"lfvUod,"}/*!sc*/
+</style><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link rel="alternate" type="application/rss+xml" title="Drupal Planet by Mark Conroy" href="/planet/feed.xml"/><link rel="alternate" type="application/rss+xml" title="Sitemap" href="/sitemap.xml"/><link rel="icon" href="/favicon-32x32.png?v=72e727c6ee86ff76f6b1481fba278fd0" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=72e727c6ee86ff76f6b1481fba278fd0"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=72e727c6ee86ff76f6b1481fba278fd0"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=72e727c6ee86ff76f6b1481fba278fd0"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=72e727c6ee86ff76f6b1481fba278fd0"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=72e727c6ee86ff76f6b1481fba278fd0"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=72e727c6ee86ff76f6b1481fba278fd0"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=72e727c6ee86ff76f6b1481fba278fd0"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=72e727c6ee86ff76f6b1481fba278fd0"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="layout__LayoutContainerStyles-sc-1f40xyi-0 hzfmsF"><header class="header__HeaderStyles-sc-1557527-0 dyIqYP"><div class="layout-contained padding-horizontal"><div class="header__HeaderInnerStyles-sc-1557527-2 iHOBus"><p class="header__Logo-sc-1557527-1 QKOtA"><a href="/">Markie</a></p><nav class="menu__MenuStyles-sc-hq4w69-0 hVhibe"><ul><li><a class="menu-link menu-link--active" href="/blog/">Blog</a></li><li><a class="menu-link" href="/contact/">Contact</a></li><li><a class="menu-link" href="/available-drupal-developers/">Available Drupal Developers</a></li></ul></nav></div></div></header><main><article class="ArticleTemplate__ArticleStyles-sc-lu016k-0 kfDbEq"><div class="ArticleMeta-sc-gqmht9-0 iXKnNp"><div class="Container-sc-1nlkfy1-0 eJCPnP"><p>Published: <!-- -->January 29, 2024</p></div></div><div class="Container-sc-1nlkfy1-0 gtddLY"><div class="PageTitleContainer-sc-1wdt2wp-0 eWRabk"><h1>Nesting web components in vanilla JavaScript</h1></div></div><div class="Container-sc-1nlkfy1-0 eJCPnP"><div class="article__intro"><p>I don’t think web components get the kudos they deserve. But as we start to see a shift towards writing more vanilla CSS and JavaScript, I think they are going to become more popular in the coming years.</p></div><div class="ArticleTemplate__ArticleImageStyles-sc-lu016k-1 lfvUod"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper"><div aria-hidden="true" style="padding-top:58.59375%"></div><div aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear;background-color:#5888d8;position:absolute;top:0;left:0;bottom:0;right:0"></div><picture><source type="image/webp" data-srcset="/static/d9f68a86764aabfd517215c0ed0cb588/17a31/nesting-web-components.webp 750w,/static/d9f68a86764aabfd517215c0ed0cb588/962d2/nesting-web-components.webp 1080w,/static/d9f68a86764aabfd517215c0ed0cb588/93afa/nesting-web-components.webp 1366w,/static/d9f68a86764aabfd517215c0ed0cb588/24d8b/nesting-web-components.webp 1920w" sizes="100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="100vw" decoding="async" loading="lazy" data-src="/static/d9f68a86764aabfd517215c0ed0cb588/f3f2d/nesting-web-components.jpg" data-srcset="/static/d9f68a86764aabfd517215c0ed0cb588/d46b5/nesting-web-components.jpg 750w,/static/d9f68a86764aabfd517215c0ed0cb588/46d06/nesting-web-components.jpg 1080w,/static/d9f68a86764aabfd517215c0ed0cb588/c5e18/nesting-web-components.jpg 1366w,/static/d9f68a86764aabfd517215c0ed0cb588/f3f2d/nesting-web-components.jpg 1920w" alt="Nesting web components in vanilla JavaScript"/></picture><noscript><picture><source type="image/webp" srcSet="/static/d9f68a86764aabfd517215c0ed0cb588/17a31/nesting-web-components.webp 750w,/static/d9f68a86764aabfd517215c0ed0cb588/962d2/nesting-web-components.webp 1080w,/static/d9f68a86764aabfd517215c0ed0cb588/93afa/nesting-web-components.webp 1366w,/static/d9f68a86764aabfd517215c0ed0cb588/24d8b/nesting-web-components.webp 1920w" sizes="100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="100vw" decoding="async" loading="lazy" src="/static/d9f68a86764aabfd517215c0ed0cb588/f3f2d/nesting-web-components.jpg" srcSet="/static/d9f68a86764aabfd517215c0ed0cb588/d46b5/nesting-web-components.jpg 750w,/static/d9f68a86764aabfd517215c0ed0cb588/46d06/nesting-web-components.jpg 1080w,/static/d9f68a86764aabfd517215c0ed0cb588/c5e18/nesting-web-components.jpg 1366w,/static/d9f68a86764aabfd517215c0ed0cb588/f3f2d/nesting-web-components.jpg 1920w" alt="Nesting web components in vanilla JavaScript"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div></div><p>Originally posted on the <a href="https://blog.logrocket.com/nesting-web-components-vanilla-javascript/">Log Rocket blog</a>.</p><p>Sure, you may not need them now because your current JavaScript framework can handle componentizing for you, but imagine if we lived in a world where you didn’t have to install half the internet via Node to get a reusable component!</p><h2 id="benefits-using-webcomponents">Benefits of using web components</h2><p>Web components are fantastic for what we talked about above. They are native components, work across all browsers, and do not rely on any build tools to be generated. If you’re new to web components, I recommend checking out <a href="https://blog.logrocket.com/web-components-vs-react/">this article on how they compare to React</a>; if you want more context for their history, <a href="https://blog.logrocket.com/what-happened-to-web-components/">see this post summarizing their existence</a>.</p><p>However, if you are new to web components, you will need to do a little reading up on some web component-specific ideas such as the <a href="https://blog.logrocket.com/building-web-components-with-webc-vanilla-javascript/#web-component-specifications">shadow DOM</a>, custom elements, and HTML templates. Going through these items in detail is outside the scope of this article, but <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components">MDN gives web components a great overview</a>.</p><p>In this post, we’ll cover how to create a common, reusable card component using nothing but web components and vanilla JavaScript.</p><h2 id="creating-card-component">Creating a card component</h2><p>Our card has a few items in it: an image, a title, some descriptive text, and a link. The HTML for it looks something like this:</p><pre class="language-html hljs prettyprinted xml"><span>&lt;article class=&quot;card&quot;&gt;
+  &lt;div class=&quot;card__image&quot;&gt;
+    &lt;img 
+      src=&quot;https://assets.codepen.io/437758/internal/avatars/users/default.png&quot; 
+      alt=&quot;Mark Conroy&#x27;s avatar from CodePen.io&quot; /&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;card__content&quot;&gt;
+    &lt;h2 class=&quot;card__title&quot;&gt;This is a card component&lt;/h2&gt;
+    &lt;div class=&quot;card__text&quot;&gt;
+      &lt;p&gt;We are reading a tutorial about how to create web components. More specifically, how to create nested web components.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;card__cta&quot;&gt;
+      &lt;a class=&quot;card__link&quot; href=&quot;https://blog.logrocket.com&quot;&gt;Read more&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</span></pre><p>If this was a web component, we’d use a custom HTML element called <code class=" prettyprinted"><span>component-card</span></code> and the HTML would look like this:</p><pre class="language-html hljs prettyprinted xml"><span>&lt;component-card 
+  data-title=&quot;This is a card component&quot;
+  data-image=&quot;https://assets.codepen.io/437758/internal/avatars/users/default.png&quot; 
+  data-image-alt=&quot;Mark Conroy&#x27;s avatar from CodePen.io&quot;
+  data-description=&quot;We are reading a tutorial about how to create web components. More specifically, how to create nested web components.&quot;
+  data-cta-href=&quot;https://blog.logrocket.com/&quot;
+  data-cta-text=&quot;Read more&quot;
+&gt;
+&lt;/component-card&gt;</span></pre><p>In this component, we are using <code class=" prettyprinted"><span>data-*</span></code> attributes to set the values for each item in the card.</p><p>Here’s the code we might use to create this as a web component. Don’t worry, this is the most complex component we’ll look at. The complexity is only because of the number of items in this card — title, image, text, link, etc. We’ll go through it line-by-line afterwards:</p><pre class="language-javascript hljs prettyprinted"><span>// Create a class for the element
+class Card extends HTMLElement {
+  constructor() {
+    super();
+    this.setAttribute(&quot;role&quot;, &quot;article&quot;);
+    this.classList.add(&quot;card&quot;);
+    // Title
+    const title = document.createElement(&quot;h2&quot;);
+    title.classList.add(&quot;card__title&quot;);
+    title.textContent = this.getAttribute(&quot;data-title&quot;);
+    // Description
+    const description = document.createElement(&quot;div&quot;);
+    description.classList.add(&quot;card__description&quot;);
+    description.innerHTML = this.getAttribute(&quot;data-description&quot;);
+    // Image
+    let imageWrapper;
+    if (this.hasAttribute(&quot;data-image&quot;)) {
+      const image = document.createElement(&quot;img&quot;);
+      image.classList.add(&quot;card__image&quot;);
+      image.src = this.getAttribute(&quot;data-image&quot;);
+      if (this.hasAttribute(&quot;data-image-alt&quot;)) {
+        image.alt = this.getAttribute(&quot;data-image-alt&quot;);
+      }
+      imageWrapper = document.createElement(&quot;div&quot;);
+      imageWrapper.classList.add(&quot;card__image-wrapper&quot;);
+      imageWrapper.appendChild(image);
+      this.appendChild(imageWrapper);
+    }
+    // CTA
+    let ctaContainer;
+    if (this.hasAttribute(&#x27;data-cta-href&#x27;)) {
+      const cta = document.createElement(&quot;a&quot;);
+      cta.classList.add(&quot;card__link&quot;);
+      cta.href = this.getAttribute(&quot;data-cta-href&quot;);
+      cta.textContent = this.getAttribute(&quot;data-cta-text&quot;);
+      ctaContainer = document.createElement(&quot;div&quot;);
+      ctaContainer.classList.add(&#x27;card__cta&#x27;);
+      ctaContainer.appendChild(cta);
+    }
+    const contentContainer = document.createElement(&quot;div&quot;);
+    contentContainer.classList.add(&quot;card__content&quot;);
+    contentContainer.appendChild(title);
+    contentContainer.appendChild(description);
+    if (ctaContainer !== &#x27;undefined&#x27;) {
+      contentContainer.appendChild(ctaContainer);
+    }
+    // Create some CSS to apply to the shadow dom
+    const style = document.createElement(&quot;style&quot;);
+    style.textContent = `
+      :host {
+        display: block;
+        background: #eaeaea;
+        border-radius: 10px;
+        border: 1px solid black;
+        max-width: 300px;
+        color: #333;
+      }
+      .card__content {
+        padding: 1rem;
+      }
+      .card__title {
+        color: #333;
+        margin-top: 0;
+        line-height: 1.1;
+      }
+      img {
+        width: 100%;
+        display: block;
+        border-radius: 10px 10px 0 0;
+      }
+      .card__cta {
+      margin-top: 1.5rem;
+      }
+      .card__cta a {
+        color: #eaeaea;
+        display: block;
+        background-color: #333;
+        padding: 0.25rem 1rem;
+        border-radius: 5px;
+        text-align: center;
+      }
+    `;
+    // Attach the created elements to the shadow dom
+    const shadowRoot = this.attachShadow({ mode: &quot;closed&quot; });
+    shadowRoot.appendChild(style);
+    if (imageWrapper !== undefined) {
+      shadowRoot.appendChild(imageWrapper);
+    }
+    shadowRoot.appendChild(contentContainer);
+  }
+}
+// Define the new element
+customElements.define(&quot;component-card&quot;, Card);</span></pre><h3 id="fetching-title-description-data">Fetching title and description data</h3><p>First up, we create a class called <code class=" prettyprinted"><span>Card</span></code>, which is a generic HTML element that has the same properties as a <code class=" prettyprinted"><span>div</span></code>. In our example, however, we want our card to have the same properties as an <code class=" prettyprinted"><span>article</span></code> element, so we gave it the role of <code class=" prettyprinted"><span>article</span></code> and added a class to it for <code class=" prettyprinted"><span>.card</span></code>.</p><p>Next, we need to get the values for our card title and card description. For the title, we create an <code class=" prettyprinted"><span>h2</span></code> element, add a class of <code class=" prettyprinted"><span>.card__title</span></code> to it, and set the contents of this <code class=" prettyprinted"><span>h2</span></code> to equal the value of the <code class=" prettyprinted"><span>data-title</span></code> attribute.</p><p>We do basically the same for the card description, except we use <code class=" prettyprinted"><span>.innerHTML</span></code> instead of <code class=" prettyprinted"><span>.textContent</span></code> in case our card description has some formatting in it, such as bolding (<code class=" prettyprinted"><span>&lt;b&gt;</span></code>) or italics (<code class=" prettyprinted"><span>&lt;em&gt;</span></code>).</p><h3 id="adding-images-margins-padding">Adding images, margins, and padding</h3><p>Once we have those items in place, we can look at getting the data for the image. This is a little bit more complex, only because I want to add a <code class=" prettyprinted"><span>div</span></code> with a class of <code class=" prettyprinted"><span>.card__image</span></code> around the actual <code class=" prettyprinted"><span>img</span></code> element. This is handy if you want to add margins or padding to this area.</p><p>The first thing we do is create a variable called <code class=" prettyprinted"><span>imageWrapper</span></code>. Then, we check whether there is a value for the <code class=" prettyprinted"><span>data-image</span></code> attribute, and if there is, we set <code class=" prettyprinted"><span>imageWrapper</span></code> to be a <code class=" prettyprinted"><span>div</span></code> with a class of <code class=" prettyprinted"><span>.card__image</span></code> and create a new <code class=" prettyprinted"><span>img</span></code> element. We then get the value for <code class=" prettyprinted"><span>data-image</span></code> and use that as the <code class=" prettyprinted"><span>src</span></code> attribute on our image tag. Finally, we get the value of <code class=" prettyprinted"><span>data-image-alt</span></code> as the <code class=" prettyprinted"><span>alt</span></code> text for our image.</p><p>When we have all this in place, we append the image we created to the <code class=" prettyprinted"><span>imageWrapper</span></code> and then append the <code class=" prettyprinted"><span>imageWrapper</span></code> to <code class=" prettyprinted"><span>this</span></code>. In this case, <code class=" prettyprinted"><span>this</span></code> refers to our web component itself, so it will be the first element rendered in our web component.</p><h3 id="adding-links">Adding links</h3><p>After that, we need to see if there’s any call to action or link for the card. Similar to what we did with the image, we first create a <code class=" prettyprinted"><span>ctaContainer</span></code> variable, then we check if <code class=" prettyprinted"><span>data-cta-href</span></code> has a value. If so, we use that value along with the value of the <code class=" prettyprinted"><span>data-cta-text</span></code> to construct an <code class=" prettyprinted"><span>a</span></code> element. We then append the <code class=" prettyprinted"><span>cta</span></code> to the <code class=" prettyprinted"><span>ctaContainer</span></code>, but <em>we do not</em> append that to <code class=" prettyprinted"><span>this</span></code>.</p><h3 id="creating-image-content-containers">Creating image and content containers</h3><p>The reason we didn’t append the <code class=" prettyprinted"><span>ctaContainer</span></code> to the web component just yet is that we want to put the title, description, and CTA all into one container <code class=" prettyprinted"><span>div</span></code> — <em>then</em> we can append that to the web component. This makes sure things are rendered in the order we want them to be.</p><p>To do this, we create a variable called <code class=" prettyprinted"><span>contentContainer</span></code> and append our title, description, and CTA to that. We then append this <code class=" prettyprinted"><span>contentContainer</span></code> to <code class=" prettyprinted"><span>this</span></code>. We now have two things appended to the component: an image container and an content container.</p><h3 id="adding-styling">Adding styling</h3><p>To make sure our card looks pretty, we create a style element, add the CSS that we need into it, and then append that style element to the card. The great thing about this is that any CSS that is in here will only be available to this component and will not leak out and affect other parts of your page.</p><p>The last piece in this part of the puzzle is to create a shadow DOM, append the <code class=" prettyprinted"><span>style</span></code> element to it, and then append it to the <code class=" prettyprinted"><span>imageWrapper</span></code> and <code class=" prettyprinted"><span>contentContainer</span></code>. When we have that done, we can define our new component.</p><h3 id="naming-web-component">Naming our web component</h3><p>We can call it whatever we want; I’ve gone for <code class=" prettyprinted"><span>component-card</span></code> and told it to use the <code class=" prettyprinted"><span>Card</span></code> class. All custom HTML properties must have at least two words in them, separated by a hyphen. This is to distinguish them from native HTML properties, which are always just one word.</p><p>Now, we can add this component to any page by making sure we have a script element that loads this file,adding a <code class=" prettyprinted"><span>&lt;component-card&gt;</span></code> element to the page, and setting <code class=" prettyprinted"><span>data-*</span></code> attributes for the values we want to use. Here’s an example of it in action:</p><div class="cp_embed_wrapper"><iframe class="cp_embed_iframe " style="display:block;overflow:hidden;width:100%" allowfullscreen="" allowpaymentrequest="true" allowtransparency="true" frameBorder="0" height="597" width="100%" name="cp_embed_1" scrolling="no" src="https://codepen.io/markconroy/embed/gOqwXYr?height=597&amp;default-tab=html%2Cresult&amp;slug-hash=gOqwXYr&amp;user=markconroy&amp;name=cp_embed_1" title="CodePen Embed" loading="lazy" id="cp_embed_gOqwXYr"></iframe></div><p> </p><h2 id="creating-container-component">Creating a container component</h2><p>Now that we have our card component, let’s create a container and place multiple cards inside it. This will mean we can later set properties on the container to say how many cards we want in a row, or how much spacing we want between each card in the container.</p><p>For our container component, we want to end up with HTML resembling something like this:</p><pre class="language-html hljs prettyprinted xml"><span>&lt;div class=&quot;container&quot;&gt;
+  &lt;p&gt;Things in a container&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;container container--large container--brand&quot;&gt;
+  &lt;p&gt;Things in a container&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;container container--small container--accent&quot;&gt;
+  &lt;p&gt;Things in a container&lt;/p&gt;
+&lt;/div&gt;</span></pre><p>In the code above, we can see three types of containers: a default container, a “large” variant and a “small” variant.</p><p>For the purposes of this tutorial, let say that they should all be centered on the page. The default one should be <code class=" prettyprinted"><span>60em</span></code> wide (<code class=" prettyprinted"><span>960px</span></code>), the large one should be <code class=" prettyprinted"><span>80em</span></code> wide (<code class=" prettyprinted"><span>1280px</span></code>) and the small one should be <code class=" prettyprinted"><span>48em</span></code> wide (<code class=" prettyprinted"><span>768px</span></code>). We can use CSS to do this:</p><pre class="language-css hljs prettyprinted"><span>.container {
+  width: 100%;
+  max-width: 60em;
+  margin-inline: auto;
+}
+.container--large {
+  max-width: 80em;
+}
+.container--small {
+  max-width: 48em;
+}
+.container--brand {
+  background-color: pink;
+}
+.container--accent {
+  background-color: lightgreen;
+}</span></pre><p>With a web component, we can set these widths via <code class=" prettyprinted"><span>data-attributes</span></code>, providing ourselves values for “small” and “large” and the same for the background colors. We’ll call the component <code class=" prettyprinted"><span>&lt;layout-container&gt;</span></code>. Here’s what this might look like when we render it:</p><pre class="language-html hljs prettyprinted xml"><span>&lt;layout-container&gt;
+  &lt;p&gt;Things in a container&lt;/p&gt;
+&lt;/layout-container&gt;
+&lt;layout-container data-width=&quot;small&quot; data-bg-color=&quot;brand&quot;&gt;
+  &lt;p&gt;Things in a container&lt;/p&gt;
+&lt;/layout-container&gt;
+&lt;layout-container data-width=&quot;large&quot; data-bg-color=&quot;accent&quot;&gt;
+  &lt;p&gt;Things in a container&lt;/p&gt;
+&lt;/layout-container&gt;
+&lt;layout-container data-bg-color=&quot;accent-contrast&quot;&gt;
+  &lt;p&gt;Things in a container&lt;/p&gt;
+&lt;/layout-container&gt;</span></pre><p>To create this as a web component, here’s what we will need:</p><pre class="language-javascript hljs prettyprinted"><span>class containerComponent extends HTMLElement {
+  constructor() {
+    super();
+    // Width
+    let width;
+    const width_small = &quot;48em&quot;;
+    const width_medium = &quot;60em&quot;;
+    const width_large = &quot;80em&quot;;
+    // Other properties
+    let bgColor = &quot;white&quot;;
+    const colorBrand = &quot;pink&quot;;
+    const colorAccent = &quot;lightgreen&quot;;
+    const colorAccentContrast = &quot;darkgreen&quot;;
+    if (this.hasAttribute(&quot;data-width&quot;)) {
+      let widthValue = this.getAttribute(&quot;data-width&quot;);
+      widthValue === &quot;small&quot; ? width = width_small : &quot;&quot;;
+      widthValue === &quot;medium&quot; ? width = width_medium : &quot;&quot;;
+      widthValue === &quot;large&quot; ? width = width_large : &quot;&quot;;
+    } else {
+      width = width_medium;
+    }
+    if (this.hasAttribute(&quot;data-bg-color&quot;)) {
+      let bgColorValue = this.getAttribute(&quot;data-bg-color&quot;);
+      bgColorValue === &quot;brand&quot; ? bgColor = colorBrand : &quot;&quot;;
+      bgColorValue === &quot;accent&quot; ? bgColor = colorAccent : &quot;&quot;;
+      bgColorValue === &quot;accent-contrast&quot; ? bgColor = colorAccentContrast : &quot;&quot;;
+    }
+    const containerTemplate = document.createElement(&quot;template&quot;);
+    containerTemplate.innerHTML = `
+       &lt;slot&gt;&lt;/slot&gt;
+    `;
+    const style = document.createElement(&quot;style&quot;);
+    style.textContent = `
+      :host {
+        display: block;
+        width: 100%;
+        max-width: ${width};
+        margin-left: auto;
+        margin-right: auto;
+        background-color: ${bgColor};
+      }
+    `;
+    const shadowRoot = this.attachShadow({ mode: &quot;closed&quot; });
+    shadowRoot.appendChild(style);
+    shadowRoot.appendChild(containerTemplate.content.cloneNode(true));
+  }
+}
+customElements.define(&quot;layout-container&quot;, containerComponent);</span></pre><p>In this element, we initially set variables for our widths. I like to have specific definitions here, so we do not have content editors putting random widths into data attributes like <code class=" prettyprinted"><span>732px</span></code>, which may break the rules set in our brand and style guidelines.</p><p>I also set a default background color of “white” for the containers. This is just so we can use a second data attribute to set background colors later.</p><p>After setting these variables, we then check if the component has data attributes set for <code class=" prettyprinted"><span class="pln">data</span><span class="pun">-</span><span class="pln">width</span></code>. If so, we use that value to decide how wide the container should be. We can also add more data attributes if we wanted to set the container to be aligned to the left of the screen, or to have small/medium/large amounts of padding, etc., by using the same approach.</p><p>Next up, we check if the container has a <code class=" prettyprinted"><span class="pln">data</span><span class="pun">-</span><span class="pln">bg</span><span class="pun">-</span><span class="pln">color</span></code> set. If so, we use this value to set the background color of the container. Similar to the width variables, we only provide options for defined colors — brand, accent, accent-contrast — to make sure editors cannot choose random colors outside of our brand guidelines.</p><p>Once this is done, we create a <code class=" prettyprinted"><span class="kwd">template</span></code> element that we have called <code class=" prettyprinted"><span class="pln">containerTemplate</span></code> and set the <code class=" prettyprinted"><span class="pln">innerHTML</span></code> of this template to be an empty <code class=" prettyprinted"><span class="tag">&lt;slot&gt;&lt;/slot&gt;</span></code> element.</p><p>This is the magic of nested web components. An empty <code class=" prettyprinted"><span class="pln">slot</span></code> means that <em>anything</em> put between the opening and closing <code class=" prettyprinted"><span class="tag">&lt;layout-container&gt;</span></code> tags will be rendered as normal. This is where we will place our cards later.</p><p>Almost there! We now create a <code class=" prettyprinted"><span class="pln">style</span></code> component and put the styles that our <code class=" prettyprinted"><span class="tag">&lt;layout-container&gt;</span></code> needs inside it, using variables for the <code class=" prettyprinted"><span class="pln">$</span><span class="pun">{</span><span class="pln">width</span><span class="pun">}</span></code> and <code class=" prettyprinted"><span class="pln">$</span><span class="pun">{</span><span class="pln">bgColor</span><span class="pun">}</span></code> properties and anything else we’d like, such as margins, paddings, etc.</p><h3 id="creating-shadowroot">Creating the <code class=" prettyprinted"><span class="pln">shadowRoot</span></code></h3><p>Now we can create our <code class=" prettyprinted"><span class="pln">shadowRoot</span></code>, append the <code class=" prettyprinted"><span class="pln">style</span></code> to it, and then append the <code class=" prettyprinted"><span class="pln">containerTemplate</span></code> to it as well, using the <code class=" prettyprinted"><span class="pln">cloneNode</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">)</span></code> method.</p><p>Remember, this is a <code class=" prettyprinted"><span class="kwd">template</span></code> element, so it will not be visible on the page unless we <code class=" prettyprinted"><span class="pln">clone</span></code> it into position. A <code class=" prettyprinted"><span class="kwd">template</span><span class="pun">.</span><span class="pln">content</span></code> method only contains a <code class=" prettyprinted"><span class="pln">fragment</span></code>, so it will only be able to render once (meaning we can only have one <code class=" prettyprinted"><span class="tag">&lt;layout-container&gt;</span></code> on the page). By using the <code class=" prettyprinted"><span class="pln">clone</span></code> method, we can have as many as we want on the page.</p><p>Finally, we <code class=" prettyprinted"><span class="pln">define</span></code> our component by telling it to use the class <code class=" prettyprinted"><span class="pln">containerComponent</span></code> for its definition:</p><div class="cp_embed_wrapper"><iframe class="cp_embed_iframe " style="display:block;overflow:hidden;width:100%" allowfullscreen="" allowpaymentrequest="true" allowtransparency="true" frameBorder="0" height="597" width="100%" name="cp_embed_2" scrolling="no" src="https://codepen.io/markconroy/embed/XWONWPQ?height=597&amp;default-tab=html%2Cresult&amp;slug-hash=XWONWPQ&amp;user=markconroy&amp;name=cp_embed_2" title="CodePen Embed" loading="lazy" id="cp_embed_XWONWPQ"></iframe></div><p> </p><h2 id="nesting-web-components">Nesting our web components</h2><p>Okay, so now we have a <code class=" prettyprinted"><span class="tag">&lt;component-card&gt;</span></code> and also a <code class=" prettyprinted"><span class="tag">&lt;layout-container&gt;</span></code>. Since the <code class=" prettyprinted"><span class="tag">&lt;layout-container&gt;</span></code> just renders an empty slot, we can put whatever we want in it.</p><p>Let’s place some cards into it, and also extend our <code class=" prettyprinted"><span class="tag">&lt;layout-container&gt;</span></code> to accept data attributes for layout style (so we can choose <code class=" prettyprinted"><span class="pln">grid</span></code>) and layout spacing (so we can set some gap between items).</p><p>First, here’s what happens when we add three cards to our <code class=" prettyprinted"><span class="tag">&lt;layout-container&gt;</span></code> in its current state. An outline of the code for this is</p><pre class="language-html hljs prettyprinted xml"><span class="tag hljs-tag">&lt;</span><span class="tag hljs-tag hljs-name">layout-container</span><span class="tag hljs-tag">&gt;</span><span class="pln">
+  </span><span class="tag hljs-tag">&lt;</span><span class="tag hljs-tag hljs-name">component-card</span><span class="tag hljs-tag">&gt;&lt;/</span><span class="tag hljs-tag hljs-name">component-card</span><span class="tag hljs-tag">&gt;</span><span class="pln">
+  </span><span class="tag hljs-tag">&lt;</span><span class="tag hljs-tag hljs-name">component-card</span><span class="tag hljs-tag">&gt;&lt;/</span><span class="tag hljs-tag hljs-name">component-card</span><span class="tag hljs-tag">&gt;</span><span class="pln">
+  </span><span class="tag hljs-tag">&lt;</span><span class="tag hljs-tag hljs-name">component-card</span><span class="tag hljs-tag">&gt;&lt;/</span><span class="tag hljs-tag hljs-name">component-card</span><span class="tag hljs-tag">&gt;</span><span class="pln">
+  </span><span class="tag hljs-tag">&lt;</span><span class="tag hljs-tag hljs-name">component-card</span><span class="tag hljs-tag">&gt;&lt;/</span><span class="tag hljs-tag hljs-name">component-card</span><span class="tag hljs-tag">&gt;</span><span class="pln">
+</span><span class="tag hljs-tag">&lt;/</span><span class="tag hljs-tag hljs-name">layout-container</span><span class="tag hljs-tag">&gt;</span></pre><div class="cp_embed_wrapper"><iframe class="cp_embed_iframe " style="display:block;overflow:hidden;width:100%" allowfullscreen="" allowpaymentrequest="true" allowtransparency="true" frameBorder="0" height="597" width="100%" name="cp_embed_3" scrolling="no" src="https://codepen.io/markconroy/embed/OJdbPZB?height=597&amp;default-tab=html%2Cresult&amp;slug-hash=OJdbPZB&amp;user=markconroy&amp;name=cp_embed_3" title="CodePen Embed" loading="lazy" id="cp_embed_OJdbPZB"></iframe></div><p> </p><p>As we can see, our cards are vertically stacked, one on top of the other. If we extend our <code class=" prettyprinted"><span class="tag">&lt;layout-container&gt;</span></code> to allow an attribute for layout style and spacing, we’ll see this taking much better effect.</p><p>Updating our outline code, this now looks like this:</p><pre class="langauge-html hljs prettyprinted xml"><span class="tag hljs-tag">&lt;</span><span class="tag hljs-tag hljs-name">layout-container</span><span class="pln hljs-tag"> </span><span class="atn hljs-tag hljs-attr">data-size</span><span class="pun hljs-tag">=</span><span class="atv hljs-tag hljs-string">&quot;small&quot;</span><span class="pln hljs-tag"> </span><span class="atn hljs-tag hljs-attr">data-bg-color</span><span class="pun hljs-tag">=</span><span class="atv hljs-tag hljs-string">&quot;brand&quot;</span><span class="pln hljs-tag"> </span><span class="atn hljs-tag hljs-attr">data-layout-style</span><span class="pun hljs-tag">=</span><span class="atv hljs-tag hljs-string">&quot;grid&quot;</span><span class="pln hljs-tag"> </span><span class="atn hljs-tag hljs-attr">data-spacing</span><span class="pun hljs-tag">=</span><span class="atv hljs-tag hljs-string">&quot;small&quot;</span><span class="pln hljs-tag"> </span><span class="atn hljs-tag hljs-attr">data-columns</span><span class="pun hljs-tag">=</span><span class="atv hljs-tag hljs-string">&quot;4&quot;</span><span class="tag hljs-tag">&gt;</span><span class="pln">
+  </span><span class="tag hljs-tag">&lt;</span><span class="tag hljs-tag hljs-name">component-card</span><span class="tag hljs-tag">&gt;&lt;/</span><span class="tag hljs-tag hljs-name">component-card</span><span class="tag hljs-tag">&gt;</span><span class="pln">
+  </span><span class="tag hljs-tag">&lt;</span><span class="tag hljs-tag hljs-name">component-card</span><span class="tag hljs-tag">&gt;&lt;/</span><span class="tag hljs-tag hljs-name">component-card</span><span class="tag hljs-tag">&gt;</span><span class="pln">
+  </span><span class="tag hljs-tag">&lt;</span><span class="tag hljs-tag hljs-name">component-card</span><span class="tag hljs-tag">&gt;&lt;/</span><span class="tag hljs-tag hljs-name">component-card</span><span class="tag hljs-tag">&gt;</span><span class="pln">
+  </span><span class="tag hljs-tag">&lt;</span><span class="tag hljs-tag hljs-name">component-card</span><span class="tag hljs-tag">&gt;&lt;/</span><span class="tag hljs-tag hljs-name">component-card</span><span class="tag hljs-tag">&gt;</span><span class="pln">
+</span><span class="tag hljs-tag">&lt;/</span><span class="tag hljs-tag hljs-name">layout-container</span><span class="tag hljs-tag">&gt;</span></pre><div class="cp_embed_wrapper"><iframe class="cp_embed_iframe " style="display:block;overflow:hidden;width:100%" allowfullscreen="" allowpaymentrequest="true" allowtransparency="true" frameBorder="0" height="597" width="100%" name="cp_embed_4" scrolling="no" src="https://codepen.io/markconroy/embed/dyaOPwJ?height=597&amp;default-tab=html%2Cresult&amp;slug-hash=dyaOPwJ&amp;user=markconroy&amp;name=cp_embed_4" title="CodePen Embed" loading="lazy" id="cp_embed_dyaOPwJ"></iframe></div><p> </p><p>Now we have a nice example of a <code class=" prettyprinted"><span class="tag">&lt;layout-container&gt;</span></code> with four horizontal <code class=" prettyprinted"><span class="tag">&lt;component-card&gt;</span></code> items inside it, and the container has values for:</p><ul><li>The layout style (in our case, <code class=" prettyprinted"><span class="pln">grid</span></code>)</li><li>How much spacing we want between items (<code class=" prettyprinted"><span class="pln">small</span></code> in this case)</li><li>How many items we want per row (<code class=" prettyprinted"><span class="lit">4</span></code> in this case)</li></ul><h2 id="what-else-do-nested-web-components">What else can we do with nested web components?</h2><p>We can break out parts of our card into their own components, where we’d have a component called <code class=" prettyprinted"><span class="tag">&lt;preview-content&gt;</span></code>, for example, and use that component for the title, summary, and CTA in the card. We could also use that strategy if we created other preview types, such as a teaser or search result. Our card title could use a <code class=" prettyprinted"><span class="tag">&lt;heading-title&gt;</span></code> component with attributes for heading level, style, alignment, and so on.</p><p>Getting more granular like this (or <a href="http://g-atomic-design-next-js-project/">atomic</a>, in design system terms) would allow us to create a very effective design system without the need for something as fully-fledged as Storybook.</p><h2 id="browser-support">Browser support</h2><p>This will work in all browsers for the foreseeable future. Currently, <a href="https://caniuse.com/?search=web%20component">caniuse.com</a> reports ≥97 percent browser compatibility, including basically everything except Opera Mini and IE11.</p><p>We can also use web components without a build system or any dependencies, which means no massive <code class=" prettyprinted"><span class="pln">node_modules</span></code> directory or the fun of wrangling your way out of dependency hell.</p><p>Web components are available right now via native APIs from our beloved browsers, and are getting more powerful with each new browser iteration.</p><h2>Conclusion</h2><p>So, what have we done? Let’s recap:</p><ol><li>We created a single web component — a card, in our case</li><li>Then, we created another web component for a layout container</li><li>We also placed multiple instances of our card component into our container component</li><li>Finally, we added attributes to our container to control the layout of the items inside it</li></ol><p>Though our examples were familiar for the tutorial, the possibilities for web components are endless — I’m just waiting for the frontend world to realize this!</p><div class="NewsletterForm__FormContainer-sc-1e2cutj-0 kUaxwA"><h2>Course: Build a LocalGov Drupal Website</h2><p>Subscribe to get updates about the course (and perhaps a discount code before it is launched).</p><div></div></div><div class="SocialShare__SocialShareStyles-sc-bubltu-0 gxDZWY social-sharing"><h2>Share (please)</h2><ul class="social-sharing__list"><li><a href="https://twitter.com/intent/tweet/?text=Nesting web components in vanilla JavaScript by @markconroy%0a%0a&amp;url=undefined" target="_blank" rel="noreferrer"><svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" fill="#fff"></path></svg><span class="visually-hidden">Share via Twitter</span></a></li><li><a href="https://facebook.com/sharer/sharer.php?u=undefined" target="_blank" rel="noreferrer"><svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" fill="#fff"></path></svg><span class="visually-hidden">Share via Facebook</span></a></li><li><a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=undefined&amp;amp;title=Nesting web components in vanilla JavaScript&amp;summary=Nesting web components in vanilla JavaScript&amp;source=undefined" target="_blank" rel="noreferrer"><svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" fill="#fff"></path></svg><span class="visually-hidden">Share via LinkedIn</span></a></li><li><a href="whatsapp://send?text=Checkout%20this%20article%20by%20Mark%20Conroy.%0a%0aNesting web components in vanilla JavaScript%0a%0aundefined" target="_blank" rel="noreferrer"><svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1113 974q13 0 97.5 44t89.5 53q2 5 2 15 0 33-17 76-16 39-71 65.5t-102 26.5q-57 0-190-62-98-45-170-118t-148-185q-72-107-71-194v-8q3-91 74-158 24-22 52-22 6 0 18 1.5t19 1.5q19 0 26.5 6.5t15.5 27.5q8 20 33 88t25 75q0 21-34.5 57.5t-34.5 46.5q0 7 5 15 34 73 102 137 56 53 151 101 12 7 22 7 15 0 54-48.5t52-48.5zm-203 530q127 0 243.5-50t200.5-134 134-200.5 50-243.5-50-243.5-134-200.5-200.5-134-243.5-50-243.5 50-200.5 134-134 200.5-50 243.5q0 203 120 368l-79 233 242-77q158 104 345 104zm0-1382q153 0 292.5 60t240.5 161 161 240.5 60 292.5-60 292.5-161 240.5-240.5 161-292.5 60q-195 0-365-94l-417 134 136-405q-108-178-108-389 0-153 60-292.5t161-240.5 240.5-161 292.5-60z" fill="#fff"></path></svg><span class="visually-hidden">Share via Whatsapp</span></a></li><li><a href="mailto:?subject=Nesting web components in vanilla JavaScript&amp;body=Nesting web components in vanilla JavaScript - undefined" target="_blank" rel="noreferrer"><svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1792 710v794q0 66-47 113t-113 47h-1472q-66 0-113-47t-47-113v-794q44 49 101 87 362 246 497 345 57 42 92.5 65.5t94.5 48 110 24.5h2q51 0 110-24.5t94.5-48 92.5-65.5q170-123 498-345 57-39 100-87zm0-294q0 79-49 151t-122 123q-376 261-468 325-10 7-42.5 30.5t-54 38-52 32.5-57.5 27-50 9h-2q-23 0-50-9t-57.5-27-52-32.5-54-38-42.5-30.5q-91-64-262-182.5t-205-142.5q-62-42-117-115.5t-55-136.5q0-78 41.5-130t118.5-52h1472q65 0 112.5 47t47.5 113z" fill="#fff"></path></svg><span class="visually-hidden">Share via Email</span></a></li></ul></div><h2>Filed Under:</h2><ol class="TagList-sc-1tlql9o-0 cofDTk"><li><a href="/tags/html/">HTML</a></li><li><a href="/tags/css/">CSS</a></li><li><a href="/tags/javascript/">JavaScript</a></li><li><a href="/tags/web-components/">Web Components</a></li></ol></div></article></main><footer class="footer__FooterStyles-sc-1upxyeb-0 gGsBHE"><div class="layout-contained padding-horizontal"><ul style="margin:0"><li><a href="/mailing-list">Newsletter</a></li><li><a href="https://fun.mark.ie">Fun</a></li><li><a href="https://twitter.com/markconroy">Twitter</a></li><li><a href="https://github.com/markconroy">Github</a></li><li><a href="https://www.drupal.org/u/markconroy">Drupal</a></li><li><a href="https://www.linkedin.com/in/conroymark">LinkedIn</a></li><li><a href="https://mastodon.ie/@markconroy">Mastodon</a></li></ul></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/blog/nesting-web-components-in-vanilla-javascript/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-d08c6d9d14e2e2708b3e.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-a1ab0719df137bf22110.js\"],\"component---src-pages-404-js\":[\"/component---src-pages-404-js-40ed670b0bef720ceb7a.js\"],\"component---src-pages-blog-js\":[\"/component---src-pages-blog-js-0a3ac7bf2d6f2a48a10a.js\"],\"component---src-pages-index-js\":[\"/component---src-pages-index-js-76d4f90c7e1aa06aef6b.js\"],\"component---src-pages-mailing-list-js\":[\"/component---src-pages-mailing-list-js-19a53ba14d3e2dd7812c.js\"],\"component---src-pages-speaking-js\":[\"/component---src-pages-speaking-js-0e7edec98996b1c25877.js\"],\"component---src-pages-styleguide-article-js\":[\"/component---src-pages-styleguide-article-js-c0f82efa1cf20e064383.js\"],\"component---src-pages-styleguide-card-list-js\":[\"/component---src-pages-styleguide-card-list-js-1df07b8ece30d187a884.js\"],\"component---src-pages-styleguide-index-js\":[\"/component---src-pages-styleguide-index-js-065d378c9551777e3243.js\"],\"component---src-pages-tags-js\":[\"/component---src-pages-tags-js-0ad21e9a0146472294e9.js\"],\"component---src-templates-article-article-drupal-js\":[\"/component---src-templates-article-article-drupal-js-86c6cf974ac5c495dfb5.js\"],\"component---src-templates-page-js\":[\"/component---src-templates-page-js-78b3e0c3985b2b9447cc.js\"],\"component---src-templates-speaking-js\":[\"/component---src-templates-speaking-js-f98a7686401a46e2bbda.js\"],\"component---src-templates-tag-js\":[\"/component---src-templates-tag-js-28048d865f4ec0ed015c.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="8c896f2df7509b3c1247";</script><script src="/webpack-runtime-35c79c664c1a8e44287b.js" async></script><script src="/framework-971ff3f3cbc98866ed96.js" async></script><script src="/app-d08c6d9d14e2e2708b3e.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
